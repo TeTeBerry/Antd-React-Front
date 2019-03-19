@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import Layouts from './pages/Layouts'
 import NormalLoginForm from './pages/Login'
-import RegisterForm from './pages/Register'
 
 
 class App extends Component {
@@ -11,10 +9,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        
-        <Route exact path="/"  component={Layouts}/>
-        <Route exact path="/login" component={NormalLoginForm}/>
-        <Route exact path="/register" component={RegisterForm}/>
+        <Layouts/>
+        <Route exact path="/" component={NormalLoginForm} />
         </div>
         </Router>
   );  

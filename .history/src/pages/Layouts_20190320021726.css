@@ -1,0 +1,10 @@
+@import '~antd/dist/antd.css';
+
+  .layout-header h1 {
+    color: whitesmoke;
+    float: left;
+  }
+  
+  .layout {
+    text-align: center;
+  }
