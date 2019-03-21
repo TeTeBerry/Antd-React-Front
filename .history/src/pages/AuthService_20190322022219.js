@@ -43,22 +43,20 @@ export default class AuthService {
     };
 
     getToken = () => {
-        // Retrieves the user token from localStorage
-        return localStorage.getItem('id_token')
-    }
-
+        //Retrieves the user token from localStorage
+        return localStorage.getItem("id_token");
+    };
     logout = () => {
         // Clear user token and profile data from localStorage
         localStorage.removeItem('id_token');
     }
 
+
     getConfirm = () => {
-        // Using jwt-decode npm package to decode the token
         let answer = decode(this.getToken());
         console.log("Recieved answer!");
         return answer;
-    }
-
+    };
     fetch = (url, options) => {
         //performs api calls sending the required authentication headers
         const headers = {

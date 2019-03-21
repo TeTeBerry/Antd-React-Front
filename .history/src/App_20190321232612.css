@@ -1,0 +1,23 @@
+@import '~antd/dist/antd.css';
+
+.logo {
+  width: 220px;
+  height: 31px;
+  margin: 1px 24px 16px 0;
+  float: left;
+  color: yellow;
+  font-size: 20px;
+}
+  
+  .layout {
+    text-align: center;
+  }
+  .userlogin {
+  width: 400px;
+  height: 31px;
+  margin: 1px 24px 16px 0;
+  float: right;
+  color: skyblue;
+  font-size: 20px;
+
+  }

@@ -21,7 +21,12 @@ class RegisterForm extends Component {
     
       handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4000/users/register",{
+        this.props.form.validateFieldsAndScroll((err, values) => {
+          if (!err) {
+            console.log('Received values of form: ', values);
+          }
+        });
+        axios.post("/users/register",{
           firstname: this.state.firstname,
           lastname: this.state.lastname,
           username: this.state.username,
@@ -29,15 +34,7 @@ class RegisterForm extends Component {
         }).then((data) => {
           console.log(data);
           this.props.history.replace('/login')
-        }).catch((error) => {
-          console.log(error.response.data);
-          alert(error.response.data);
         })
-        this.props.form.validateFieldsAndScroll((err, values) => {
-          if (!err) {
-            console.log('Received values of form: ', values);
-          }
-        });
       }
     
       handleConfirmBlur = (e) => {
@@ -64,32 +61,9 @@ class RegisterForm extends Component {
       componentDidMount() {
         console.log(this.Auth.loggedIn());
         if(this.Auth.loggedIn()){
-            this.props.history.push('/login')
+            this.props.history.push('/dashboard')
         }
     }
-    onChangeFirstName = (e) => {
-      this.setState({
-        firstname: e.target.value
-      });
-    }
-
-    onChangeLastName = (e) => {
-      this.setState({
-        lastname: e.target.value
-      });
-    }
-    onChangeUsername = (e) => {
-      this.setState({
-        username: e.target.value
-      });
-    }
-    onChangePassword = (e) => {
-      this.setState({
-        password: e.target.value
-      });
-    }
-
-    
     
       render() { 
         const { getFieldDecorator } = this.props.form;
@@ -129,7 +103,7 @@ class RegisterForm extends Component {
               {getFieldDecorator('firstname', {
                 rules: [{ required: true, message: 'Please input your First Name!' }],
               })(
-                <Input onChange={this.onChangeFirstName}/>
+                <Input />
               )}
             </Form.Item>
             <Form.Item
@@ -138,7 +112,7 @@ class RegisterForm extends Component {
               {getFieldDecorator('lastname', {
                 rules: [{ required: true, message: 'Please input your Last Name!' }],
               })(
-                <Input onChange={this.onChangeLastName}/>
+                <Input />
               )}
             </Form.Item>
             <Form.Item
@@ -147,7 +121,7 @@ class RegisterForm extends Component {
               {getFieldDecorator('username', {
                 rules: [{ required: true, message: 'Please input your username!' }],
               })(
-                <Input onChange={this.onChangeUsername}/>
+                <Input />
               )}
             </Form.Item>
             <Form.Item
@@ -160,7 +134,7 @@ class RegisterForm extends Component {
                   validator: this.validateToNextPassword,
                 }],
               })(
-                <Input type="password" onChange={this.onChangePassword}/>
+                <Input type="password" />
               )}
             </Form.Item>
             <Form.Item

@@ -31,7 +31,8 @@ class RegisterForm extends Component {
           this.props.history.replace('/login')
         }).catch((error) => {
           console.log(error.response.data);
-          alert(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
         })
         this.props.form.validateFieldsAndScroll((err, values) => {
           if (!err) {

@@ -37,7 +37,7 @@ import AuthService from './AuthService';
         console.log(res);
         this.props.history.replace('/')
       }).catch(err => {
-        alert("Invalid Username");
+        alert(err);
       })
       this.props.form.validateFields((err, values) => {
         if (!err) {
@@ -45,11 +45,6 @@ import AuthService from './AuthService';
         }
       });
     }
-    componentWillMount() {
-      /* Here is a great place to redirect someone who is already logged in to the protected route */
-      if (this.Auth.loggedIn())
-          this.props.history.replace('/');
-  }
   
     render() {
       const { getFieldDecorator } = this.props.form;

@@ -15,16 +15,10 @@ import AuthService from './AuthService';
       password: ""
     }
 
-    onChangeUsername = (e) => {
+    _handleChange = (e) => {
       this.setState({
-        username: e.target.value
+        [e.target.name]: e.target.value
       }) 
-    }
-
-    onChangePassword = (e) => {
-      this.setState({
-        password: e.target.value
-      })
     }
 
     handleSubmit = (e) => {
@@ -34,10 +28,9 @@ import AuthService from './AuthService';
         if (res === false) {
           return alert("Sorry those credentials don't exist!");
         }
-        console.log(res);
-        this.props.history.replace('/')
+        this.props.history.replace('/');
       }).catch(err => {
-        alert("Invalid Username");
+        alert(err);
       })
       this.props.form.validateFields((err, values) => {
         if (!err) {
@@ -45,11 +38,6 @@ import AuthService from './AuthService';
         }
       });
     }
-    componentWillMount() {
-      /* Here is a great place to redirect someone who is already logged in to the protected route */
-      if (this.Auth.loggedIn())
-          this.props.history.replace('/');
-  }
   
     render() {
       const { getFieldDecorator } = this.props.form;
@@ -64,7 +52,7 @@ import AuthService from './AuthService';
               rules: [{ required: true, message: 'Please input your username!' }],
             })(
               <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" 
-              onChange={this.onChangeUsername}/>
+              onChange={this._handleChange}/>
             )}
           </Form.Item>
           <Form.Item>
@@ -72,7 +60,7 @@ import AuthService from './AuthService';
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
               <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" 
-              onChange={this.onChangePassword}/>
+              onChange={this._handleChange}/>
             )}
           </Form.Item>
           <Form.Item>

@@ -48,12 +48,10 @@ class App extends Component {
      </Header>
      <Content style={{ padding: '0 50px' }}>
   
-      <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      
-      </div>
+      <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Content</div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>
-    IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
+      Ant Design ©2018 Created by Ant UED
     </Footer>
      </Layout>
   );  

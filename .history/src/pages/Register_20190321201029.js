@@ -29,9 +29,8 @@ class RegisterForm extends Component {
         }).then((data) => {
           console.log(data);
           this.props.history.replace('/login')
-        }).catch((error) => {
-          console.log(error.response.data);
-          alert(error.response.data);
+        }).catch((err) => {
+          console.log(err);
         })
         this.props.form.validateFieldsAndScroll((err, values) => {
           if (!err) {
@@ -64,7 +63,7 @@ class RegisterForm extends Component {
       componentDidMount() {
         console.log(this.Auth.loggedIn());
         if(this.Auth.loggedIn()){
-            this.props.history.push('/login')
+            this.props.history.push('/dashboard')
         }
     }
     onChangeFirstName = (e) => {

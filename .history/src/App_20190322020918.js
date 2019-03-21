@@ -6,18 +6,50 @@ import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
  
 const Auth = new AuthService();
 class App extends Component {
+  state = {
+    username: ''
+  }
 
+  Auth = new AuthService();
+
+  componentWillMount() {
+    if (!Auth.loggedIn()) {
+        this.props.history.replace('/login')
+    }
+    else {
+        /* Try to get confirmation message from the Auth helper. */
+        try {
+            
+            const confirm = Auth.getConfirm()
+            console.log("confirmation is:", confirm);
+            this.setState({
+                confirm: confirm,
+                loaded: true
+            })
+        }
+        /* Oh snap! Looks like there's an error so we'll print it out and log the user out for security reasons. */
+        catch (err) {
+            console.log(err);
+            Auth.logout()
+            this.props.history.replace('/login');
+        }
+    }
+}
 
   _handleLogout = () => {
-    Auth.logout()
+    this.Auth.logout()
     this.props.history.replace('/login');
   }
 
   render() {
+    let name = null;
+    if (this.props.confirm) {
+      name = this.props.confirm.username;
+    }
     //let name = this.props.confirm.username;
     console.log("Rendering Appjs!")
     return (
@@ -30,7 +62,7 @@ class App extends Component {
       <Radio.Button value="small" onClick={this._handleLogout}>LOGOUT</Radio.Button>
        </div>
       <div className="userlogin">
-       <h5>Welcome, {this.props.confirm.sub}</h5>
+       <h5>Welcome, {name}</h5>
        </div>
       
 
@@ -46,18 +78,9 @@ class App extends Component {
        
        </Menu>
      </Header>
-     <Content style={{ padding: '0 50px' }}>
-  
-      <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      
-      </div>
-    </Content>
-    <Footer style={{ textAlign: 'center' }}>
-    IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
-    </Footer>
      </Layout>
   );  
   }
 }
 
-export default withAuth(App);
+export default App;

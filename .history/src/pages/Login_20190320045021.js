@@ -4,52 +4,16 @@ import {
     Form, Icon, Input, Button, 
   } from 'antd';
 import { Link } from 'react-router-dom';
-import AuthService from './AuthService';
   
   class NormalLoginForm extends Component {
-
-    Auth = new AuthService();
-
-    state = {
-      username: "",
-      password: ""
-    }
-
-    onChangeUsername = (e) => {
-      this.setState({
-        username: e.target.value
-      }) 
-    }
-
-    onChangePassword = (e) => {
-      this.setState({
-        password: e.target.value
-      })
-    }
-
     handleSubmit = (e) => {
       e.preventDefault();
-      this.Auth.login(this.state.username,this.state.password)
-      .then(res => {
-        if (res === false) {
-          return alert("Sorry those credentials don't exist!");
-        }
-        console.log(res);
-        this.props.history.replace('/')
-      }).catch(err => {
-        alert("Invalid Username");
-      })
       this.props.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values);
         }
       });
     }
-    componentWillMount() {
-      /* Here is a great place to redirect someone who is already logged in to the protected route */
-      if (this.Auth.loggedIn())
-          this.props.history.replace('/');
-  }
   
     render() {
       const { getFieldDecorator } = this.props.form;
@@ -63,16 +27,14 @@ import AuthService from './AuthService';
             {getFieldDecorator('userName', {
               rules: [{ required: true, message: 'Please input your username!' }],
             })(
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" 
-              onChange={this.onChangeUsername}/>
+              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
             )}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator('password', {
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" 
-              onChange={this.onChangePassword}/>
+              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
             )}
           </Form.Item>
           <Form.Item>

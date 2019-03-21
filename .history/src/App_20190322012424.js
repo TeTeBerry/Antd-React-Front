@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { Layout, Menu,} from 'antd';
 import './App.css';
+import { Link, Redirect } from 'react-router-dom';
 import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
-import { Radio } from 'antd';
+import { Button, Radio } from 'antd';
 
 
-const { Header, Content, Footer } = Layout;
- 
-const Auth = new AuthService();
+const { Header } = Layout;
+
 class App extends Component {
-
-
-  _handleLogout = () => {
-    Auth.logout()
-    this.props.history.replace('/login');
+  state = {
+    username: ''
   }
 
+  Auth = new AuthService();
+
   render() {
-    //let name = this.props.confirm.username;
-    console.log("Rendering Appjs!")
     return (
       <Layout className="layout">
       <Header  className="layout-header">
@@ -27,10 +24,10 @@ class App extends Component {
       <p>IoT Smart Water Meter</p>
       </div>
       <div className="logout">
-      <Radio.Button value="small" onClick={this._handleLogout}>LOGOUT</Radio.Button>
+      <Radio.Button value="small">LOGOUT</Radio.Button>
        </div>
       <div className="userlogin">
-       <h5>Welcome, {this.props.confirm.sub}</h5>
+       <h5>Welcome, tete</h5>
        </div>
       
 
@@ -46,18 +43,9 @@ class App extends Component {
        
        </Menu>
      </Header>
-     <Content style={{ padding: '0 50px' }}>
-  
-      <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      
-      </div>
-    </Content>
-    <Footer style={{ textAlign: 'center' }}>
-    IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
-    </Footer>
      </Layout>
   );  
   }
 }
 
-export default withAuth(App);
+export default App;

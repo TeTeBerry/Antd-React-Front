@@ -6,7 +6,7 @@ import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
  
 const Auth = new AuthService();
 class App extends Component {
@@ -30,7 +30,7 @@ class App extends Component {
       <Radio.Button value="small" onClick={this._handleLogout}>LOGOUT</Radio.Button>
        </div>
       <div className="userlogin">
-       <h5>Welcome, {this.props.confirm.sub}</h5>
+       <h5>Welcome, {this.props.confirm.iat}</h5>
        </div>
       
 
@@ -46,15 +46,6 @@ class App extends Component {
        
        </Menu>
      </Header>
-     <Content style={{ padding: '0 50px' }}>
-  
-      <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      
-      </div>
-    </Content>
-    <Footer style={{ textAlign: 'center' }}>
-    IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
-    </Footer>
      </Layout>
   );  
   }

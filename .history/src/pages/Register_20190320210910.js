@@ -2,37 +2,19 @@ import React,{ Component } from "react";
 import { Form, Input, Button} from 'antd';
 import './Register.css'
 import { Link } from 'react-router-dom';
-import AuthService from'./AuthService';
-import axios from "axios";
-
-
+import axios from 'axios';
 
 
 class RegisterForm extends Component {
-    Auth = new AuthService();
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
-        firstname: "",
-        lastname: "",
         username: "",
         password: ""
       };
     
       handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4000/users/register",{
-          firstname: this.state.firstname,
-          lastname: this.state.lastname,
-          username: this.state.username,
-          password: this.state.password
-        }).then((data) => {
-          console.log(data);
-          this.props.history.replace('/login')
-        }).catch((error) => {
-          console.log(error.response.data);
-          alert(error.response.data);
-        })
         this.props.form.validateFieldsAndScroll((err, values) => {
           if (!err) {
             console.log('Received values of form: ', values);
@@ -61,35 +43,6 @@ class RegisterForm extends Component {
         }
         callback();
       }
-      componentDidMount() {
-        console.log(this.Auth.loggedIn());
-        if(this.Auth.loggedIn()){
-            this.props.history.push('/login')
-        }
-    }
-    onChangeFirstName = (e) => {
-      this.setState({
-        firstname: e.target.value
-      });
-    }
-
-    onChangeLastName = (e) => {
-      this.setState({
-        lastname: e.target.value
-      });
-    }
-    onChangeUsername = (e) => {
-      this.setState({
-        username: e.target.value
-      });
-    }
-    onChangePassword = (e) => {
-      this.setState({
-        password: e.target.value
-      });
-    }
-
-    
     
       render() { 
         const { getFieldDecorator } = this.props.form;
@@ -123,31 +76,13 @@ class RegisterForm extends Component {
             <div className="register-card">
             <h1>Register</h1>
           <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-          <Form.Item
-              label="First Name"
-            >
-              {getFieldDecorator('firstname', {
-                rules: [{ required: true, message: 'Please input your First Name!' }],
-              })(
-                <Input onChange={this.onChangeFirstName}/>
-              )}
-            </Form.Item>
-            <Form.Item
-              label="Last Name"
-            >
-              {getFieldDecorator('lastname', {
-                rules: [{ required: true, message: 'Please input your Last Name!' }],
-              })(
-                <Input onChange={this.onChangeLastName}/>
-              )}
-            </Form.Item>
             <Form.Item
               label="Username"
             >
               {getFieldDecorator('username', {
                 rules: [{ required: true, message: 'Please input your username!' }],
               })(
-                <Input onChange={this.onChangeUsername}/>
+                <Input />
               )}
             </Form.Item>
             <Form.Item
@@ -160,7 +95,7 @@ class RegisterForm extends Component {
                   validator: this.validateToNextPassword,
                 }],
               })(
-                <Input type="password" onChange={this.onChangePassword}/>
+                <Input type="password" />
               )}
             </Form.Item>
             <Form.Item

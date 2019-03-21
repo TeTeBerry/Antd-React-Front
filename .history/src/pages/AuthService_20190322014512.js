@@ -5,7 +5,7 @@ export default class AuthService {
         this.domain = domain || "http://localhost:4000"//API service domain
     }
     login = (username, password) => {
-        return this.fetch(`${this.domain}/users/authenticate`,{
+        return this.fetch(`http://localhost:4000/users/authenticate`,{
             method: "POST",
             body: JSON.stringify({
                 username,
@@ -18,11 +18,10 @@ export default class AuthService {
     };
 
     loggedIn = () => {
-        // Checks if there is a saved token and it's still valid
-        const token = this.getToken() // Getting token from localstorage
-        return !!token && !this.isTokenExpired(token) // handwaiving here
-    }
-
+        //Checks if there is a saved token
+        const token = this.getToken();//Getting token from localStorage
+        return !!token && this.isTokenExpired(token);
+    };
     
     isTokenExpired = token => {
         try {
@@ -43,22 +42,15 @@ export default class AuthService {
     };
 
     getToken = () => {
-        // Retrieves the user token from localStorage
-        return localStorage.getItem('id_token')
-    }
-
-    logout = () => {
-        // Clear user token and profile data from localStorage
-        localStorage.removeItem('id_token');
-    }
+        //Retrieves the user token from localStorage
+        return localStorage.getItem("id_token");
+    };
 
     getConfirm = () => {
-        // Using jwt-decode npm package to decode the token
         let answer = decode(this.getToken());
         console.log("Recieved answer!");
         return answer;
-    }
-
+    };
     fetch = (url, options) => {
         //performs api calls sending the required authentication headers
         const headers = {
