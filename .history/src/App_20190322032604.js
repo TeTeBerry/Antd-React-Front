@@ -4,9 +4,7 @@ import './App.css';
 import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
-import Table from'./pages/Admin';
-import { Link } from 'react-router-dom';
-import CreateMember from './pages/CreateMember';
+import Admin from'./pages/Admin';
 
 
 const { Header, Content, Footer } = Layout;
@@ -14,14 +12,11 @@ const { Header, Content, Footer } = Layout;
 const Auth = new AuthService();
 class App extends Component {
 
-  state= {
-    data:[]
-  }
+
   _handleLogout = () => {
     Auth.logout()
     this.props.history.replace('/login');
   }
-
 
   render() {
     //let name = this.props.confirm.username;
@@ -46,8 +41,7 @@ class App extends Component {
          defaultSelectedKeys={['2']}
          style={{ lineHeight: '64px' }}
        > 
-         <Menu.Item key="/">
-         <Link to="/">Admin</Link></Menu.Item>
+         <Menu.Item key="1">Admin</Menu.Item>
          <Menu.Item key="2">Member</Menu.Item>
          <Menu.Item key="3">Report</Menu.Item>
        
@@ -56,9 +50,7 @@ class App extends Component {
      <Content style={{ padding: '0 50px' }}>
   
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      <CreateMember/>
-      <br/>
-      <Table/>
+      <Admin/>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>

@@ -6,7 +6,6 @@ import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 import Table from'./pages/Admin';
 import { Link } from 'react-router-dom';
-import CreateMember from './pages/CreateMember';
 
 
 const { Header, Content, Footer } = Layout;
@@ -56,8 +55,6 @@ class App extends Component {
      <Content style={{ padding: '0 50px' }}>
   
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      <CreateMember/>
-      <br/>
       <Table/>
       </div>
     </Content>

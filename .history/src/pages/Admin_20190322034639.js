@@ -61,7 +61,7 @@ const data = [{
   address: 'Sidney No. 1 Lake Park',
   tags: ['cool', 'teacher'],
 }];
-class Admin extends React.Component {
+class DataTable extends React.Component {
     state = {  }
     render() { 
         return ( 
@@ -70,4 +70,4 @@ class Admin extends React.Component {
     }
 }
  
-export default Admin;
+export default DataTable;

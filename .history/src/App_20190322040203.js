@@ -57,7 +57,6 @@ class App extends Component {
   
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
       <CreateMember/>
-      <br/>
       <Table/>
       </div>
     </Content>

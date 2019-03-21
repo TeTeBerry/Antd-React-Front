@@ -5,8 +5,6 @@ import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 import Table from'./pages/Admin';
-import { Link } from 'react-router-dom';
-import CreateMember from './pages/CreateMember';
 
 
 const { Header, Content, Footer } = Layout;
@@ -46,8 +44,7 @@ class App extends Component {
          defaultSelectedKeys={['2']}
          style={{ lineHeight: '64px' }}
        > 
-         <Menu.Item key="/">
-         <Link to="/">Admin</Link></Menu.Item>
+         <Menu.Item key="1">Admin</Menu.Item>
          <Menu.Item key="2">Member</Menu.Item>
          <Menu.Item key="3">Report</Menu.Item>
        
@@ -56,8 +53,6 @@ class App extends Component {
      <Content style={{ padding: '0 50px' }}>
   
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      <CreateMember/>
-      <br/>
       <Table/>
       </div>
     </Content>
