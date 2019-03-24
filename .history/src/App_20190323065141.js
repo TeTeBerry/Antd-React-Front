@@ -4,11 +4,9 @@ import './App.css';
 import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
-import Admin from'./pages/Admin';
+import Table from'./pages/Admin';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Member from './pages/Member'
-import Report from './pages/Report';
-import CreateMember from './pages/CreateMember'
 
 
 
@@ -49,9 +47,9 @@ class App extends Component {
          defaultSelectedKeys={['1']}
          style={{ lineHeight: '64px' }}
        > 
-         <Menu.Item key="1">Admin<Link to="/" /></Menu.Item>
+         <Menu.Item key="1">Admin<Link to="" /></Menu.Item>
          <Menu.Item key="2">Member<Link to="/member" /></Menu.Item>
-         <Menu.Item key="3">Report<Link to="/report"/></Menu.Item>
+         <Menu.Item key="3">Report</Menu.Item>
        
        </Menu>
      </Header>
@@ -59,10 +57,8 @@ class App extends Component {
   
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
 
-      <Route exact path="/" component={Admin}/>
-      <Route path="/member" component={CreateMember}/>
+      <Route exact path="/" component={Table}/>
       <Route path="/member" component={Member}/>
-      <Route path="/report" component={Report}/>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>

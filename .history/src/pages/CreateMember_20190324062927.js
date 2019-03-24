@@ -6,11 +6,43 @@ import axios from 'axios';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class CreateMember extends Component {
+    // onChangeMembername = (e) => {
+    //   this.setState({
+    //     membername: e.target.value
+    //   })
+    // }
+  
+    // onChangeTel = (e) => {
+    //   this.setState({
+    //     tel: e.target.value
+    //   })
+    // }
+  
+    // onChangeRoom = (e) => {
+    //   this.setState({
+    //     room: e.target.value
+    //   })
+ 
+    // }
+  
+    // onChangeEmail = (e) => {
+    //   this.setState({
+    //     email: e.target.value
+    //   })
+  
+    // }
+  
+    // onChangePassword = (e) => {
+    //   this.setState({
+    //     password: e.target.value
+    //   })
+    
+    // }
 
-   
+
     render() {
       const {
-        visible, onCancel, handleSubmit, form,
+        visible, onCancel, onCreate, form,
       } = this.props;
       const { getFieldDecorator } = form;
 
@@ -20,9 +52,9 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
           title="Create Member"
           okText="Create"
           onCancel={onCancel}
-          onOk={handleSubmit}
+          onOk={onCreate}
         >
-          <Form layout="vertical">
+          <Form layout="vertical" onSubmit={this.handleSubmit}>
             <Form.Item label="Member Name">
               {getFieldDecorator('membername', {
                 rules: [{ required: true, message: 'Please input member name!' }],
@@ -76,7 +108,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 class CollectionsPage extends React.Component {
   state = {
     visible: false,
-   
+    membername: "tete",
+    room: "baobao ",
+    password: "",
+    tel: "",
+    email: ""
   };
 
   showModal = () => {
@@ -87,36 +123,33 @@ class CollectionsPage extends React.Component {
     this.setState({ visible: false });
   }
 
-  handleCreate = () => {
-    const {form } = this.formRef.props;
-    const formFields = form.getFieldsValue();
-    console.log(formFields.membername)
+  handleCreate = (data) => {
+    const form = this.formRef.props.form;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
+
       console.log('Received values of form: ', values);
       form.resetFields();
       this.setState({ visible: false });
     });
     axios.post('http://localhost:4000/members/register',{
-        membername: formFields.membername,
-        room: formFields.room,
-        email: formFields.email,
-        tel: formFields.tel,
-        password: formFields.password
-        
-      }).then((data) => {
-        console.log(data)
-      }).catch((error) => {
-        console.log(error);
-        alert(error.response.data);
-      })
+      membername: this.state.membername,
+      room: this.state.room,
+      email: this.state,
+      tel: this.state.tel,
+      password: this.state.password
+    }).then((data) => {
+      console.log(data)
+    }).catch((error) => {
+      console.log(error);
+      alert(error.response.data);
+    })
   }
 
   saveFormRef = (formRef) => {
     this.formRef = formRef;
-    console.log(formRef)
   }
 
   render() {
@@ -127,7 +160,7 @@ class CollectionsPage extends React.Component {
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
-          handleSubmit={this.handleCreate}
+          onCreate={this.handleCreate}
         />
       </div>
     );

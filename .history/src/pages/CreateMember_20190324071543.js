@@ -8,6 +8,39 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   class CreateMember extends Component {
 
    
+    onChangeMembername = (e) => {
+      this.setState({
+        membername: e.target.value
+      })
+    }
+  
+    onChangeTel = (e) => {
+      this.setState({
+        tel: e.target.value
+      })
+    }
+  
+    onChangeRoom = (e) => {
+      this.setState({
+        room: e.target.value
+      })
+ 
+    }
+  
+    onChangeEmail = (e) => {
+      this.setState({
+        email: e.target.value
+      })
+  
+    }
+  
+    onChangePassword = (e) => {
+      this.setState({
+        password: e.target.value
+      })
+    
+    }
+
     render() {
       const {
         visible, onCancel, handleSubmit, form,
@@ -27,14 +60,14 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
               {getFieldDecorator('membername', {
                 rules: [{ required: true, message: 'Please input member name!' }],
               })(
-                <Input />
+                <Input onChange={this.onChangeMembername}/>
               )}
             </Form.Item>
             <Form.Item label="Phone Number">
             {getFieldDecorator('tel', {
                 rules: [{ required: true, message: 'Please input phone number!' }],
               })(
-                <Input />
+                <Input onChange={this.onChangeTel}/>
               )}
             
             </Form.Item>
@@ -42,7 +75,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             {getFieldDecorator('room', {
                 rules: [{ required: true, message: 'Please input room number!' }],
               })(
-                <Input />
+                <Input onChange={this.onChangeRoom}/>
               )}
             
             </Form.Item>
@@ -56,14 +89,14 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
               required: true, message: 'Please input your E-mail!',
             }],
           })(
-            <Input />
+            <Input onChange={this.onChangeEmail}/>
           )}
         </Form.Item>
         <Form.Item label="Password">
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
-            <Input type="password" />
+            <Input type="password" onChange={this.onChangePassword}/>
           )}
         </Form.Item>
           </Form>
@@ -76,7 +109,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 class CollectionsPage extends React.Component {
   state = {
     visible: false,
-   
+    membername: "",
+    room: "",
+    password: "",
+    tel: "",
+    email: ""
   };
 
   showModal = () => {
@@ -88,9 +125,8 @@ class CollectionsPage extends React.Component {
   }
 
   handleCreate = () => {
-    const {form } = this.formRef.props;
-    const formFields = form.getFieldsValue();
-    console.log(formFields.membername)
+    console.log(this.formRef.onChangeMembername.name)
+    const form = this.formRef.props.form;
     form.validateFields((err, values) => {
       if (err) {
         return;
@@ -100,11 +136,11 @@ class CollectionsPage extends React.Component {
       this.setState({ visible: false });
     });
     axios.post('http://localhost:4000/members/register',{
-        membername: formFields.membername,
-        room: formFields.room,
-        email: formFields.email,
-        tel: formFields.tel,
-        password: formFields.password
+        membername: this.state.membername,
+        room: this.state.room,
+        email: this.state,
+        tel: this.state.tel,
+        password: this.state.password
         
       }).then((data) => {
         console.log(data)

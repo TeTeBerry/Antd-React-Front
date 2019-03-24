@@ -89,8 +89,8 @@ class CollectionsPage extends React.Component {
 
   handleCreate = () => {
     const {form } = this.formRef.props;
-    const formFields = form.getFieldsValue();
-    console.log(formFields.membername)
+    const fromFields = form.getFieldsValue();
+    console.log(fromFields.membername)
     form.validateFields((err, values) => {
       if (err) {
         return;
@@ -100,11 +100,11 @@ class CollectionsPage extends React.Component {
       this.setState({ visible: false });
     });
     axios.post('http://localhost:4000/members/register',{
-        membername: formFields.membername,
-        room: formFields.room,
-        email: formFields.email,
-        tel: formFields.tel,
-        password: formFields.password
+        membername: fromFields.membername,
+        room: fromFields.room,
+        email: fromFields.email,
+        tel: fromFields.tel,
+        password: fromFields.password
         
       }).then((data) => {
         console.log(data)

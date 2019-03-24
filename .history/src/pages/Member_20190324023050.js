@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CreateMember from './CreateMember';
 import { Table } from 'antd';
-import { Modal,Button,Divider} from 'antd';
+import { Modal,Button,Divider,Form, Input } from 'antd';
 import axios from 'axios';
 
 const confirm = Modal.confirm;
@@ -47,17 +47,6 @@ class Member extends Component {
 
     
     componentDidMount() {
-      axios.get(domain, {headers: header})
-      .then((data) => {
-          this.setState({
-              memberList: data.data
-          });
-      }).catch((error) => {
-          console.log(error);
-      })
-
-    }
-    componentWillUpdate() {
       axios.get(domain, {headers: header})
       .then((data) => {
           this.setState({

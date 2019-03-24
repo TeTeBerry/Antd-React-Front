@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
-import { Layout, Menu} from 'antd';
-import '../App.css';
-import AuthService from '../pages/AuthService';
-import withAuth from '../pages/withAuth';
+import { Layout, Menu,} from 'antd';
+import './App.css';
+import AuthService from './pages/AuthService';
+import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
+import Table from'./pages/Admin';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Member from './pages/Member'
+import Report from './pages/Report';
 
-import { Link } from 'react-router-dom';
 
 
 
-
-
-const { Header,Content} = Layout;
+const { Header, Content, Footer } = Layout;
  
 const Auth = new AuthService();
-class Layouts extends Component {
+class App extends Component {
 
   _handleLogout = () => {
     Auth.logout()
-    
+    this.props.history.replace('/login');
   }
 
+  
 
 
   render() {
     console.log("Rendering Appjs!")
-    const {component} = this.props
     return (
-        
+      <Router>
       <Layout className="layout">
       <Header  className="layout-header">
       <div className="logo"> 
@@ -44,28 +45,31 @@ class Layouts extends Component {
        <Menu
          theme="dark"
          mode="horizontal"
-         defaultSelectedKeys={['2']}
+         defaultSelectedKeys={['1']}
          style={{ lineHeight: '64px' }}
        > 
-         <Menu.Item key="/admin">
-         <Link to="/admin">Admin</Link></Menu.Item>
-         {/* <Menu.Item key="2">Member</Menu.Item>
-         <Menu.Item key="3">Report</Menu.Item> */}
+         <Menu.Item key="1">Admin<Link to="" /></Menu.Item>
+         <Menu.Item key="2">Member<Link to="/member" /></Menu.Item>
+         <Menu.Item key="3">Report</Menu.Item>
        
        </Menu>
      </Header>
      <Content style={{ padding: '0 50px' }}>
   
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      {component}
+
+      <Route exact path="/" component={Table}/>
+      <Route path="/member" component={Member}/>
+      <Route path="/report" component={Report}/>
       </div>
     </Content>
-    {/* <Footer style={{ textAlign: 'center' }}>
+    <Footer style={{ textAlign: 'center' }}>
     IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
-    </Footer> */}
+    </Footer>
      </Layout>
+     </Router>
   );  
   }
 }
 
-export default withAuth(Layouts);
+export default withAuth(App);

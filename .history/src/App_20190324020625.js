@@ -60,8 +60,8 @@ class App extends Component {
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
 
       <Route exact path="/" component={Admin}/>
-      <Route path="/member" component={CreateMember}/>
       <Route path="/member" component={Member}/>
+      <Route path="/member" component={CreateMember}/>
       <Route path="/report" component={Report}/>
       </div>
     </Content>

@@ -46,18 +46,18 @@ class Member extends Component {
       }
 
     
-    componentDidMount() {
-      axios.get(domain, {headers: header})
-      .then((data) => {
-          this.setState({
-              memberList: data.data
-          });
-      }).catch((error) => {
-          console.log(error);
-      })
+    // componentDidMount() {
+    //   axios.get(domain, {headers: header})
+    //   .then((data) => {
+    //       this.setState({
+    //           memberList: data.data
+    //       });
+    //   }).catch((error) => {
+    //       console.log(error);
+    //   })
 
-    }
-    componentWillUpdate() {
+    // }
+    componentDidUpdate() {
       axios.get(domain, {headers: header})
       .then((data) => {
           this.setState({

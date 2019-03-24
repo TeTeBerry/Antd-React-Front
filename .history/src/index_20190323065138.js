@@ -6,7 +6,7 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import NormalLoginForm from './pages/Login'
 import RegisterForm from './pages/Register'
-
+import Member from './pages/Member';
 
 
 
@@ -18,7 +18,7 @@ ReactDOM.render(
     <Route exact path="/"  component={App}/>
     <Route exact path="/login" component={NormalLoginForm}/>
     <Route exact path="/register" component={RegisterForm}/>
-
+    <Route path="/member" component={Member}/>
     </div>
     </Router>
     , document.getElementById('root'));

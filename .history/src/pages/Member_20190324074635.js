@@ -46,7 +46,7 @@ class Member extends Component {
       }
 
     
-    componentDidMount() {
+    componentWillMount() {
       axios.get(domain, {headers: header})
       .then((data) => {
           this.setState({
@@ -57,7 +57,7 @@ class Member extends Component {
       })
 
     }
-    componentWillUpdate() {
+    componentDidUpdate() {
       axios.get(domain, {headers: header})
       .then((data) => {
           this.setState({

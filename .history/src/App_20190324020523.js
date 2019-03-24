@@ -8,7 +8,6 @@ import Admin from'./pages/Admin';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Member from './pages/Member'
 import Report from './pages/Report';
-import CreateMember from './pages/CreateMember'
 
 
 
@@ -60,7 +59,6 @@ class App extends Component {
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
 
       <Route exact path="/" component={Admin}/>
-      <Route path="/member" component={CreateMember}/>
       <Route path="/member" component={Member}/>
       <Route path="/report" component={Report}/>
       </div>

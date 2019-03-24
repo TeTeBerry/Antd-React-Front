@@ -57,17 +57,6 @@ class Member extends Component {
       })
 
     }
-    componentWillUpdate() {
-      axios.get(domain, {headers: header})
-      .then((data) => {
-          this.setState({
-              memberList: data.data
-          });
-      }).catch((error) => {
-          console.log(error);
-      })
-
-    }
     render(){
         const columns = [{
             title: 'Member Name',

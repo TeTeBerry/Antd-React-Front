@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CreateMember from './CreateMember';
 import { Table } from 'antd';
-import { Modal,Button,Divider} from 'antd';
+import { Modal,Button,Divider,Form, Input } from 'antd';
 import axios from 'axios';
 
 const confirm = Modal.confirm;
@@ -12,9 +12,8 @@ const header = {'Authorization' : `Bearer ${token}`}
 
 class Member extends Component {
     state = {
-        memberList: [],
-    };
-
+        memberList: []
+    }
 
     deleteMember = (_id)=> {
         axios.delete(`${domain}/`+_id,{ headers:header})
@@ -57,17 +56,6 @@ class Member extends Component {
       })
 
     }
-    componentWillUpdate() {
-      axios.get(domain, {headers: header})
-      .then((data) => {
-          this.setState({
-              memberList: data.data
-          });
-      }).catch((error) => {
-          console.log(error);
-      })
-
-    }
     render(){
         const columns = [{
             title: 'Member Name',
@@ -84,7 +72,7 @@ class Member extends Component {
           },{
             title: 'Action',
             key: 'action',
-            render: (record) => (
+            render: (text, record) => (
         <span>
           <Button onClick={() => this.showEditMoal(record._id)}>Edit</Button>
           <Divider type="vertical" />
@@ -99,9 +87,10 @@ class Member extends Component {
             <br/>,
             <Table  rowKey={record => record._id} columns={columns} dataSource={memberList} />
 
-
         )
     }
 }
 
- export default Member;
+
+
+export default Member;
