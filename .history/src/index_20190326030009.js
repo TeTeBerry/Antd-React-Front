@@ -24,11 +24,10 @@ ReactDOM.render(
     <Route exact path="/"  component={App}/>
     <Route exact path="/login" component={NormalLoginForm}/>
     <Route exact path="/register" component={RegisterForm}/>
-    
+
     <Route path="/member" component={CreateMember}/>
     <Route path="/member" component={Member}/>
     <Route path="/report" component={Report}/>
-    
  
    
     

@@ -3,7 +3,6 @@ import CreateMember from './CreateMember';
 import { Table } from 'antd';
 import { Modal,Button,Divider} from 'antd';
 import axios from 'axios';
-import CollectionUpdateForm from '../pages/UpdateMemberForm';
 
 const confirm = Modal.confirm;
 const domain = 'http://localhost:4000/members';
@@ -14,68 +13,11 @@ const header = {'Authorization' : `Bearer ${token}`}
 class Member extends Component {
     state = {
         memberList: [],
-        visible: false,
     };
-
-    showEditMoal = (record) => {
-      const {form } = this.formRef.props;
-      form.memberList= record
-      console.log(record._id)
-      const formFields = form.memberList;
-      console.log(formFields)
-      const formData  = {
-          membername: record.membername,
-          room: record.room,
-          email: record.email,
-          tel: record.tel, 
-          _id: record._id
-      }
-      form.setFieldsValue(formData)
-      this.setState({ 
-        visible: true,
-
-      });
-    }
-  
-    handleCancel = () => {
-      this.setState({ visible: false });
-    }
-
-    handleUpdate = () => {
-      const {form } = this.formRef.props;
-      const formFields = form.getFieldsValue();
-      console.log(formFields)
-      const formData = {
-        membername: formFields.membername,
-        room: formFields.room,
-        email: formFields.email,
-        tel: formFields.tel
-      }
-      form.validateFields((err, values) => {
-        if (err) {
-          return;
-        }
-        console.log('Received values of form: ', values);
-        form.resetFields();
-        this.setState({ visible: false });
-      });
-      axios.put(`${domain}/`+formFields._id,formData,{
-          headers:header,
-        }).then((data) => {
-          console.log(data)
-        }).catch((error) => {
-          console.log(error);
-          alert(error);
-        })
-    }
-  
-    saveFormRef = (formRef) => {
-      this.formRef = formRef;
-    }
 
 
     deleteMember = (_id)=> {
-        axios.delete(`${domain}/`+_id,{ headers:header })
+        axios.delete(`${domain}/`+_id,{ headers:header})
         .then((data) => {
           this.setState({
             memberList: this.state.memberList.filter(item => item._id !== _id)
@@ -144,7 +86,7 @@ class Member extends Component {
             key: 'action',
             render: (record) => (
         <span>
-          <Button onClick={() => this.showEditMoal(record)}>Edit</Button>
+          <Button onClick={() => this.showEditMoal(record._id)}>Edit</Button>
           <Divider type="vertical" />
           <Button onClick={() =>this.showDeleteConfirm(record._id,record.membername)} type="danger">Delete</Button>
         </span>
@@ -155,15 +97,8 @@ class Member extends Component {
         return(
             <CreateMember/>,
             <br/>,
-            <div>
-            <Table  rowKey={record => record._id} columns={columns} dataSource={memberList} />, 
-            <CollectionUpdateForm
-             wrappedComponentRef={this.saveFormRef}
-             visible={this.state.visible}
-             onCancel={this.handleCancel}
-             handleSubmit={this.handleUpdate}/>
-            </div>
-            
+            <Table  rowKey={record => record._id} columns={columns} dataSource={memberList} />
+
 
         )
     }

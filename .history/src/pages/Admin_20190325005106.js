@@ -5,22 +5,16 @@ import axios from 'axios';
 import { Modal,Button } from 'antd';
 import CreateMember from './CreateMember';
 
-
 //common variables
  const confirm = Modal.confirm;
  const domain = 'http://localhost:4000/users';
  const token = localStorage.getItem('id_token')
  const header = {'Authorization' : `Bearer ${token}`}
-
 class Admin extends React.Component {
-
- 
 
     state = {
       userList :[]
       }
-
- 
 
       deleteAdmin = (_id)=> {
         axios.delete(`${domain}/`+_id,{ headers:header})
@@ -51,7 +45,7 @@ class Admin extends React.Component {
         });
       }
       
-      componentDidMount() {
+      componentWillMount() {
         axios.get(domain, { headers: header})
         .then(data => {
           this.setState({

@@ -28,7 +28,6 @@ class Member extends Component {
           room: record.room,
           email: record.email,
           tel: record.tel, 
-          _id: record._id
       }
       form.setFieldsValue(formData)
       this.setState({ 
@@ -41,16 +40,11 @@ class Member extends Component {
       this.setState({ visible: false });
     }
 
-    handleUpdate = () => {
+    handleUpdate = (record) => {
       const {form } = this.formRef.props;
+      console.log(record._id)
       const formFields = form.getFieldsValue();
       console.log(formFields)
-      const formData = {
-        membername: formFields.membername,
-        room: formFields.room,
-        email: formFields.email,
-        tel: formFields.tel
-      }
       form.validateFields((err, values) => {
         if (err) {
           return;
@@ -59,8 +53,13 @@ class Member extends Component {
         form.resetFields();
         this.setState({ visible: false });
       });
-      axios.put(`${domain}/`+formFields._id,formData,{
-          headers:header,
+      axios.put(`${domain}/`+record._id,{
+          headers:header ,
+          membername: formFields.membername,
+          room: formFields.room,
+          email: formFields.email,
+          tel: formFields.tel,
+          
         }).then((data) => {
           console.log(data)
         }).catch((error) => {

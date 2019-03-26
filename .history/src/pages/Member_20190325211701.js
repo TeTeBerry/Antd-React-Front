@@ -20,17 +20,9 @@ class Member extends Component {
     showEditMoal = (record) => {
       const {form } = this.formRef.props;
       form.memberList= record
-      console.log(record._id)
       const formFields = form.memberList;
       console.log(formFields)
-      const formData  = {
-          membername: record.membername,
-          room: record.room,
-          email: record.email,
-          tel: record.tel, 
-          _id: record._id
-      }
-      form.setFieldsValue(formData)
+      form.setFieldsValue(record)
       this.setState({ 
         visible: true,
 
@@ -44,13 +36,7 @@ class Member extends Component {
     handleUpdate = () => {
       const {form } = this.formRef.props;
       const formFields = form.getFieldsValue();
-      console.log(formFields)
-      const formData = {
-        membername: formFields.membername,
-        room: formFields.room,
-        email: formFields.email,
-        tel: formFields.tel
-      }
+      console.log(formFields.membername)
       form.validateFields((err, values) => {
         if (err) {
           return;
@@ -59,13 +45,17 @@ class Member extends Component {
         form.resetFields();
         this.setState({ visible: false });
       });
-      axios.put(`${domain}/`+formFields._id,formData,{
-          headers:header,
+      axios.put('http://localhost:4000/members/register',{
+          membername: formFields.membername,
+          room: formFields.room,
+          email: formFields.email,
+          tel: formFields.tel,
+          
         }).then((data) => {
           console.log(data)
         }).catch((error) => {
           console.log(error);
-          alert(error);
+          alert(error.response.data);
         })
     }
   
@@ -75,7 +65,7 @@ class Member extends Component {
 
 
     deleteMember = (_id)=> {
-        axios.delete(`${domain}/`+_id,{ headers:header })
+        axios.delete(`${domain}/`+_id,{ headers:header})
         .then((data) => {
           this.setState({
             memberList: this.state.memberList.filter(item => item._id !== _id)

@@ -9,7 +9,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Member from './pages/Member'
 import Report from './pages/Report';
 import CreateMember from './pages/CreateMember'
+import { createBrowserHistory } from 'history';
 
+
+const history = createBrowserHistory();
 
 
 
@@ -23,13 +26,12 @@ class App extends Component {
 
   _handleLogout = () => {
     Auth.logout()
-    this.props.history.replace('/login')
-   
+    history.push('/login')
+    window.location.reload()
   }
 
-
-
   
+
 
   render() {
     console.log("Rendering Appjs!")

@@ -15,6 +15,8 @@ import CreateMember from './pages/CreateMember'
 
 
 
+
+
 const { Header, Content, Footer } = Layout;
  
 const Auth = new AuthService();
@@ -23,13 +25,11 @@ class App extends Component {
 
   _handleLogout = () => {
     Auth.logout()
-    this.props.history.replace('/login')
-   
+    this.props.history.push('/login');
   }
 
-
-
   
+
 
   render() {
     console.log("Rendering Appjs!")
@@ -41,7 +41,7 @@ class App extends Component {
       <p>IoT Smart Water Meter</p>
       </div>
       <div className="logout">
-      <Radio.Button value="small" onClick={this._handleLogout}>LOGOUT<Link to="/log"/></Radio.Button>
+      <Radio.Button value="small" onClick={this._handleLogout}>LOGOUT</Radio.Button>
        </div>
       <div className="userlogin">
        <h5>Welcome, {this.props.confirm.sub}</h5>

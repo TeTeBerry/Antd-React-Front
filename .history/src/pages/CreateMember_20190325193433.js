@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Button} from 'antd';
+import { Button, Modal, Form, Input} from 'antd';
 import axios from 'axios';
-import CollectionCreateForm from './CreateMemberForm';
+import CollectionCreateForm from './MemberForm';
 
 
 
-class CreateMember extends Component {
+class CollectionsPage extends React.Component {
   state = {
     visible: false,
    
@@ -65,4 +65,4 @@ class CreateMember extends Component {
   }
 }
 
-export default CreateMember;
+export default CollectionsPage;

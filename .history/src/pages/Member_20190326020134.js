@@ -59,7 +59,7 @@ class Member extends Component {
         form.resetFields();
         this.setState({ visible: false });
       });
-      axios.put(`${domain}/`+formFields._id,formData,{
+      axios.put(`${domain}/`+formFields._id,null,{
           headers:header,
         }).then((data) => {
           console.log(data)

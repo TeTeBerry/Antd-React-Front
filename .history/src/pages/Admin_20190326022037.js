@@ -4,7 +4,7 @@ import { Table } from 'antd';
 import axios from 'axios';
 import { Modal,Button } from 'antd';
 import CreateMember from './CreateMember';
-
+import AuthService from './AuthService;'
 
 //common variables
  const confirm = Modal.confirm;
@@ -14,13 +14,18 @@ import CreateMember from './CreateMember';
 
 class Admin extends React.Component {
 
- 
+  Auth = new AuthService();
 
     state = {
       userList :[]
       }
 
- 
+      componentDidMount() {
+        console.log(this.Auth.loggedIn());
+        if(this.Auth.loggedIn()){
+            // this.props.history.push('/login')
+        }
+    }
 
       deleteAdmin = (_id)=> {
         axios.delete(`${domain}/`+_id,{ headers:header})
@@ -51,7 +56,7 @@ class Admin extends React.Component {
         });
       }
       
-      componentDidMount() {
+      componentWillMount() {
         axios.get(domain, { headers: header})
         .then(data => {
           this.setState({

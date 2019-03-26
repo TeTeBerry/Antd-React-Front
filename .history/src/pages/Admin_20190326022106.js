@@ -20,7 +20,12 @@ class Admin extends React.Component {
       userList :[]
       }
 
- 
+      componentDidMount() {
+        console.log(this.Auth.loggedIn());
+        if(this.Auth.loggedIn()){
+            // this.props.history.push('/login')
+        }
+    }
 
       deleteAdmin = (_id)=> {
         axios.delete(`${domain}/`+_id,{ headers:header})
@@ -51,7 +56,7 @@ class Admin extends React.Component {
         });
       }
       
-      componentDidMount() {
+      componentWillMount() {
         axios.get(domain, { headers: header})
         .then(data => {
           this.setState({

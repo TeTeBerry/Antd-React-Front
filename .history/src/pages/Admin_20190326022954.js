@@ -51,7 +51,7 @@ class Admin extends React.Component {
         });
       }
       
-      componentDidMount() {
+      componentWillMount() {
         axios.get(domain, { headers: header})
         .then(data => {
           this.setState({

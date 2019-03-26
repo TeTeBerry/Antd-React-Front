@@ -28,7 +28,6 @@ ReactDOM.render(
     <Route path="/member" component={CreateMember}/>
     <Route path="/member" component={Member}/>
     <Route path="/report" component={Report}/>
-    
  
    
     

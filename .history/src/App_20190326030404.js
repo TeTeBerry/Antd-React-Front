@@ -27,9 +27,8 @@ class App extends Component {
    
   }
 
-
-
   
+
 
   render() {
     console.log("Rendering Appjs!")
@@ -65,9 +64,9 @@ class App extends Component {
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
 
       <Route exact path="/" component={Admin}/>
-      <Route path="/member" component={CreateMember}/>
-      <Route path="/member" component={Member}/>
-      <Route path="/report" component={Report}/>
+      <Route exact path="/member" component={CreateMember}/>
+      <Route exact path="/member" component={Member}/>
+      <Route exact path="/report" component={Report}/>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>

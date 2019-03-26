@@ -45,12 +45,6 @@ class Member extends Component {
       const {form } = this.formRef.props;
       const formFields = form.getFieldsValue();
       console.log(formFields)
-      const formData = {
-        membername: formFields.membername,
-        room: formFields.room,
-        email: formFields.email,
-        tel: formFields.tel
-      }
       form.validateFields((err, values) => {
         if (err) {
           return;
@@ -59,8 +53,14 @@ class Member extends Component {
         form.resetFields();
         this.setState({ visible: false });
       });
-      axios.put(`${domain}/`+formFields._id,formData,{
+      axios.put(`${domain}/`+formFields._id,{
           headers:header,
+          membername: formFields.membername,
+          room: formFields.room,
+          email: formFields.email,
+          tel: formFields.tel,
+    
+          
         }).then((data) => {
           console.log(data)
         }).catch((error) => {
@@ -75,7 +75,7 @@ class Member extends Component {
 
 
     deleteMember = (_id)=> {
-        axios.delete(`${domain}/`+_id,{ headers:header })
+        axios.delete(`${domain}/`+_id,)
         .then((data) => {
           this.setState({
             memberList: this.state.memberList.filter(item => item._id !== _id)

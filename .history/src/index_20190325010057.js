@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import NormalLoginForm from './pages/Login'
@@ -14,31 +14,21 @@ import CreateMember from './pages/CreateMember'
 
 
 
-
-
 ReactDOM.render(
-    
+    <App>
     <Router>
     <div className="App">
-  
     <Route exact path="/"  component={App}/>
     <Route exact path="/login" component={NormalLoginForm}/>
     <Route exact path="/register" component={RegisterForm}/>
-    
     <Route path="/member" component={CreateMember}/>
     <Route path="/member" component={Member}/>
     <Route path="/report" component={Report}/>
-    
- 
-   
-    
- 
 
-    
+
     </div>
     </Router>
-
-  
+    </App>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
