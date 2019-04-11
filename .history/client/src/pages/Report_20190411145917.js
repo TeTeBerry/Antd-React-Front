@@ -108,7 +108,7 @@ class Report extends Component {
           <Axis
             name="volume"
             label={{
-              formatter: val => `${val}L`
+              formatter: val => `${val}ml`
             }}
           />
           <Tooltip

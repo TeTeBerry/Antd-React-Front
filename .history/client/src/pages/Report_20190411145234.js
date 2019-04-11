@@ -44,7 +44,6 @@ class Report extends Component {
             {
               month: "Jun",
               Daily: 21.5,
-              Weekly:12.2,
               Monthly: 15.2
             },
             {
@@ -92,7 +91,7 @@ class Report extends Component {
             // 展开字段集
             key: "date",
             // key字段
-            value: "volume" // value字段
+            value: "temperature" // value字段
           });
           console.log(dv);
           const cols = {
@@ -106,9 +105,9 @@ class Report extends Component {
           <Legend />
           <Axis name="month" />
           <Axis
-            name="volume"
+            name="temperature"
             label={{
-              formatter: val => `${val}L`
+              formatter: val => `${val}°C`
             }}
           />
           <Tooltip
@@ -118,14 +117,14 @@ class Report extends Component {
           />
           <Geom
             type="line"
-            position="month*volume"
+            position="month*temperature"
             size={2}
             color={"date"}
             shape={"smooth"}
           />
           <Geom
             type="point"
-            position="month*volume"
+            position="month*temperature"
             size={4}
             shape={"circle"}
             color={"date"}

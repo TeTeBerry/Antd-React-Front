@@ -4,7 +4,6 @@ import { Table } from 'antd';
 import { Modal,Button,Divider} from 'antd';
 import axios from 'axios';
 import CollectionUpdateForm from '../pages/UpdateMemberForm';
-import { Link } from 'react-router-dom'; 
 
 
 const confirm = Modal.confirm;
@@ -18,6 +17,20 @@ class Member extends Component {
         memberList: [],
     };
 
+    showTopupModal = (record) => {
+      const {form} = this.formRef.props;
+      form.memberList = record
+      console.log(record.credit)
+      const formFieds = form.memberList;
+      console.log(formFieds);
+      const topup = {
+        credit:record.credit
+      }
+      form.setFieldsValue(topup)
+      this.setState ({
+        visible: true,
+      })
+    }
 
     showEditMoal = (record) => {
       const {form } = this.formRef.props;
@@ -143,6 +156,9 @@ class Member extends Component {
           }, {
             title: 'Email',
             dataIndex: 'email',
+          }, {
+            title: 'Credit',
+            dataIndex: 'credit',
           },{
             title: 'Action',
             key: 'action',
@@ -152,9 +168,7 @@ class Member extends Component {
           <Divider type="vertical" />
           <Button onClick={() =>this.showDeleteConfirm(record._id,record.membername)} type="danger">Delete</Button>
           <Divider type="vertical" />
-          <Link to={"/report"}>View Water Report</Link>
-          <Divider type="vertical" />
-          <Link to={"/message"}>Send Message</Link>
+          <Button onClick={() => this.showTopupModal(record.credit)}>Top up</Button>
         </span>
             ),
           }];

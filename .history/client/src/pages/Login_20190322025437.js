@@ -36,10 +36,8 @@ import AuthService from './AuthService';
         }
         console.log(res);
         this.props.history.replace('/')
-        window.location.reload();
-      
       }).catch(err => {
-        alert("Invalid Account");
+        alert("Invalid Username");
       })
       this.props.form.validateFields((err, values) => {
         if (!err) {

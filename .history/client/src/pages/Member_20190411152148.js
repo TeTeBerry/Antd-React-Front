@@ -154,7 +154,7 @@ class Member extends Component {
           <Divider type="vertical" />
           <Link to={"/report"}>View Water Report</Link>
           <Divider type="vertical" />
-          <Link to={"/message"}>Send Message</Link>
+          <Link>Send Message</Link>
         </span>
             ),
           }];

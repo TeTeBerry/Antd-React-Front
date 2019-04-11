@@ -13,86 +13,74 @@ class Report extends Component {
         const data = [
             {
               month: "Jan",
-              Daily: 7.0,
-              Weekly:2.0,
-              Monthly: 3.9
+              Tokyo: 7.0,
+              London: 3.9
             },
             {
               month: "Feb",
-              Daily: 6.9,
-              Weekly:10.3,
-              Monthly: 4.2
+              Tokyo: 6.9,
+              London: 4.2
             },
             {
               month: "Mar",
-              Daily: 9.5,
-              Weekly:20.4,
-              Monthly: 5.7
+              Tokyo: 9.5,
+              London: 5.7
             },
             {
               month: "Apr",
-              Daily: 14.5,
-              Weekly:12.1,
-              Monthly: 8.5
+              Tokyo: 14.5,
+              London: 8.5
             },
             {
               month: "May",
-              Daily: 18.4,
-              Weekly:10.3,
-              Monthly: 11.9
+              Tokyo: 18.4,
+              London: 11.9
             },
             {
               month: "Jun",
-              Daily: 21.5,
-              Weekly:12.2,
-              Monthly: 15.2
+              Tokyo: 21.5,
+              London: 15.2
             },
             {
               month: "Jul",
-              Daily: 25.2,
-              Weekly:22.2,
-              Monthly: 17.0
+              Tokyo: 25.2,
+              London: 17.0
             },
             {
               month: "Aug",
-              Daily: 26.5,
-              Weekly:12.3,
-              Monthly: 16.6
+              Tokyo: 26.5,
+              London: 16.6
             },
             {
               month: "Sep",
-              Daily: 23.3,
-              Weekly:12.5,
-              Monthly: 14.2
+              Tokyo: 23.3,
+              London: 14.2
             },
             {
               month: "Oct",
-              Daily: 18.3,
-              Weekly:12.2,
-              Monthly: 10.3
+              Tokyo: 18.3,
+              London: 10.3
             },
             {
               month: "Nov",
-              Daily: 13.9,
-              Weekly:12.2,
-              Monthly: 6.6
+              Tokyo: 13.9,
+              London: 6.6
             },
             {
               month: "Dec",
-              Daily: 9.6,
-              Weekly:12,
-              Monthly: 4.8
+              Tokyo: 9.6,
+              London: 4.8
             }
           ];
           const ds = new DataSet();
           const dv = ds.createView().source(data);
           dv.transform({
             type: "fold",
-            fields: ["Daily", "Weekly","Monthly"],
+            fields: ["Tokyo", "London"],
             // 展开字段集
-            key: "date",
+            key: "city",
             // key字段
-            value: "volume" // value字段
+            value: "temperature" // value字段
           });
           console.log(dv);
           const cols = {
@@ -106,9 +94,9 @@ class Report extends Component {
           <Legend />
           <Axis name="month" />
           <Axis
-            name="volume"
+            name="temperature"
             label={{
-              formatter: val => `${val}L`
+              formatter: val => `${val}°C`
             }}
           />
           <Tooltip
@@ -118,17 +106,17 @@ class Report extends Component {
           />
           <Geom
             type="line"
-            position="month*volume"
+            position="month*temperature"
             size={2}
-            color={"date"}
+            color={"city"}
             shape={"smooth"}
           />
           <Geom
             type="point"
-            position="month*volume"
+            position="month*temperature"
             size={4}
             shape={"circle"}
-            color={"date"}
+            color={"city"}
             style={{
               stroke: "#fff",
               lineWidth: 1

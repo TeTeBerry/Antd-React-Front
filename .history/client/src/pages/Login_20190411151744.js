@@ -36,7 +36,6 @@ import AuthService from './AuthService';
         }
         console.log(res);
         this.props.history.replace('/')
-        window.location.reload();
       
       }).catch(err => {
         alert("Invalid Account");

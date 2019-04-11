@@ -8,7 +8,6 @@ import NormalLoginForm from './pages/Login'
 import RegisterForm from './pages/Register'
 import Member from './pages/Member'
 import Report from './pages/Report';
-import Message from './pages/Message';
 
 
 ReactDOM.render(
@@ -22,7 +21,7 @@ ReactDOM.render(
 
     <Route path="/member" component={Member}/>
     <Route path="/report" component={Report}/>
-    <Route path="/message" component={Message}/>
+    
     
     </div>
     </Router>

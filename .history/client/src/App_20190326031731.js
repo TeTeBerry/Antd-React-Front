@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Member from './pages/Member'
 import Report from './pages/Report';
 import CreateMember from './pages/CreateMember'
-import Message from './pages/Message'
 
 
 
@@ -57,6 +56,7 @@ class App extends Component {
        > 
          <Menu.Item key="1">Admin<Link to="/" /></Menu.Item>
          <Menu.Item key="2">Member<Link to="/member" /></Menu.Item>
+         <Menu.Item key="3">Report<Link to="/report"/></Menu.Item>
        
        </Menu>
      </Header>
@@ -68,7 +68,6 @@ class App extends Component {
       <Route path="/member" component={CreateMember}/>
       <Route path="/member" component={Member}/>
       <Route path="/report" component={Report}/>
-      <Route path="/message" component={Message}/>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>
