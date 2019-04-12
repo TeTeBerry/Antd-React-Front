@@ -11,7 +11,7 @@ export default class Message extends Component{
      
         return(
             <div style={{ background: '#ECECEC', padding: '30px' }}>
-            <Card title="Send Water Fee to Memeber" bordered={false} style={{ width: 300}}>
+            <Card title="Send Water Fee to Memeber" bordered={false} style={{ width: 300,textAlign:"center",float:"left"}}>
               <p>Member Name:</p>
               <InputGroup compact>
                <Input style={{ width: '20%' }} defaultValue="0571" />
