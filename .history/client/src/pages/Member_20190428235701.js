@@ -137,7 +137,7 @@ class Member extends Component {
           <Divider type="vertical" />
           <Button onClick={() =>this.showDeleteConfirm(record._id,record.metername)} type="danger">Delete</Button>
           <Divider type="vertical" />
-          <Link to={"/report/"+record.meterid}>View Water Report</Link>
+          <Link to={"/report/"+record.metername}>View Water Report</Link>
         </span>
             ),
           }];

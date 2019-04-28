@@ -37,21 +37,42 @@ const CollectionUpdateForm = Form.create({ name: 'form_in_modal' })(
                 )}
               </Form.Item>
              
-              <Form.Item label="Meter Name">
-              {getFieldDecorator('metername', {
-                rules: [{ required: true, message: 'Please input meter name!' }],
+              <Form.Item label="Member Name">
+              {getFieldDecorator('membername', {
+                rules: [{ required: true, message: 'Please input member name!' }],
               })(
                 <Input />
               )}
             </Form.Item>
-              <Form.Item label="Descriptions">
-              {getFieldDecorator('descriptions', { 
+              <Form.Item label="Phone Number">
+              {getFieldDecorator('tel', { 
                   rules: [{ required: true, message: 'Please input phone number!' }],
                 })(
                   <Input />
                 )}
               
               </Form.Item>
+              <Form.Item label="Room Number">
+              {getFieldDecorator('room', { 
+                  rules: [{ required: true, message: 'Please input room number!' }],
+                })(
+                  <Input />
+                )}
+              
+              </Form.Item>
+              <Form.Item
+            label="E-mail"
+          >
+            {getFieldDecorator('email', {  
+              rules: [{
+                type: 'email', message: 'The input is not valid E-mail!',
+              }, {
+                required: true, message: 'Please input your E-mail!',
+              }],
+            })(
+              <Input />
+            )}
+          </Form.Item>
             </Form>
           </Modal>
         );
