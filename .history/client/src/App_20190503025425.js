@@ -5,7 +5,7 @@ import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 import Admin from'./pages/Admin';
-import { Switch, Route, HashRouter,Link,withRouter } from "react-router-dom";
+import { BrowserRouter as Router,Switch, Route, HashRouter,Link,withRouter } from "react-router-dom";
 import Member from './pages/Member'
 import Report from './pages/Report';
 
@@ -52,7 +52,7 @@ class App extends Component {
         <p>IoT Smart Water Meter</p>
       </div>
       <div className="logout">
-        <Radio.Button value="small" onClick={this._handleLogout}>LOGOUT<Link to="/login" /></Radio.Button>
+        <Radio.Button value="small" >LOGOUT<Link to="/log" /></Radio.Button>
       </div>
       <div className="userlogin">
         <h5>Welcome, {this.props.confirm.sub}</h5>

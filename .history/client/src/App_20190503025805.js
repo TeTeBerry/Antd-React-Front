@@ -5,7 +5,7 @@ import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 import Admin from'./pages/Admin';
-import { Switch, Route, HashRouter,Link,withRouter } from "react-router-dom";
+import { BrowserRouter as Router,Switch, Route, HashRouter,Link,withRouter } from "react-router-dom";
 import Member from './pages/Member'
 import Report from './pages/Report';
 
@@ -19,7 +19,7 @@ const MenuItem = withRouter(({history}) => {
    <Menu
    theme="dark"
    mode="horizontal"
-   defaultSelectedKeys={['1']}
+   defaultSelectedKeys={['/admin']}
    selectedKeys={[history.location.pathname]}
    style={{ lineHeight: '64px' }}
  >
@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     console.log("Rendering Appjs!")
     return (
-      <HashRouter>
+      <Router>
       <Layout className="layout">
     
       <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
@@ -52,7 +52,7 @@ class App extends Component {
         <p>IoT Smart Water Meter</p>
       </div>
       <div className="logout">
-        <Radio.Button value="small" onClick={this._handleLogout}>LOGOUT<Link to="/login" /></Radio.Button>
+        <Radio.Button value="small" >LOGOUT<Link to="/log" /></Radio.Button>
       </div>
       <div className="userlogin">
         <h5>Welcome, {this.props.confirm.sub}</h5>
@@ -75,7 +75,7 @@ class App extends Component {
     IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
     </Footer>
      </Layout>
-     </HashRouter>
+     </Router>
   
   );  
   }

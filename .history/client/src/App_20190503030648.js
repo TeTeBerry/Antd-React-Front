@@ -5,7 +5,7 @@ import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 import Admin from'./pages/Admin';
-import { Switch, Route, HashRouter,Link,withRouter } from "react-router-dom";
+import { BrowserRouter as Switch, Route,Redirect, HashRouter,Link,withRouter } from "react-router-dom";
 import Member from './pages/Member'
 import Report from './pages/Report';
 

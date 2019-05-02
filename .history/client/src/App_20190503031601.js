@@ -5,7 +5,7 @@ import AuthService from './pages/AuthService';
 import withAuth from './pages/withAuth';
 import { Radio } from 'antd';
 import Admin from'./pages/Admin';
-import { Switch, Route, HashRouter,Link,withRouter } from "react-router-dom";
+import { Switch, Router,Route, HashRouter,Link,withRouter } from "react-router-dom";
 import Member from './pages/Member'
 import Report from './pages/Report';
 
@@ -64,11 +64,11 @@ class App extends Component {
       
      <Content style={{ padding: '50px 50px' }}>
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-      <Switch>
+      <Router>
         <Route exact path="/" component={Admin}/>
         <Route path="/member" component={Member}/>
         <Route path="/report" component={Report}/>
-        </Switch>
+        </Router>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>
