@@ -10,7 +10,7 @@ import CreateMember from "./CreateMember";
 const confirm = Modal.confirm;
 const domain = "http://localhost:4000/meter";
 const token = localStorage.getItem("id_token");
-const headers = { Authorization: `Bearer ${token}` };
+const header = { Authorization: `Bearer ${token}` };
 
 class Member extends Component {
   state = {
@@ -56,7 +56,7 @@ class Member extends Component {
     });
     axios
       .put(`${domain}/` + formFields._id, formData, {
-        headers,
+        headers: header
       })
       .then(data => {
         console.log(data);
@@ -73,7 +73,7 @@ class Member extends Component {
 
   deleteMember = _id => {
     axios
-      .delete(`${domain}/` + _id, { headers })
+      .delete(`${domain}/` + _id, { headers: header })
       .then(data => {
         this.setState({
           memberList: this.state.memberList.filter(item => item._id !== _id)
@@ -102,10 +102,9 @@ class Member extends Component {
     });
   }
 
-  fetchMemberList = (member) => {
-    console.log(member)
+  componentDidMount() {
     axios
-      .get(domain, { headers })
+      .get(domain, { headers: header })
       .then(data => {
         this.setState({
           memberList: data.data
@@ -114,13 +113,7 @@ class Member extends Component {
       .catch(error => {
         console.log(error);
       });
-
   }
-
-  componentDidMount() {
-    this.fetchMemberList();
-  }
-
   render() {
     const columns = [
       {
@@ -160,7 +153,7 @@ class Member extends Component {
     const { memberList } = this.state;
     return (
       <div>
-        <CreateMember coolName={this.fetchMemberList} />
+        <CreateMember />
         <Table
           rowKey={record => record._id}
           columns={columns}

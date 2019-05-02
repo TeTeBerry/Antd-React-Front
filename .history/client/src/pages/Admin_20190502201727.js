@@ -3,7 +3,7 @@ import React from 'react';
 import { Table } from 'antd';
 import axios from 'axios';
 import { Modal,Button } from 'antd';
-
+import CreateMember from './CreateMember';
 
 
 //common variables
@@ -63,6 +63,9 @@ class Admin extends React.Component {
       
 
 
+  handleUpdateMember(member) {
+    console.log(member)
+  }
 
     render() { 
 
@@ -88,6 +91,7 @@ class Admin extends React.Component {
       const { userList } = this.state;
         return ( 
           <>
+            <CreateMember fakeMethod={this.handleUpdateMember} />
             <Table  rowKey={record => record._id} columns={columns} dataSource={userList} />
           </>
          );

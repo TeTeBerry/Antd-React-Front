@@ -3,9 +3,14 @@ import { Button} from 'antd';
 import axios from 'axios';
 import CollectionCreateForm from './CreateMemberForm';
 
+
+
 class CreateMember extends Component {
   state = {
     visible: false,
+    meterid: '',
+    metername: '',
+    descriptions: '',
   };
 
   showModal = () => {
@@ -28,13 +33,19 @@ class CreateMember extends Component {
       form.resetFields();
       this.setState({ visible: false });
     });
-    const member = {
-      meterid: formFields.meterid,
-      metername: formFields.metername,
-      descriptions: formFields.descriptions,
-    };
-    axios.post('http://localhost:4000/meter/register', member).then((data) => {
-      this.props.coolName(member)
+    axios.post('http://localhost:4000/meter/register',{
+        meterid: formFields.meterid,
+        metername: formFields.metername,
+        descriptions: formFields.descriptions,
+        
+      }).then((data) => {
+        console.log(data);
+        this.setState({
+          meterid: formFields.meterid,
+          metername: formFields.metername,
+          descriptions: formFields.descriptions,
+
+        })
       }).catch((error) => {
         console.log(error);
         alert(error.response.data);

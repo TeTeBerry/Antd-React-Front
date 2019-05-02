@@ -33,8 +33,9 @@ class CreateMember extends Component {
       metername: formFields.metername,
       descriptions: formFields.descriptions,
     };
+    console.log(this.props)
     axios.post('http://localhost:4000/meter/register', member).then((data) => {
-      this.props.coolName(member)
+        this.props.fakeMethod(member);
       }).catch((error) => {
         console.log(error);
         alert(error.response.data);

@@ -3,7 +3,7 @@ import React from 'react';
 import { Table } from 'antd';
 import axios from 'axios';
 import { Modal,Button } from 'antd';
-
+import CreateMember from './CreateMember';
 
 
 //common variables

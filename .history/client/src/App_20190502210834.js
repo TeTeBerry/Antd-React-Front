@@ -67,9 +67,7 @@ class App extends Component {
         <Route path="/" render={() => {
           return <Navigation handleLogout={this._handleLogout} sub={this.props.confirm.sub} />
         }} />
-        <Route exact path="/" component={Admin}/>
-        <Route path="/member" component={Member}/>
-        <Route path="/report" component={Report}/>
+       
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>

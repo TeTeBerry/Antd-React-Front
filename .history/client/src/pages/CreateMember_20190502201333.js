@@ -3,6 +3,8 @@ import { Button} from 'antd';
 import axios from 'axios';
 import CollectionCreateForm from './CreateMemberForm';
 
+
+
 class CreateMember extends Component {
   state = {
     visible: false,
@@ -32,9 +34,10 @@ class CreateMember extends Component {
       meterid: formFields.meterid,
       metername: formFields.metername,
       descriptions: formFields.descriptions,
+
     };
     axios.post('http://localhost:4000/meter/register', member).then((data) => {
-      this.props.coolName(member)
+        this.props.fakeMethod(member);
       }).catch((error) => {
         console.log(error);
         alert(error.response.data);
