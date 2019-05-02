@@ -10,32 +10,27 @@ import Member from './pages/Member'
 import Report from './pages/Report';
 
 
+
+
+
+
+
+
 const { Header, Content, Footer } = Layout;
  
 const Auth = new AuthService();
 
-class App extends Component {
-  
-
-  _handleLogout = () => {
-    Auth.logout()
-    this.props.history.replace('/login')
-   
-  }
-
-  render() {
-    console.log("Rendering Appjs!")
-    return (
-      <Router>
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+const Navigation = ({ handleLogout, sub }) => {
+  return (
+    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
       <div className="logo">
         <p>IoT Smart Water Meter</p>
       </div>
       <div className="logout">
-        <Radio.Button value="small" >LOGOUT<Link to="/log" /></Radio.Button>
+        <Radio.Button value="small" onClick={handleLogout}>LOGOUT<Link to="/log" /></Radio.Button>
       </div>
       <div className="userlogin">
-        <h5>Welcome, {this.props.confirm.sub}</h5>
+        <h5>Welcome, {sub}</h5>
       </div>
       
 
@@ -50,10 +45,28 @@ class App extends Component {
        
       </Menu>
     </Header>
+  );
+}
 
+class App extends Component {
+  
+
+  _handleLogout = () => {
+    Auth.logout()
+    this.props.history.replace('/login')
+   
+  }
+
+  render() {
+    console.log("Rendering Appjs!")
+    return (
+      <Router>
       <Layout className="layout">
      <Content style={{ padding: '50px 50px' }}>
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+        <Route path="/" render={() => {
+          return <Navigation handleLogout={this._handleLogout} sub={this.props.confirm.sub} />
+        }} />
         <Route exact path="/" component={Admin}/>
         <Route path="/member" component={Member}/>
         <Route path="/report" component={Report}/>
