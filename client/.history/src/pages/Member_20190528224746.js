@@ -21,10 +21,6 @@ class Member extends Component {
     this.props.history.push("/waterbill");
   };
 
-  showRealTime = () => {
-    this.props.history.push("/realtime");
-  };
-
   showEditMoal = record => {
     const { form } = this.formRef.props;
     form.memberList = record;
@@ -180,7 +176,11 @@ class Member extends Component {
               Delete
             </Button>
             <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showRealTime}>
+            <Button
+              type="primary"
+              size={"small"}
+              onClick={() => this.showRealTime(record)}
+            >
               Real Time
             </Button>
             <Divider type="vertical" />

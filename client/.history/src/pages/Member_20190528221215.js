@@ -4,7 +4,7 @@ import { Table } from "antd";
 import { Modal, Button, Divider } from "antd";
 import axios from "axios";
 import CollectionUpdateForm from "../pages/UpdateMemberForm";
-import { Link } from "react-router-dom";
+import { Link, browserHistory } from "react-router-dom";
 import CreateMember from "./CreateMeter";
 
 const confirm = Modal.confirm;
@@ -15,14 +15,6 @@ const headers = { Authorization: token };
 class Member extends Component {
   state = {
     memberList: []
-  };
-
-  showBill = () => {
-    this.props.history.push("/waterbill");
-  };
-
-  showRealTime = () => {
-    this.props.history.push("/realtime");
   };
 
   showEditMoal = record => {
@@ -55,11 +47,7 @@ class Member extends Component {
     console.log(formFields);
     const formData = {
       metername: formFields.metername,
-      descriptions: formFields.descriptions,
-      meterid: formFields.meterid,
-      roomnumber: formFields.roomnumber,
-      membercontact: formFields.membercontact,
-      membername: formFields.membername
+      descriptions: formFields.descriptions
     };
     form.validateFields((err, values) => {
       if (err) {
@@ -180,13 +168,21 @@ class Member extends Component {
               Delete
             </Button>
             <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showRealTime}>
+            <Button
+              type="primary"
+              size={"small"}
+              onClick={() => this.showRealTime(record)}
+            >
               Real Time
             </Button>
             <Divider type="vertical" />
             <Link to={"/report/" + record.meterid}>View Report</Link>
             <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showBill}>
+            <Button
+              type="primary"
+              size={"small"}
+              onClick={() => this.showBill(record)}
+            >
               Water Bill
             </Button>
           </span>

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Table } from "antd";
 import { Modal, Button, Divider } from "antd";
 import axios from "axios";
+import { browserHistory } from "react-router";
 import CollectionUpdateForm from "../pages/UpdateMemberForm";
 import { Link } from "react-router-dom";
 import CreateMember from "./CreateMeter";
@@ -18,11 +19,7 @@ class Member extends Component {
   };
 
   showBill = () => {
-    this.props.history.push("/waterbill");
-  };
-
-  showRealTime = () => {
-    this.props.history.push("/realtime");
+    browserHistory.push("/waterbill");
   };
 
   showEditMoal = record => {
@@ -55,11 +52,7 @@ class Member extends Component {
     console.log(formFields);
     const formData = {
       metername: formFields.metername,
-      descriptions: formFields.descriptions,
-      meterid: formFields.meterid,
-      roomnumber: formFields.roomnumber,
-      membercontact: formFields.membercontact,
-      membername: formFields.membername
+      descriptions: formFields.descriptions
     };
     form.validateFields((err, values) => {
       if (err) {
@@ -180,7 +173,11 @@ class Member extends Component {
               Delete
             </Button>
             <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showRealTime}>
+            <Button
+              type="primary"
+              size={"small"}
+              onClick={() => this.showRealTime(record)}
+            >
               Real Time
             </Button>
             <Divider type="vertical" />

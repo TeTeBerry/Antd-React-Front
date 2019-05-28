@@ -47,9 +47,13 @@ class ChangePasswordForm extends React.Component {
       newPwd: this.state.newPwd
     });
     axios
-      .post("http://localhost:8080/iot/admin/updatePassword", user, {
-        headers
-      })
+      .post(
+        "http://localhost:8080/iot/admin/updatePassword",
+        { user },
+        {
+          headers
+        }
+      )
       .then(data => {
         console.log(data);
         this.props.history.push("/member");
@@ -117,7 +121,11 @@ class ChangePasswordForm extends React.Component {
             })(
               <Input
                 prefix={
-                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                  <Icon
+                    type="lock"
+                    style={{ color: "rgba(0,0,0,.25)" }}
+                    onChange={this.onChangeNewPwd}
+                  />
                 }
                 type="password"
                 placeholder="new Password"

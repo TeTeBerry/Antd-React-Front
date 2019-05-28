@@ -16,7 +16,6 @@ import {
 import Member from "./pages/Member";
 import Report from "./pages/Report";
 import WaterBill from "./pages/WaterBill";
-import RealTime from "./pages/RealTime";
 
 export const AdminContext = React.createContext();
 
@@ -96,8 +95,6 @@ class App extends Component {
                   <Route path="/admin" component={Admin} />
                   <Route path="/member" component={Member} />
                   <Route path="/report" component={Report} />
-                  <Route path="/waterbill" component={WaterBill} />
-                  <Route path="/realtime" component={RealTime} />
 
                   <Redirect to="/member" />
                 </Switch>
