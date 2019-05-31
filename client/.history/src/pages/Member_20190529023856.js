@@ -16,10 +16,6 @@ class Member extends Component {
     memberList: []
   };
 
-  showInfo = () => {
-    this.props.history.push("/info");
-  };
-
   showBill = () => {
     this.props.history.push("/waterbill");
   };
@@ -154,12 +150,16 @@ class Member extends Component {
         dataIndex: "descriptions"
       },
       {
-        title: "Day Volume",
-        dataIndex: "dv"
+        title: "Member Name",
+        dataIndex: "membername"
       },
       {
-        title: "Month Volume",
-        dataIndex: "mv"
+        title: "Room Number",
+        dataIndex: "roomnumber"
+      },
+      {
+        title: "Member Contact",
+        dataIndex: "membercontact"
       },
       {
         title: "Action",
@@ -178,10 +178,6 @@ class Member extends Component {
               type="danger"
             >
               Delete
-            </Button>
-            <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showInfo}>
-              Member Infomation
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showRealTime}>
@@ -205,9 +201,7 @@ class Member extends Component {
         descriptions: "New York No. 1 Lake Park",
         membername: "John Brown",
         roomnumber: "B122",
-        membercontact: "0958953557",
-        dv: "1.2L",
-        mv: "35.5L"
+        membercontact: "0958953557"
       }
     ];
 

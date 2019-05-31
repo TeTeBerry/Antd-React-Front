@@ -17,7 +17,6 @@ import Member from "./pages/Member";
 import Report from "./pages/Report";
 import WaterBill from "./pages/WaterBill";
 import ViewData from "./pages/ViewData";
-import Info from "./pages/Info";
 
 export const AdminContext = React.createContext();
 
@@ -99,7 +98,6 @@ class App extends Component {
                   <Route path="/report" component={Report} />
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
-                  <Route path="/info" component={Info} />
 
                   <Redirect to="/member" />
                 </Switch>

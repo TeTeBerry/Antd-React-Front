@@ -16,17 +16,13 @@ class Member extends Component {
     memberList: []
   };
 
-  showInfo = () => {
-    this.props.history.push("/info");
-  };
-
   showBill = () => {
     this.props.history.push("/waterbill");
   };
 
   showRealTime = () => {
     message.warn("This month Already  outdone Water Volume", 10);
-    this.props.history.push("/viewdata");
+    this.props.history.push("/realtime");
   };
 
   showEditMoal = record => {
@@ -154,14 +150,6 @@ class Member extends Component {
         dataIndex: "descriptions"
       },
       {
-        title: "Day Volume",
-        dataIndex: "dv"
-      },
-      {
-        title: "Month Volume",
-        dataIndex: "mv"
-      },
-      {
         title: "Action",
         key: "action",
         render: record => (
@@ -180,12 +168,8 @@ class Member extends Component {
               Delete
             </Button>
             <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showInfo}>
-              Member Infomation
-            </Button>
-            <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showRealTime}>
-              View Data
+              Real Time
             </Button>
             <Divider type="vertical" />
             <Link to={"/report/" + record.meterid}>View Report</Link>
@@ -205,9 +189,7 @@ class Member extends Component {
         descriptions: "New York No. 1 Lake Park",
         membername: "John Brown",
         roomnumber: "B122",
-        membercontact: "0958953557",
-        dv: "1.2L",
-        mv: "35.5L"
+        membercontact: "0958953557"
       }
     ];
 

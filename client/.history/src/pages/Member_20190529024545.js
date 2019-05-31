@@ -16,10 +16,6 @@ class Member extends Component {
     memberList: []
   };
 
-  showInfo = () => {
-    this.props.history.push("/info");
-  };
-
   showBill = () => {
     this.props.history.push("/waterbill");
   };
@@ -178,10 +174,6 @@ class Member extends Component {
               type="danger"
             >
               Delete
-            </Button>
-            <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showInfo}>
-              Member Infomation
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showRealTime}>
