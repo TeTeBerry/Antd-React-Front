@@ -14,6 +14,14 @@ import Info from "./pages/adminpage/Info";
 import Member from "./pages/memberpage/Member";
 
 export const AdminContext = React.createContext();
+const auth = localStorage.getItem("currentUser");
+const requireAuth = (nextState, replace) => {
+  if (!auth.isAdmin()) {
+    // Redirect to Home page if not an Admin
+    replace({ pathname: "/member" });
+  }
+  console.log(auth);
+};
 
 const menu = (
   <Menu>
@@ -45,7 +53,6 @@ const MenuItem = withRouter(({ history }) => {
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
     isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
@@ -95,7 +102,11 @@ class App extends Component {
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
-                  <Route path="/member" component={Member} />
+                  <Route
+                    path="/member"
+                    component={Member}
+                    onEnter={requireAuth}
+                  />
                 </Switch>
               </div>
             </Content>

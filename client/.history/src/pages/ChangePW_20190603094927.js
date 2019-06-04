@@ -140,6 +140,6 @@ class ChangePasswordForm extends React.Component {
   }
 }
 
-const ChangePw = Form.create({ name: "normal_login" })(ChangePasswordForm);
+const Admin = Form.create({ name: "normal_login" })(ChangePasswordForm);
 
-export default ChangePw;
+export default Admin;

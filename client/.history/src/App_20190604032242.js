@@ -5,13 +5,21 @@ import AuthService from "./pages/AuthService";
 import withAuth from "./pages/withAuth";
 import { Radio } from "antd";
 import ChangePw from "./pages/ChangePW";
-import { Switch, Route, HashRouter, Link, withRouter } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  HashRouter,
+  Link,
+  withRouter,
+  Router
+} from "react-router-dom";
 import Meter from "./pages/adminpage/Meter";
 import Report from "./pages/adminpage/Report";
 import WaterBill from "./pages/WaterBill";
 import ViewData from "./pages/ViewData";
 import Info from "./pages/adminpage/Info";
 import Member from "./pages/memberpage/Member";
+import AuthRouter from "./pages/AuthRouter";
 
 export const AdminContext = React.createContext();
 
@@ -26,6 +34,11 @@ const menu = (
 );
 
 const { Header, Content, Footer } = Layout;
+
+const Role = {
+  Admin: "admin",
+  Member: "member"
+};
 
 const Auth = new AuthService();
 
@@ -45,10 +58,9 @@ const MenuItem = withRouter(({ history }) => {
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("user_name") || "") === "admin"
   };
 
   _handleLogout = () => {
@@ -59,7 +71,7 @@ class App extends Component {
   render() {
     console.log("Rendering Appjs!");
     return (
-      <HashRouter>
+      <Router>
         <Layout className="layout">
           <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
             <div className="logo">
@@ -95,7 +107,7 @@ class App extends Component {
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
-                  <Route path="/member" component={Member} />
+                  <AuthRouter path="/member" component={Member} />
                 </Switch>
               </div>
             </Content>
@@ -104,7 +116,7 @@ class App extends Component {
             IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
           </Footer>
         </Layout>
-      </HashRouter>
+      </Router>
     );
   }
 }

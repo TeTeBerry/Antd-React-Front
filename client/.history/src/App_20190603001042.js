@@ -4,14 +4,13 @@ import "./App.css";
 import AuthService from "./pages/AuthService";
 import withAuth from "./pages/withAuth";
 import { Radio } from "antd";
-import ChangePw from "./pages/ChangePW";
+import Admin from "./pages/ChangePW";
 import { Switch, Route, HashRouter, Link, withRouter } from "react-router-dom";
-import Meter from "./pages/adminpage/Meter";
-import Report from "./pages/adminpage/Report";
+import Meter from "./pages/Meter";
+import Report from "./pages/Report";
 import WaterBill from "./pages/WaterBill";
 import ViewData from "./pages/ViewData";
-import Info from "./pages/adminpage/Info";
-import Member from "./pages/memberpage/Member";
+import Info from "./pages/Info";
 
 export const AdminContext = React.createContext();
 
@@ -40,15 +39,14 @@ const MenuItem = withRouter(({ history }) => {
     >
       <Menu.Item key="1">
         Meter
-        <Link to="/meter" />
+        <Link to="/member" />
       </Menu.Item>
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("user_name") || "") === "admin"
   };
 
   _handleLogout = () => {
@@ -76,7 +74,7 @@ class App extends Component {
                 Welcome{" "}
                 <Dropdown overlay={menu}>
                   <a className="ant-dropdown-link" href="/">
-                    {localStorage.getItem("currentUser")} <Icon type="down" />
+                    {localStorage.getItem("user_name")} <Icon type="down" />
                   </a>
                 </Dropdown>
               </h5>
@@ -89,13 +87,12 @@ class App extends Component {
             <Content style={{ padding: "50px 50px" }}>
               <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
                 <Switch>
-                  <Route path="/admin" component={ChangePw} />
+                  <Route path="/admin" component={Admin} />
                   <Route path="/meter" component={Meter} />
                   <Route path="/report" component={Report} />
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
-                  <Route path="/member" component={Member} />
                 </Switch>
               </div>
             </Content>

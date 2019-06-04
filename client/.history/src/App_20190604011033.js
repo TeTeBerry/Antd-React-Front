@@ -12,6 +12,7 @@ import WaterBill from "./pages/WaterBill";
 import ViewData from "./pages/ViewData";
 import Info from "./pages/adminpage/Info";
 import Member from "./pages/memberpage/Member";
+import Role from "./pages/_helpers/role";
 
 export const AdminContext = React.createContext();
 
@@ -45,10 +46,9 @@ const MenuItem = withRouter(({ history }) => {
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("user_name") || "") === "admin"
   };
 
   _handleLogout = () => {

@@ -46,6 +46,9 @@ const MenuItem = withRouter(({ history }) => {
   );
 });
 
+const Role = (user, roles = ["member", "admin"]) =>
+  roles.some(role => user.roles.includes(role));
+
 class App extends Component {
   state = {
     isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
@@ -58,6 +61,7 @@ class App extends Component {
 
   render() {
     console.log("Rendering Appjs!");
+    const { user } = localStorage.getItem("currentUser");
     return (
       <HashRouter>
         <Layout className="layout">
@@ -95,7 +99,9 @@ class App extends Component {
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
-                  <Route path="/member" component={Member} />
+                  {Role(user, ["member"]) && (
+                    <Route path="/member" component={Member} />
+                  )}
                 </Switch>
               </div>
             </Content>

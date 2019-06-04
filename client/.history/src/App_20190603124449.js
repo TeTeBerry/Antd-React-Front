@@ -45,10 +45,9 @@ const MenuItem = withRouter(({ history }) => {
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("user_name") || "") === "admin"
   };
 
   _handleLogout = () => {
@@ -76,7 +75,7 @@ class App extends Component {
                 Welcome{" "}
                 <Dropdown overlay={menu}>
                   <a className="ant-dropdown-link" href="/">
-                    {localStorage.getItem("currentUser")} <Icon type="down" />
+                    {localStorage.getItem("user_name")} <Icon type="down" />
                   </a>
                 </Dropdown>
               </h5>

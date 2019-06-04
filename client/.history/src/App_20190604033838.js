@@ -27,6 +27,11 @@ const menu = (
 
 const { Header, Content, Footer } = Layout;
 
+const Role = {
+  Admin: "admin",
+  Member: "member"
+};
+
 const Auth = new AuthService();
 
 const MenuItem = withRouter(({ history }) => {
@@ -45,10 +50,9 @@ const MenuItem = withRouter(({ history }) => {
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("user_name") || "") === "admin"
   };
 
   _handleLogout = () => {

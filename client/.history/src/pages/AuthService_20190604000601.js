@@ -26,11 +26,11 @@ export default class AuthService {
   };
 
   setUserName = userName => {
-    localStorage.setItem("currentUser", userName);
+    localStorage.setItem("user_name", userName);
   };
 
   getUserName = () => {
-    return localStorage.getItem("currentUser");
+    return localStorage.getItem("user_name");
   };
 
   setToken = idToken => {

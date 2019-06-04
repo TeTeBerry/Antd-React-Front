@@ -12,6 +12,8 @@ import WaterBill from "./pages/WaterBill";
 import ViewData from "./pages/ViewData";
 import Info from "./pages/adminpage/Info";
 import Member from "./pages/memberpage/Member";
+import Role from "./pages/_helpers/role";
+import { PrivateRoute } from "./pages/_helpers/PrivateRoute";
 
 export const AdminContext = React.createContext();
 
@@ -45,10 +47,9 @@ const MenuItem = withRouter(({ history }) => {
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("user_name") || "") === "admin"
   };
 
   _handleLogout = () => {
@@ -76,7 +77,7 @@ class App extends Component {
                 Welcome{" "}
                 <Dropdown overlay={menu}>
                   <a className="ant-dropdown-link" href="/">
-                    {localStorage.getItem("currentUser")} <Icon type="down" />
+                    {localStorage.getItem("user_name")} <Icon type="down" />
                   </a>
                 </Dropdown>
               </h5>
@@ -95,7 +96,11 @@ class App extends Component {
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
-                  <Route path="/member" component={Member} />
+                  <PrivateRoute
+                    path="/member"
+                    roles={[Role.Member]}
+                    component={Member}
+                  />
                 </Switch>
               </div>
             </Content>

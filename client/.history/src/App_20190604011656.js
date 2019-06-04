@@ -5,7 +5,14 @@ import AuthService from "./pages/AuthService";
 import withAuth from "./pages/withAuth";
 import { Radio } from "antd";
 import ChangePw from "./pages/ChangePW";
-import { Switch, Route, HashRouter, Link, withRouter } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  HashRouter,
+  Link,
+  withRouter,
+  Redirect
+} from "react-router-dom";
 import Meter from "./pages/adminpage/Meter";
 import Report from "./pages/adminpage/Report";
 import WaterBill from "./pages/WaterBill";
@@ -27,7 +34,37 @@ const menu = (
 
 const { Header, Content, Footer } = Layout;
 
+const Role = {
+  Admin: "admin",
+  Member: "member"
+};
+
 const Auth = new AuthService();
+const PrivateRoute = ({ component: Component, roles, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => {
+      const currentUser = AuthService.getUserName;
+      if (!currentUser) {
+        // not logged in so redirect to login page with the return url
+        return (
+          <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
+        );
+      }
+
+      // check if route is restricted by role
+      if (roles && roles.indexOf(currentUser.role) === -1) {
+        // role not authorised so redirect to home page
+        return <Redirect to={{ pathname: "/" }} />;
+      }
+
+      // authorised so return component
+      return <Component {...props} />;
+    }}
+  />
+);
 
 const MenuItem = withRouter(({ history }) => {
   return (
@@ -45,10 +82,9 @@ const MenuItem = withRouter(({ history }) => {
     </Menu>
   );
 });
-
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("user_name") || "") === "admin"
   };
 
   _handleLogout = () => {
@@ -95,7 +131,11 @@ class App extends Component {
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
-                  <Route path="/member" component={Member} />
+                  <PrivateRoute
+                    path="/member"
+                    roles={[Role.Member]}
+                    component={Member}
+                  />
                 </Switch>
               </div>
             </Content>

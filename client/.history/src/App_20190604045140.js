@@ -58,6 +58,7 @@ class App extends Component {
 
   render() {
     console.log("Rendering Appjs!");
+    const { user } = localStorage.getItem("currentUser");
     return (
       <HashRouter>
         <Layout className="layout">

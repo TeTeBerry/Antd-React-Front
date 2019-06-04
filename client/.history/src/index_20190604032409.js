@@ -8,6 +8,8 @@ import NormalLoginForm from "./pages/Login";
 import RegisterForm from "./pages/Register";
 import Meter from "./pages/adminpage/Meter";
 import Report from "./pages/adminpage/Report";
+import Member from "./pages/memberpage/Member";
+import AuthRouter from "./pages/AuthRouter";
 
 ReactDOM.render(
   <Router>
@@ -18,6 +20,7 @@ ReactDOM.render(
 
       <Route path="/meter" component={Meter} />
       <Route path="/report" component={Report} />
+      <AuthRouter path="/member" component={Member} />
     </div>
   </Router>,
 

@@ -6,8 +6,8 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import NormalLoginForm from "./pages/Login";
 import RegisterForm from "./pages/Register";
-import Meter from "./pages/adminpage/Meter";
-import Report from "./pages/adminpage/Report";
+import Meter from "./pages/Meter";
+import Report from "./pages/Report";
 
 ReactDOM.render(
   <Router>
