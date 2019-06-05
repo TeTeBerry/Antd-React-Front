@@ -74,7 +74,7 @@ class App extends Component {
     return (
       <div>
         <Layout className="layout">
-          {this.props.location.pathname === "/login" || (
+          {this.props.history.location === "/login" || (
             <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
               <div className="logo">
                 <p>IoT Smart Water Meter</p>
@@ -103,7 +103,9 @@ class App extends Component {
           <AdminContext.Provider value={this.state.isAdmin}>
             <Content style={{ padding: "50px 50px" }}>
               <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
+                <h1>Welcome {localStorage.getItem("currentUser")} </h1>
                 <Switch>
+                  <Route path="/login" component={NormalLoginForm} />
                   <Route path="/changepw" component={ChangePw} />
                   <Route path="/admin" component={Meter} />
                   <Route path="/report" component={Report} />
@@ -118,7 +120,6 @@ class App extends Component {
           <Footer style={{ textAlign: "center" }}>
             IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
           </Footer>
-          <Route path="/login" component={NormalLoginForm} />
         </Layout>
       </div>
     );

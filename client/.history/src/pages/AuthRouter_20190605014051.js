@@ -5,14 +5,18 @@ import { Route, Redirect } from "react-router-dom";
 class AuthRouter extends Component {
   render() {
     const { component: Component, ...rest } = this.props;
-    const isMember =
+    const currentUser =
       localStorage.getItem("currentUser") === "member" ? true : false;
 
     return (
       <Route
         {...rest}
         render={props => {
-          return isMember ? <Component {...props} /> : <Redirect to="/admin" />;
+          return currentUser ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to="/admin" />
+          );
         }}
       />
     );

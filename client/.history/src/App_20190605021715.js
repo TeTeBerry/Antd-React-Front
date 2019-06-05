@@ -12,7 +12,7 @@ import WaterBill from "./pages/WaterBill";
 import ViewData from "./pages/ViewData";
 import Info from "./pages/adminpage/Info";
 import Member from "./pages/memberpage/Member";
-import NormalLoginForm from "./pages/Login";
+import AuthRouter from "./pages/AuthRouter";
 
 export const AdminContext = React.createContext();
 
@@ -32,37 +32,40 @@ const Auth = new AuthService();
 
 const MenuItem = withRouter(({ history }) => {
   return (
-    <Menu
-      theme="dark"
-      mode="horizontal"
-      defaultSelectedKeys={["1"]}
-      selectedKeys={[history.location.pathname]}
-      style={{ lineHeight: "64px" }}
-    >
-      <Menu.Item key="1">
-        Meter
-        <Link to="/admin" />
-      </Menu.Item>
-
-      <Menu.Item key="2">
-        Member
-        <Link to="/member" />
-      </Menu.Item>
-    </Menu>
+    <AdminContext.Consumer>
+      {isAdmin => (
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["1"]}
+          selectedKeys={[history.location.pathname]}
+          style={{ lineHeight: "64px" }}
+        >
+          {isAdmin && (
+            <Menu.Item key="1">
+              Admin
+              <Link to="/meter" />
+            </Menu.Item>
+          )}
+          <Menu.Item key="2">
+            Member
+            <Link to="/member" />
+          </Menu.Item>
+        </Menu>
+      )}
+    </AdminContext.Consumer>
   );
 });
 
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin",
-    isMember: (localStorage.getItem("currentUser") || "") === "member"
+    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
   };
 
   _handleLogout = () => {
     Auth.logout();
     this.props.history.replace("/login");
   };
-
   componentWillMount() {
     if (!Auth.loggedIn()) {
       this.props.history.replace("/login");
@@ -72,45 +75,43 @@ class App extends Component {
   render() {
     console.log("Rendering Appjs!");
     return (
-      <div>
+      <HashRouter>
         <Layout className="layout">
-          {this.props.location.pathname === "/login" || (
-            <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-              <div className="logo">
-                <p>IoT Smart Water Meter</p>
-              </div>
-              <div className="logout">
-                <Radio.Button value="small" onClick={this._handleLogout}>
-                  LOGOUT
-                  <Link to="/login" />
-                </Radio.Button>
-              </div>
-              <div className="userlogin">
-                <h5>
-                  Welcome{" "}
-                  <Dropdown overlay={menu}>
-                    <a className="ant-dropdown-link" href="/">
-                      {localStorage.getItem("currentUser")} <Icon type="down" />
-                    </a>
-                  </Dropdown>
-                </h5>
-              </div>
+          <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+            <div className="logo">
+              <p>IoT Smart Water Meter</p>
+            </div>
+            <div className="logout">
+              <Radio.Button value="small" onClick={this._handleLogout}>
+                LOGOUT
+                <Link to="/login" />
+              </Radio.Button>
+            </div>
+            <div className="userlogin">
+              <h5>
+                Welcome{" "}
+                <Dropdown overlay={menu}>
+                  <a className="ant-dropdown-link" href="/">
+                    {localStorage.getItem("currentUser")} <Icon type="down" />
+                  </a>
+                </Dropdown>
+              </h5>
+            </div>
 
-              <MenuItem />
-            </Header>
-          )}
+            <MenuItem />
+          </Header>
 
           <AdminContext.Provider value={this.state.isAdmin}>
             <Content style={{ padding: "50px 50px" }}>
               <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
                 <Switch>
-                  <Route path="/changepw" component={ChangePw} />
-                  <Route path="/admin" component={Meter} />
+                  <AuthRouter path="/admin" component={ChangePw} />
+                  <Route path="/meter" component={Meter} />
                   <Route path="/report" component={Report} />
                   <Route path="/waterbill" component={WaterBill} />
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
-                  <Route path="/member" component={Member} />
+                  <AuthRouter path="/member" component={Member} />
                 </Switch>
               </div>
             </Content>
@@ -118,9 +119,8 @@ class App extends Component {
           <Footer style={{ textAlign: "center" }}>
             IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
           </Footer>
-          <Route path="/login" component={NormalLoginForm} />
         </Layout>
-      </div>
+      </HashRouter>
     );
   }
 }

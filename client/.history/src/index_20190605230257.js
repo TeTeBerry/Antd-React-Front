@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import NormalLoginForm from "./pages/Login";
+import RegisterForm from "./pages/Register";
+import Meter from "./pages/adminpage/Meter";
+import Report from "./pages/adminpage/Report";
 
 ReactDOM.render(
-  <Router>
-    <Route component={App} />
-  </Router>,
+  <App />,
+
   document.getElementById("root")
 );
 

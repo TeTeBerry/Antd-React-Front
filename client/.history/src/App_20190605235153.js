@@ -104,6 +104,7 @@ class App extends Component {
             <Content style={{ padding: "50px 50px" }}>
               <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
                 <Switch>
+                  <Route path="/login" component={NormalLoginForm} />
                   <Route path="/changepw" component={ChangePw} />
                   <Route path="/admin" component={Meter} />
                   <Route path="/report" component={Report} />
@@ -118,7 +119,6 @@ class App extends Component {
           <Footer style={{ textAlign: "center" }}>
             IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
           </Footer>
-          <Route path="/login" component={NormalLoginForm} />
         </Layout>
       </div>
     );

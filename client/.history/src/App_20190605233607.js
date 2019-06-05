@@ -63,47 +63,41 @@ class App extends Component {
     this.props.history.replace("/login");
   };
 
-  componentWillMount() {
-    if (!Auth.loggedIn()) {
-      this.props.history.replace("/login");
-    }
-  }
-
   render() {
     console.log("Rendering Appjs!");
     return (
       <div>
         <Layout className="layout">
-          {this.props.location.pathname === "/login" || (
-            <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-              <div className="logo">
-                <p>IoT Smart Water Meter</p>
-              </div>
-              <div className="logout">
-                <Radio.Button value="small" onClick={this._handleLogout}>
-                  LOGOUT
-                  <Link to="/login" />
-                </Radio.Button>
-              </div>
-              <div className="userlogin">
-                <h5>
-                  Welcome{" "}
-                  <Dropdown overlay={menu}>
-                    <a className="ant-dropdown-link" href="/">
-                      {localStorage.getItem("currentUser")} <Icon type="down" />
-                    </a>
-                  </Dropdown>
-                </h5>
-              </div>
+          <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+            <div className="logo">
+              <p>IoT Smart Water Meter</p>
+            </div>
+            <div className="logout">
+              <Radio.Button value="small" onClick={this._handleLogout}>
+                LOGOUT
+                <Link to="/login" />
+              </Radio.Button>
+            </div>
+            <div className="userlogin">
+              <h5>
+                Welcome{" "}
+                <Dropdown overlay={menu}>
+                  <a className="ant-dropdown-link" href="/">
+                    {localStorage.getItem("currentUser")} <Icon type="down" />
+                  </a>
+                </Dropdown>
+              </h5>
+            </div>
 
-              <MenuItem />
-            </Header>
-          )}
+            <MenuItem />
+          </Header>
 
           <AdminContext.Provider value={this.state.isAdmin}>
             <Content style={{ padding: "50px 50px" }}>
               <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
+                <h1>Welcome {localStorage.getItem("currentUser")} </h1>
                 <Switch>
+                  <Route path="/login" component={NormalLoginForm} />
                   <Route path="/changepw" component={ChangePw} />
                   <Route path="/admin" component={Meter} />
                   <Route path="/report" component={Report} />
@@ -118,11 +112,10 @@ class App extends Component {
           <Footer style={{ textAlign: "center" }}>
             IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
           </Footer>
-          <Route path="/login" component={NormalLoginForm} />
         </Layout>
       </div>
     );
   }
 }
 
-export default App;
+export default withAuth(App);

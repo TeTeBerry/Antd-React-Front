@@ -33,7 +33,7 @@ class NormalLoginForm extends Component {
           return alert("Invalid Account");
         }
         console.log(res);
-        this.props.history.push("/" + this.state.userName);
+        this.props.history.replace("/");
       })
       .catch(error => {
         alert("Invalid Account");

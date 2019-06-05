@@ -33,7 +33,7 @@ class NormalLoginForm extends Component {
           return alert("Invalid Account");
         }
         console.log(res);
-        this.props.history.push("/" + this.state.userName);
+        this.props.history.replace("/");
       })
       .catch(error => {
         alert("Invalid Account");
@@ -44,7 +44,7 @@ class NormalLoginForm extends Component {
       }
     });
   };
-  componentDillMount() {
+  componentWillMount() {
     /* Here is a great place to redirect someone who is already logged in to the protected route */
     if (this.Auth.loggedIn()) this.props.history.replace("/");
   }
