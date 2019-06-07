@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { Modal, Form, Input } from "antd";
 
-const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
-  class CreateMember extends Component {
+const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
+  class UpdateMember extends Component {
+    state = {
+      disabled: true,
+      visible: false
+    };
+
     render() {
       const { visible, onCancel, handleSubmit, form } = this.props;
       const { getFieldDecorator } = form;
@@ -10,7 +15,7 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
       return (
         <Modal
           visible={visible}
-          title="Create Form"
+          title="Edit Form"
           okText="OK"
           onCancel={onCancel}
           onOk={handleSubmit}
@@ -29,21 +34,21 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Name">
-              {getFieldDecorator("memberName", {
+              {getFieldDecorator("membername", {
                 rules: [
                   { required: true, message: "Please input member name!" }
                 ]
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Room Number">
-              {getFieldDecorator("room", {
+              {getFieldDecorator("roomnumber", {
                 rules: [
                   { required: true, message: "Please input room number!" }
                 ]
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Contact">
-              {getFieldDecorator("memberContact", {
+              {getFieldDecorator("membercontact", {
                 rules: [
                   { required: true, message: "Please input member contact!" }
                 ]
@@ -56,4 +61,4 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
   }
 );
 
-export default CollectionCreateForm;
+export default CollectionUpdateForm;

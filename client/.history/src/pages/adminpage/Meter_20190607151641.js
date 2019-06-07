@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import CreateMeter from "./CreateMeter";
 
 const confirm = Modal.confirm;
-const domain = "http://localhost:8080/iot/meter/getMeters";
+const domain = "http://localhost:8080/iot/meter/";
 const token = localStorage.getItem("id_token");
 const headers = { Authorization: token };
 
@@ -32,15 +32,16 @@ class Meter extends Component {
   showEditMoal = record => {
     const { form } = this.formRef.props;
     form.memberList = record;
-    console.log(record.mid);
+    console.log(record._id);
     const formFields = form.memberList;
     console.log(formFields);
     const formData = {
-      meterName: record.meterName,
-      meterDesc: record.meterDesc,
-      memberName: record.memberName,
-      room: record.room,
-      memberContact: record.memberContact
+      metername: record.metername,
+      descriptions: record.descriptions,
+      meterid: record.meterid,
+      roomnumber: record.roomnumber,
+      membercontact: record.membercontact,
+      membername: record.membername
     };
     form.setFieldsValue(formData);
     this.setState({
@@ -123,10 +124,10 @@ class Meter extends Component {
 
   fetchMemberList = () => {
     axios
-      .get("http://localhost:8080/iot/meter/getMeters")
-      .then(res => {
+      .get({ domain }`$/getMeter`, { headers })
+      .then(data => {
         this.setState({
-          memberList: res.data.data
+          memberList: data.data
         });
       })
       .catch(error => {
@@ -141,24 +142,24 @@ class Meter extends Component {
   render() {
     const columns = [
       {
+        title: "MeterID",
+        dataIndex: "meterid"
+      },
+      {
         title: "Meter Name",
-        dataIndex: "meterName"
+        dataIndex: "metername"
       },
       {
         title: "Descriptions",
-        dataIndex: "meterDesc"
+        dataIndex: "descriptions"
       },
       {
-        title: "Member Name",
-        dataIndex: "memberName"
+        title: "Day Volume",
+        dataIndex: "dv"
       },
       {
-        title: "Room",
-        dataIndex: "room"
-      },
-      {
-        title: "Member Contact",
-        dataIndex: "memberContact"
+        title: "Month Volume",
+        dataIndex: "mv"
       },
       {
         title: "Action",
@@ -180,7 +181,7 @@ class Meter extends Component {
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showInfo}>
-              Used Water
+              Member Infomation
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showRealTime}>

@@ -39,8 +39,12 @@ const MenuItem = withRouter(({ history }) => {
       style={{ lineHeight: "64px" }}
     >
       <Menu.Item key="1">
-        {localStorage.getItem("currentUser").toUpperCase()}
-        <Link to={`/${localStorage.getItem("currentUser")}`} />
+        Meter
+        <Link to="/admin" />
+      </Menu.Item>
+      <Menu.Item key="2">
+        Member
+        <Link to="/member" />
       </Menu.Item>
     </Menu>
   );
@@ -48,7 +52,8 @@ const MenuItem = withRouter(({ history }) => {
 
 class App extends Component {
   state = {
-    isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
+    isAdmin: (localStorage.getItem("currentUser") || "") === "admin",
+    isMember: (localStorage.getItem("currentUser") || "") === "member"
   };
 
   _handleLogout = () => {
@@ -88,6 +93,7 @@ class App extends Component {
                   </Dropdown>
                 </h5>
               </div>
+
               <MenuItem />
             </Header>
           )}

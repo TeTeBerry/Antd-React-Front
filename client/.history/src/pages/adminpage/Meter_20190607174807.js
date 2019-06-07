@@ -37,10 +37,7 @@ class Meter extends Component {
     console.log(formFields);
     const formData = {
       meterName: record.meterName,
-      meterDesc: record.meterDesc,
-      memberName: record.memberName,
-      room: record.room,
-      memberContact: record.memberContact
+      meterDesc: record.meterDesc
     };
     form.setFieldsValue(formData);
     this.setState({
@@ -180,7 +177,7 @@ class Meter extends Component {
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showInfo}>
-              Used Water
+              Member Infomation
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showRealTime}>

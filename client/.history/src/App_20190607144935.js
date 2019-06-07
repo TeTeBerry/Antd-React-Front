@@ -40,7 +40,7 @@ const MenuItem = withRouter(({ history }) => {
     >
       <Menu.Item key="1">
         {localStorage.getItem("currentUser").toUpperCase()}
-        <Link to={`/${localStorage.getItem("currentUser")}`} />
+        <Link to="/admin" />
       </Menu.Item>
     </Menu>
   );

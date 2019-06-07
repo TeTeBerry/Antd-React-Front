@@ -29,7 +29,7 @@ const { Header, Content, Footer } = Layout;
 
 const Auth = new AuthService();
 
-const MenuItem = withRouter(({ history }) => {
+const MenuItem = withRouter(({ history, props }) => {
   return (
     <Menu
       theme="dark"
@@ -38,9 +38,14 @@ const MenuItem = withRouter(({ history }) => {
       selectedKeys={[history.location.pathname]}
       style={{ lineHeight: "64px" }}
     >
-      <Menu.Item key="1">
-        {localStorage.getItem("currentUser").toUpperCase()}
-        <Link to={`/${localStorage.getItem("currentUser")}`} />
+      <Menu.Item key="1" check={props.check}>
+        Admin
+        <Link to="/admin" />
+      </Menu.Item>
+
+      <Menu.Item key="2">
+        Member
+        <Link to="/member" />
       </Menu.Item>
     </Menu>
   );
@@ -88,7 +93,7 @@ class App extends Component {
                   </Dropdown>
                 </h5>
               </div>
-              <MenuItem />
+              <MenuItem check={this.stateisAdmin} />
             </Header>
           )}
 

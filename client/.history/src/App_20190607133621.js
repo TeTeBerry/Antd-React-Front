@@ -38,9 +38,14 @@ const MenuItem = withRouter(({ history }) => {
       selectedKeys={[history.location.pathname]}
       style={{ lineHeight: "64px" }}
     >
-      <Menu.Item key="1">
-        {localStorage.getItem("currentUser").toUpperCase()}
-        <Link to={`/${localStorage.getItem("currentUser")}`} />
+      <Menu.Item key="1" isAdmin={this.context}>
+        Admin
+        <Link to="/admin" />
+      </Menu.Item>
+
+      <Menu.Item key="2">
+        Member
+        <Link to="/member" />
       </Menu.Item>
     </Menu>
   );
@@ -88,7 +93,9 @@ class App extends Component {
                   </Dropdown>
                 </h5>
               </div>
-              <MenuItem />
+              <AdminContext.Provider value={this.state.isAdmin}>
+                <MenuItem />
+              </AdminContext.Provider>
             </Header>
           )}
 

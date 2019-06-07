@@ -39,8 +39,8 @@ const MenuItem = withRouter(({ history }) => {
       style={{ lineHeight: "64px" }}
     >
       <Menu.Item key="1">
-        {localStorage.getItem("currentUser").toUpperCase()}
-        <Link to={`/${localStorage.getItem("currentUser")}`} />
+        {localStorage.getItem("currentUser").toUpperCase}
+        <Link to="/admin" />
       </Menu.Item>
     </Menu>
   );

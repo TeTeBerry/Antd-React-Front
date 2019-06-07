@@ -180,7 +180,7 @@ class Meter extends Component {
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showInfo}>
-              Used Water
+              Member Infomation
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showRealTime}>

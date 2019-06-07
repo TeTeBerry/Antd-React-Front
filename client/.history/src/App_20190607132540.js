@@ -39,8 +39,13 @@ const MenuItem = withRouter(({ history }) => {
       style={{ lineHeight: "64px" }}
     >
       <Menu.Item key="1">
-        {localStorage.getItem("currentUser").toUpperCase()}
-        <Link to={`/${localStorage.getItem("currentUser")}`} />
+        Admin
+        <Link to="/admin" />
+      </Menu.Item>
+      )}
+      <Menu.Item key="2">
+        Member
+        <Link to="/member" />
       </Menu.Item>
     </Menu>
   );
@@ -69,26 +74,30 @@ class App extends Component {
         <Layout className="layout">
           {this.props.location.pathname === "/login" || (
             <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-              <div className="logo">
-                <p>IoT Smart Water Meter</p>
-              </div>
-              <div className="logout">
-                <Radio.Button value="small" onClick={this._handleLogout}>
-                  LOGOUT
-                  <Link to="/login" />
-                </Radio.Button>
-              </div>
-              <div className="userlogin">
-                <h5>
-                  Welcome{" "}
-                  <Dropdown overlay={menu}>
-                    <a className="ant-dropdown-link" href="/">
-                      {localStorage.getItem("currentUser")} <Icon type="down" />
-                    </a>
-                  </Dropdown>
-                </h5>
-              </div>
-              <MenuItem />
+              <AdminContext.Provider value={this.state.isAdmin}>
+                <div className="logo">
+                  <p>IoT Smart Water Meter</p>
+                </div>
+                <div className="logout">
+                  <Radio.Button value="small" onClick={this._handleLogout}>
+                    LOGOUT
+                    <Link to="/login" />
+                  </Radio.Button>
+                </div>
+                <div className="userlogin">
+                  <h5>
+                    Welcome{" "}
+                    <Dropdown overlay={menu}>
+                      <a className="ant-dropdown-link" href="/">
+                        {localStorage.getItem("currentUser")}{" "}
+                        <Icon type="down" />
+                      </a>
+                    </Dropdown>
+                  </h5>
+                </div>
+
+                <MenuItem />
+              </AdminContext.Provider>
             </Header>
           )}
 
