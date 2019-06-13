@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Dropdown, Icon } from "antd";
+import { Layout, Menu, Dropdown, Icon, Button } from "antd";
 import "./App.css";
 import AuthService from "./pages/AuthService";
 import { Radio } from "antd";
@@ -47,6 +47,16 @@ const MenuItem = withRouter(({ history }) => {
   );
 });
 
+const DropdownSelection = () => {
+  return (
+    <Dropdown overlay={menu}>
+      <a className="ant-dropdown-link" href="/changepw">
+        {localStorage.getItem("currentUser")} <Icon type="down" />
+      </a>
+    </Dropdown>
+  );
+};
+
 class App extends Component {
   state = {
     isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
@@ -82,7 +92,7 @@ class App extends Component {
               </div>
               <div className="userlogin">
                 <h5>
-                  Welcome
+                  Welcome,
                   {isAdmin ? (
                     <Dropdown overlay={menu}>
                       <a className="ant-dropdown-link" href="/changepw">

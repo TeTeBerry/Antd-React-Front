@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, message } from "antd";
+import { Button } from "antd";
 import axios from "axios";
 import CollectionCreateForm from "./CreateMeterForm";
 const token = localStorage.getItem("id_token");
@@ -17,10 +17,6 @@ class CreateMeter extends Component {
 
   handleCancel = () => {
     this.setState({ visible: false });
-  };
-
-  createSuccess = () => {
-    message.success("Create success!");
   };
 
   handleCreate = () => {
@@ -48,7 +44,6 @@ class CreateMeter extends Component {
       })
       .then(member => {
         this.props.coolName(member);
-        this.createSuccess();
       })
       .catch(error => {
         console.log(error);

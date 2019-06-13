@@ -7,8 +7,8 @@ import q from "querystring";
 
 const token = localStorage.getItem("id_token");
 const headers = {
-  auth: token,
-  "Content-Type": "application/x-www-form-urlencoded"
+  auth: token
+  // "Content-Type": "application/x-www-form-urlencoded"
 };
 
 const Option = Select.Option;
@@ -46,7 +46,6 @@ class ChangePasswordForm extends React.Component {
       oldPwd: this.state.oldPwd,
       newPwd: this.state.newPwd
     });
-    console.log(user);
     axios
       .post("http://localhost:8080/iot/admin/updatePassword", user, {
         headers

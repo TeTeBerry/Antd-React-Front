@@ -102,16 +102,12 @@ class Meter extends Component {
   };
 
   deleteMember = mid => {
-    const params = { mid: mid };
-    console.log(params);
+    const midid = q.stringify({ mid });
+    console.log(midid);
     axios
-      .delete(
-        "http://localhost:8080/iot/meter/delete",
-        { params: params },
-        {
-          headers
-        }
-      )
+      .delete("http://localhost:8080/iot/meter/delete", midid, {
+        headers
+      })
       .then(data => {
         this.setState({
           memberList: this.state.memberList.filter(item => item.mid !== mid)

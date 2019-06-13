@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, message } from "antd";
+import { Button } from "antd";
 import axios from "axios";
 import CollectionCreateForm from "./CreateMeterForm";
 const token = localStorage.getItem("id_token");
@@ -19,14 +19,10 @@ class CreateMeter extends Component {
     this.setState({ visible: false });
   };
 
-  createSuccess = () => {
-    message.success("Create success!");
-  };
-
   handleCreate = () => {
     const { form } = this.formRef.props;
     const formFields = form.getFieldsValue();
-    console.log(formFields.meterDesc);
+    console.log(formFields.membername);
     form.validateFields((err, values) => {
       if (err) {
         return;
@@ -48,7 +44,6 @@ class CreateMeter extends Component {
       })
       .then(member => {
         this.props.coolName(member);
-        this.createSuccess();
       })
       .catch(error => {
         console.log(error);

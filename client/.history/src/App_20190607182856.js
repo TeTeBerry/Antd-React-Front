@@ -12,14 +12,13 @@ import ViewData from "./pages/ViewData";
 import Info from "./pages/adminpage/Info";
 import Member from "./pages/memberpage/Member";
 import NormalLoginForm from "./pages/Login";
-import RealTime from "./pages/RealTime";
 
 export const AdminContext = React.createContext();
 
 const menu = (
   <Menu>
     <Menu.Item>
-      <a target="_self" rel="noopener noreferrer" href="/changepw">
+      <a target="_self" rel="noopener noreferrer" href="/#/admin">
         Change password
       </a>
     </Menu.Item>
@@ -64,7 +63,6 @@ class App extends Component {
   }
 
   render() {
-    const isAdmin = (localStorage.getItem("currentUser") || "") === "admin";
     console.log("Rendering Appjs!");
     return (
       <div>
@@ -72,7 +70,7 @@ class App extends Component {
           {this.props.location.pathname === "/login" || (
             <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
               <div className="logo">
-                <p>IoT Smart Water </p>
+                <p>IoT Smart Water Meter</p>
               </div>
               <div className="logout">
                 <Radio.Button value="small" onClick={this._handleLogout}>
@@ -82,17 +80,12 @@ class App extends Component {
               </div>
               <div className="userlogin">
                 <h5>
-                  Welcome
-                  {isAdmin ? (
-                    <Dropdown overlay={menu}>
-                      <a className="ant-dropdown-link" href="/changepw">
-                        {localStorage.getItem("currentUser")}{" "}
-                        <Icon type="down" />
-                      </a>
-                    </Dropdown>
-                  ) : (
-                    <b>{localStorage.getItem("currentUser")}</b>
-                  )}
+                  Welcome{" "}
+                  <Dropdown overlay={menu}>
+                    <a className="ant-dropdown-link" href="/changepw">
+                      {localStorage.getItem("currentUser")} <Icon type="down" />
+                    </a>
+                  </Dropdown>
                 </h5>
               </div>
               <MenuItem />
@@ -110,7 +103,6 @@ class App extends Component {
                   <Route path="/viewdata" component={ViewData} />
                   <Route path="/info" component={Info} />
                   <Route path="/member" component={Member} />
-                  <Route path="/realtime" component={RealTime} />
                 </Switch>
               </div>
             </Content>

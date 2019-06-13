@@ -5,13 +5,11 @@ import axios from "axios";
 import CollectionUpdateForm from "./UpdateMemberForm";
 import { Link } from "react-router-dom";
 import CreateMeter from "./CreateMeter";
-import q from "querystring";
 
 const confirm = Modal.confirm;
+const domain = "http://localhost:8080/iot/meter/getMeters";
 const token = localStorage.getItem("id_token");
-const headers = {
-  "Content-Type": "application/x-www-form-urlencoded"
-};
+const headers = { Authorization: token };
 
 class Meter extends Component {
   state = {
@@ -28,7 +26,7 @@ class Meter extends Component {
 
   showRealTime = () => {
     message.warn("This month Already  outdone Water Volume", 10);
-    this.props.history.push("/realtime");
+    this.props.history.push("/viewdata");
   };
 
   showEditMoal = record => {
@@ -38,7 +36,6 @@ class Meter extends Component {
     const formFields = form.memberList;
     console.log(formFields);
     const formData = {
-      mid: record.mid,
       meterName: record.meterName,
       meterDesc: record.meterDesc,
       memberName: record.memberName,
@@ -55,27 +52,18 @@ class Meter extends Component {
     this.setState({ visible: false });
   };
 
-  updateSuccess = () => {
-    message.success("Update success");
-  };
-
-  deleteSuccess = () => {
-    message.success("Delete success!");
-  };
-
   handleUpdate = () => {
     const { form } = this.formRef.props;
     const formFields = form.getFieldsValue();
-    console.log(formFields.mid);
+    console.log(formFields);
     const formData = {
-      mid: formFields.mid,
-      meterName: formFields.meterName,
-      meterDesc: formFields.meterDesc,
-      room: formFields.room,
-      memberContact: formFields.memberContact,
-      memberName: formFields.memberName
+      metername: formFields.metername,
+      descriptions: formFields.descriptions,
+      meterid: formFields.meterid,
+      roomnumber: formFields.roomnumber,
+      membercontact: formFields.membercontact,
+      membername: formFields.membername
     };
-    console.log(formData);
     form.validateFields((err, values) => {
       if (err) {
         return;
@@ -85,10 +73,9 @@ class Meter extends Component {
       this.setState({ visible: false });
     });
     axios
-      .post("http://localhost:8080/iot/meter/update", formData)
+      .post("http://localhost:8080/iot/admin/update" + formData)
       .then(data => {
         this.fetchMemberList();
-        this.updateSuccess();
         console.log(data);
       })
       .catch(error => {
@@ -101,22 +88,13 @@ class Meter extends Component {
     this.formRef = formRef;
   };
 
-  deleteMember = mid => {
-    const params = { mid: mid };
-    console.log(params);
+  deleteMember = _id => {
     axios
-      .delete(
-        "http://localhost:8080/iot/meter/delete",
-        { params: params },
-        {
-          headers
-        }
-      )
+      .delete(`${domain}/` + _id, { headers })
       .then(data => {
         this.setState({
-          memberList: this.state.memberList.filter(item => item.mid !== mid)
+          memberList: this.state.memberList.filter(item => item._id !== _id)
         });
-        this.deleteSuccess();
         console.log(data);
       })
       .catch(error => {
@@ -124,15 +102,15 @@ class Meter extends Component {
       });
   };
 
-  showDeleteConfirm(mid, meterName) {
-    console.log(mid);
+  showDeleteConfirm(_id, membername) {
+    console.log(_id);
     confirm({
-      title: `Are you sure delete ${meterName}?`,
+      title: `Are you sure delete ${membername}?`,
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
       onOk: () => {
-        this.deleteMember(mid);
+        this.deleteMember(_id);
         console.log("OK");
       },
       onCancel() {
@@ -192,7 +170,7 @@ class Meter extends Component {
             <Button
               size={"small"}
               onClick={() =>
-                this.showDeleteConfirm(record.mid, record.meterName)
+                this.showDeleteConfirm(record._id, record.metername)
               }
               type="danger"
             >
@@ -207,7 +185,7 @@ class Meter extends Component {
               View Data
             </Button>
             <Divider type="vertical" />
-            <Link to={"/report/" + record.mid}>View Report</Link>
+            <Link to={"/report/" + record.meterid}>View Report</Link>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showBill}>
               Water Bill
@@ -217,12 +195,25 @@ class Meter extends Component {
       }
     ];
 
+    const data = [
+      {
+        meterid: "DFS-123",
+        metername: "SENSOR1",
+        descriptions: "New York No. 1 Lake Park",
+        membername: "John Brown",
+        roomnumber: "B122",
+        membercontact: "0958953557",
+        dv: "1.2L",
+        mv: "35.5L"
+      }
+    ];
+
     const { memberList } = this.state;
     return (
       <div>
         <CreateMeter coolName={this.fetchMemberList} />
         <Table
-          rowKey={record => record.mid}
+          rowKey={record => record._id}
           columns={columns}
           dataSource={memberList}
         />

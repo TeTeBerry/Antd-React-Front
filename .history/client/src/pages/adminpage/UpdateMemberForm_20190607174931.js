@@ -21,11 +21,6 @@ const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
           onOk={handleSubmit}
         >
           <Form layout="vertical">
-            <Form.Item label="ID">
-              {getFieldDecorator("mid", {
-                rules: [{ required: true, message: "Please input meter name!" }]
-              })(<Input disabled={this.state.disabled} />)}
-            </Form.Item>
             <Form.Item label="Meter Name">
               {getFieldDecorator("meterName", {
                 rules: [{ required: true, message: "Please input meter name!" }]

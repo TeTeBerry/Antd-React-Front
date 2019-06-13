@@ -47,6 +47,18 @@ const MenuItem = withRouter(({ history }) => {
   );
 });
 
+const DropdownSelection = () => {
+  return (
+    <AdminContext.Consumer>
+      <Dropdown overlay={menu}>
+        <a className="ant-dropdown-link" href="/changepw">
+          {localStorage.getItem("currentUser")} <Icon type="down" />
+        </a>
+      </Dropdown>
+    </AdminContext.Consumer>
+  );
+};
+
 class App extends Component {
   state = {
     isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
@@ -64,7 +76,6 @@ class App extends Component {
   }
 
   render() {
-    const isAdmin = (localStorage.getItem("currentUser") || "") === "admin";
     console.log("Rendering Appjs!");
     return (
       <div>
@@ -83,16 +94,9 @@ class App extends Component {
               <div className="userlogin">
                 <h5>
                   Welcome
-                  {isAdmin ? (
-                    <Dropdown overlay={menu}>
-                      <a className="ant-dropdown-link" href="/changepw">
-                        {localStorage.getItem("currentUser")}{" "}
-                        <Icon type="down" />
-                      </a>
-                    </Dropdown>
-                  ) : (
-                    <b>{localStorage.getItem("currentUser")}</b>
-                  )}
+                  <AdminContext.Provider value={this.state.isAdmin}>
+                    <DropdownSelection />
+                  </AdminContext.Provider>
                 </h5>
               </div>
               <MenuItem />

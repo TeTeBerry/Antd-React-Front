@@ -55,12 +55,8 @@ class Meter extends Component {
     this.setState({ visible: false });
   };
 
-  updateSuccess = () => {
-    message.success("Update success");
-  };
-
-  deleteSuccess = () => {
-    message.success("Delete success!");
+  success = () => {
+    message.success("This is a message of success");
   };
 
   handleUpdate = () => {
@@ -88,7 +84,8 @@ class Meter extends Component {
       .post("http://localhost:8080/iot/meter/update", formData)
       .then(data => {
         this.fetchMemberList();
-        this.updateSuccess();
+        this.success();
+
         console.log(data);
       })
       .catch(error => {
@@ -102,21 +99,16 @@ class Meter extends Component {
   };
 
   deleteMember = mid => {
-    const params = { mid: mid };
-    console.log(params);
+    const midid = q.stringify({ mid });
+    console.log(midid);
     axios
-      .delete(
-        "http://localhost:8080/iot/meter/delete",
-        { params: params },
-        {
-          headers
-        }
-      )
+      .delete("http://localhost:8080/iot/meter/delete", midid, {
+        headers
+      })
       .then(data => {
         this.setState({
           memberList: this.state.memberList.filter(item => item.mid !== mid)
         });
-        this.deleteSuccess();
         console.log(data);
       })
       .catch(error => {

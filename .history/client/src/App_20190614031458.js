@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Dropdown, Icon } from "antd";
+import { Layout, Menu, Dropdown, Icon, Button } from "antd";
 import "./App.css";
 import AuthService from "./pages/AuthService";
 import { Radio } from "antd";
@@ -47,6 +47,16 @@ const MenuItem = withRouter(({ history }) => {
   );
 });
 
+const DropdownSelection = () => {
+  return (
+    <Dropdown overlay={menu}>
+      <a className="ant-dropdown-link" href="/changepw">
+        {localStorage.getItem("currentUser")} <Icon type="down" />
+      </a>
+    </Dropdown>
+  );
+};
+
 class App extends Component {
   state = {
     isAdmin: (localStorage.getItem("currentUser") || "") === "admin"
@@ -64,7 +74,6 @@ class App extends Component {
   }
 
   render() {
-    const isAdmin = (localStorage.getItem("currentUser") || "") === "admin";
     console.log("Rendering Appjs!");
     return (
       <div>
@@ -79,20 +88,15 @@ class App extends Component {
                   LOGOUT
                   <Link to="/login" />
                 </Radio.Button>
+                <Button type="primary">
+                  Change Password
+                  <Link to="/changepw" />
+                </Button>
               </div>
               <div className="userlogin">
                 <h5>
-                  Welcome
-                  {isAdmin ? (
-                    <Dropdown overlay={menu}>
-                      <a className="ant-dropdown-link" href="/changepw">
-                        {localStorage.getItem("currentUser")}{" "}
-                        <Icon type="down" />
-                      </a>
-                    </Dropdown>
-                  ) : (
-                    <b>{localStorage.getItem("currentUser")}</b>
-                  )}
+                  Welcome,
+                  {localStorage.getItem("currentUser")}
                 </h5>
               </div>
               <MenuItem />

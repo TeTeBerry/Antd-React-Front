@@ -5,12 +5,11 @@ import axios from "axios";
 import CollectionUpdateForm from "./UpdateMemberForm";
 import { Link } from "react-router-dom";
 import CreateMeter from "./CreateMeter";
-import q from "querystring";
 
 const confirm = Modal.confirm;
 const token = localStorage.getItem("id_token");
 const headers = {
-  "Content-Type": "application/x-www-form-urlencoded"
+  auth: token
 };
 
 class Meter extends Component {
@@ -28,7 +27,7 @@ class Meter extends Component {
 
   showRealTime = () => {
     message.warn("This month Already  outdone Water Volume", 10);
-    this.props.history.push("/realtime");
+    this.props.history.push("/viewdata");
   };
 
   showEditMoal = record => {
@@ -38,7 +37,6 @@ class Meter extends Component {
     const formFields = form.memberList;
     console.log(formFields);
     const formData = {
-      mid: record.mid,
       meterName: record.meterName,
       meterDesc: record.meterDesc,
       memberName: record.memberName,
@@ -55,27 +53,18 @@ class Meter extends Component {
     this.setState({ visible: false });
   };
 
-  updateSuccess = () => {
-    message.success("Update success");
-  };
-
-  deleteSuccess = () => {
-    message.success("Delete success!");
-  };
-
   handleUpdate = () => {
     const { form } = this.formRef.props;
     const formFields = form.getFieldsValue();
-    console.log(formFields.mid);
+    console.log(formFields);
     const formData = {
-      mid: formFields.mid,
-      meterName: formFields.meterName,
-      meterDesc: formFields.meterDesc,
-      room: formFields.room,
-      memberContact: formFields.memberContact,
-      memberName: formFields.memberName
+      metername: formFields.metername,
+      descriptions: formFields.descriptions,
+      meterid: formFields.meterid,
+      roomnumber: formFields.roomnumber,
+      membercontact: formFields.membercontact,
+      membername: formFields.membername
     };
-    console.log(formData);
     form.validateFields((err, values) => {
       if (err) {
         return;
@@ -85,10 +74,9 @@ class Meter extends Component {
       this.setState({ visible: false });
     });
     axios
-      .post("http://localhost:8080/iot/meter/update", formData)
+      .post("http://localhost:8080/iot/meter/update" + formData)
       .then(data => {
         this.fetchMemberList();
-        this.updateSuccess();
         console.log(data);
       })
       .catch(error => {
@@ -102,21 +90,18 @@ class Meter extends Component {
   };
 
   deleteMember = mid => {
-    const params = { mid: mid };
-    console.log(params);
     axios
       .delete(
         "http://localhost:8080/iot/meter/delete",
-        { params: params },
+        JSON.stringify({ mid }),
         {
           headers
         }
       )
       .then(data => {
         this.setState({
-          memberList: this.state.memberList.filter(item => item.mid !== mid)
+          memberList: this.state.memberList.filter(item => item._id !== mid)
         });
-        this.deleteSuccess();
         console.log(data);
       })
       .catch(error => {
@@ -222,7 +207,7 @@ class Meter extends Component {
       <div>
         <CreateMeter coolName={this.fetchMemberList} />
         <Table
-          rowKey={record => record.mid}
+          rowKey={record => record._id}
           columns={columns}
           dataSource={memberList}
         />

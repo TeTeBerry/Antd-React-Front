@@ -46,7 +46,6 @@ class ChangePasswordForm extends React.Component {
       oldPwd: this.state.oldPwd,
       newPwd: this.state.newPwd
     });
-    console.log(user);
     axios
       .post("http://localhost:8080/iot/admin/updatePassword", user, {
         headers

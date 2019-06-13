@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Form, Input } from "antd";
+import { Modal, Form, Input, InputNumber } from "antd";
 
 const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
   class UpdateMember extends Component {
@@ -24,7 +24,7 @@ const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
             <Form.Item label="ID">
               {getFieldDecorator("mid", {
                 rules: [{ required: true, message: "Please input meter name!" }]
-              })(<Input disabled={this.state.disabled} />)}
+              })(<InputNumber disabled={this.state.disabled} />)}
             </Form.Item>
             <Form.Item label="Meter Name">
               {getFieldDecorator("meterName", {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Form, Input } from "antd";
+import { Modal, Form, Input, InputNumber } from "antd";
 
 const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
   class UpdateMember extends Component {
