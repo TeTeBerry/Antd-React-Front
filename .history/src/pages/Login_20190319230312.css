@@ -1,0 +1,26 @@
+@import '~antd/dist/antd.css';
+#components-form-demo-normal-login .login-form {
+    max-width: 300px;
+  }
+  #components-form-demo-normal-login .login-form-forgot {
+    float: right;
+  }
+  #components-form-demo-normal-login .login-form-button {
+    width: 100%;
+  }
+  .center{
+    font-family: 'Raleway', sans-serif;
+    background-color: #1abc9c;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 0.8rem;
+}

@@ -1,0 +1,10 @@
+@import '~antd/dist/antd.css';
+
+.change-password-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+.login-form {
+    margin: 300px;
+}

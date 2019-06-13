@@ -1,0 +1,10 @@
+@import '~antd/dist/antd.css';
+
+  .title {
+    color: whitesmoke;
+    float: left;
+  }
+  
+  .layout {
+    text-align: center;
+  }
