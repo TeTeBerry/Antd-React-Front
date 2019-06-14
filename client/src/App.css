@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 .logo {
   width: 220px;
@@ -8,23 +8,21 @@
   color: yellow;
   font-size: 20px;
 }
-  
-  
-  .userlogin {
+
+.userlogin {
   width: auto;
   height: 31px;
-  margin: 1px 10px 1px 0;
+  margin: 1px 10px 2px 0;
   float: right;
   font-size: 20px;
-  }
-  .userlogin h5 {
-    color: antiquewhite;
-  }
+}
+.userlogin h5 {
+  color: antiquewhite;
+}
 
-  .logout {
+.logout {
   width: auto;
   height: 31px;
   margin: 1px 1px 1px 0;
   float: right;
-
-  }
+}

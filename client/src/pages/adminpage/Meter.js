@@ -18,16 +18,11 @@ class Meter extends Component {
     memberList: []
   };
 
-  showInfo = () => {
-    this.props.history.push("/info");
-  };
-
   showBill = () => {
     this.props.history.push("/waterbill");
   };
 
   showRealTime = () => {
-    message.warn("This month Already  outdone Water Volume", 10);
     this.props.history.push("/realtime");
   };
 
@@ -197,10 +192,6 @@ class Meter extends Component {
               type="danger"
             >
               Delete
-            </Button>
-            <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showInfo}>
-              Used Water
             </Button>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showRealTime}>

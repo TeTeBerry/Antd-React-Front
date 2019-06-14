@@ -1,28 +1,54 @@
 import React from "react";
 import { Table, Divider, Button } from "antd";
 import SetupVolume from "./SetupVolume";
+import axios from "axios";
+
 class Member extends React.Component {
+  state = {
+    memberList: []
+  };
+
+  showBill = () => {
+    this.props.history.push("/waterbill");
+  };
+
+  showRealTime = () => {
+    this.props.history.push("/realtime");
+  };
+
+  fetchMemberList = () => {
+    axios
+      .get("http://localhost:8080/iot/meter/getMeters")
+      .then(res => {
+        this.setState({
+          memberList: res.data.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  componentDidMount() {
+    this.fetchMemberList();
+  }
   render() {
     const columns = [
       {
-        title: "MeterID",
-        dataIndex: "meterid"
-      },
-      {
         title: "Meter Name",
-        dataIndex: "metername"
+        dataIndex: "meterName"
       },
       {
         title: "Descriptions",
-        dataIndex: "descriptions"
+        dataIndex: "meterDesc"
       },
       {
-        title: "Day Volume",
-        dataIndex: "dv"
+        title: "Member Name",
+        dataIndex: "memberName"
       },
       {
-        title: "Month Volume",
-        dataIndex: "mv"
+        title: "Room",
+        dataIndex: "room"
       },
       {
         title: "Action",
@@ -36,32 +62,20 @@ class Member extends React.Component {
             <Button type="primary" size={"small"} onClick={this.showBill}>
               Water Bill
             </Button>
-            <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showBill}>
-              Used Water
-            </Button>
           </span>
         )
       }
     ];
 
-    const data = [
-      {
-        meterid: "DFS-123",
-        metername: "SENSOR1",
-        descriptions: "New York No. 1 Lake Park",
-        membername: "John Brown",
-        roomnumber: "B122",
-        membercontact: "0958953557",
-        dv: "1.2L",
-        mv: "35.5L"
-      }
-    ];
-
+    const { memberList } = this.state;
     return (
       <div>
         <SetupVolume />
-        <Table columns={columns} dataSource={data} />
+        <Table
+          rowKey={record => record.mid}
+          columns={columns}
+          dataSource={memberList}
+        />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Select, Form, Icon, Input, Button } from "antd";
 import "./ChangePW.css";
-import { AdminContext } from "../App";
+import { AdminContext } from "../../App";
 import axios from "axios";
 import q from "querystring";
 

@@ -1,56 +1,59 @@
 import React from "react";
 import { Chart, Geom, Axis, Tooltip, Legend } from "bizcharts";
 import DataSet from "@antv/data-set";
+import { Descriptions } from "antd";
+
+const DescriptionsItem = Descriptions.Item;
 
 class RealTime extends React.Component {
   render() {
     const data = [
       {
-        month: "Jan",
+        month: "5min",
         Monthly: 3.9
       },
       {
-        month: "Feb",
+        month: "10min",
         Monthly: 4.2
       },
       {
-        month: "Mar",
+        month: "15min",
         Monthly: 5.7
       },
       {
-        month: "Apr",
+        month: "20min",
         Monthly: 8.5
       },
       {
-        month: "May",
+        month: "25min",
         Monthly: 11.9
       },
       {
-        month: "Jun",
+        month: "30min",
         Monthly: 15.2
       },
       {
-        month: "Jul",
+        month: "35min",
         Monthly: 17.0
       },
       {
-        month: "Aug",
+        month: "40min",
         Monthly: 16.6
       },
       {
-        month: "Sep",
+        month: "45min",
         Monthly: 14.2
       },
       {
-        month: "Oct",
+        month: "50min",
         Monthly: 10.3
       },
       {
-        month: "Nov",
+        month: "55min",
         Monthly: 6.6
       },
       {
-        month: "Dec",
+        month: "60min",
         Monthly: 4.8
       }
     ];
@@ -106,6 +109,9 @@ class RealTime extends React.Component {
             }}
           />
         </Chart>
+        <Descriptions title="Colse time">
+          <DescriptionsItem label="Recent Colse Time">8:45</DescriptionsItem>
+        </Descriptions>
       </div>
     );
   }

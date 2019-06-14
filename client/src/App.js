@@ -3,13 +3,11 @@ import { Layout, Menu, Dropdown, Icon } from "antd";
 import "./App.css";
 import AuthService from "./pages/AuthService";
 import { Radio } from "antd";
-import ChangePw from "./pages/ChangePW";
+import ChangePw from "./pages/adminpage/ChangePW";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import Meter from "./pages/adminpage/Meter";
 import Report from "./pages/adminpage/Report";
 import WaterBill from "./pages/WaterBill";
-import ViewData from "./pages/ViewData";
-import Info from "./pages/adminpage/Info";
 import Member from "./pages/memberpage/Member";
 import NormalLoginForm from "./pages/Login";
 import RealTime from "./pages/RealTime";
@@ -19,9 +17,8 @@ export const AdminContext = React.createContext();
 const menu = (
   <Menu>
     <Menu.Item>
-      <a target="_self" rel="noopener noreferrer" href="/changepw">
-        Change password
-      </a>
+      Change password
+      <Link to="/changepw" />
     </Menu.Item>
   </Menu>
 );
@@ -81,19 +78,21 @@ class App extends Component {
                 </Radio.Button>
               </div>
               <div className="userlogin">
-                <h5>
-                  Welcome
-                  {isAdmin ? (
-                    <Dropdown overlay={menu}>
-                      <a className="ant-dropdown-link" href="/changepw">
-                        {localStorage.getItem("currentUser")}{" "}
-                        <Icon type="down" />
-                      </a>
-                    </Dropdown>
-                  ) : (
-                    <b>{localStorage.getItem("currentUser")}</b>
-                  )}
-                </h5>
+                <span>
+                  <h5>
+                    Welcome!
+                    {isAdmin ? (
+                      <Dropdown overlay={menu}>
+                        <a className="ant-dropdown-link" href="/changepw">
+                          {localStorage.getItem("currentUser")}{" "}
+                          <Icon type="down" />
+                        </a>
+                      </Dropdown>
+                    ) : (
+                      <b>{localStorage.getItem("currentUser")}</b>
+                    )}
+                  </h5>
+                </span>
               </div>
               <MenuItem />
             </Header>
@@ -107,8 +106,6 @@ class App extends Component {
                   <Route path="/admin" component={Meter} />
                   <Route path="/report" component={Report} />
                   <Route path="/waterbill" component={WaterBill} />
-                  <Route path="/viewdata" component={ViewData} />
-                  <Route path="/info" component={Info} />
                   <Route path="/member" component={Member} />
                   <Route path="/realtime" component={RealTime} />
                 </Switch>

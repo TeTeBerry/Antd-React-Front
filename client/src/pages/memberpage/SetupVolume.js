@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, Form, Input } from "antd";
+import axios from "axios";
 
 const VolumeCreateForm = Form.create({ name: "form_in_modal" })(
   class extends React.Component {
@@ -15,6 +16,17 @@ const VolumeCreateForm = Form.create({ name: "form_in_modal" })(
           onOk={onCreate}
         >
           <Form layout="vertical">
+            <Form.Item label="Meter Name">
+              {getFieldDecorator("meterName", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Please input meter name!"
+                  }
+                ]
+              })(<Input />)}
+            </Form.Item>
+
             <Form.Item label="Volume">
               {getFieldDecorator("volume", {
                 rules: [
