@@ -1,7 +1,7 @@
 import React from "react";
-import { Select, Form, Icon, Input, Button } from "antd";
+import { Select, Form, Icon, Input, Button, message } from "antd";
 import "./ChangePW.css";
-import { AdminContext } from "../../App";
+
 import axios from "axios";
 import q from "querystring";
 
@@ -18,6 +18,14 @@ class ChangePasswordForm extends React.Component {
     userName: "",
     oldPwd: "",
     newPwd: ""
+  };
+
+  error = () => {
+    message.error("Update fail!");
+  };
+
+  success = () => {
+    message.success("Update success!");
   };
 
   onChange = value => {
@@ -51,9 +59,13 @@ class ChangePasswordForm extends React.Component {
       .post("http://localhost:8080/iot/admin/updatePassword", user, {
         headers
       })
-      .then(data => {
-        console.log(data);
+      .then(res => {
+        if (res.data.code !== 200) {
+          return this.error();
+        }
+        console.log(res.data.code);
         this.props.history.push("/" + this.state.userName);
+        this.success();
       })
       .catch(error => {
         console.log(error);
@@ -72,8 +84,10 @@ class ChangePasswordForm extends React.Component {
     return (
       <div className="ant-form">
         <Form onSubmit={this.handleSubmit} className="login-form">
-          <AdminContext.Consumer>
-            {isAdmin => (
+          <Form.Item>
+            {getFieldDecorator("userName", {
+              rules: [{ required: true, message: "Please select person!" }]
+            })(
               <Select
                 showSearch
                 style={{ width: 200 }}
@@ -86,13 +100,12 @@ class ChangePasswordForm extends React.Component {
                     .indexOf(input.toLowerCase()) >= 0
                 }
               >
-                {isAdmin && <Option value={"admin"}>Admin</Option>}
+                <Option value={"admin"}>Admin</Option>
                 <Option value={"member"}>Member</Option>
               </Select>
             )}
-          </AdminContext.Consumer>
-          <br />
-          <br />
+          </Form.Item>
+
           <Form.Item>
             {getFieldDecorator("oldPwd", {
               rules: [
@@ -113,7 +126,8 @@ class ChangePasswordForm extends React.Component {
           <Form.Item>
             {getFieldDecorator("newPwd", {
               rules: [
-                { required: true, message: "Please input your new Password!" }
+                { required: true, message: "Please input your new Password!" },
+                { min: 4, message: "At least 4 digits!" }
               ]
             })(
               <Input

@@ -11,6 +11,10 @@ class CreateMeter extends Component {
     visible: false
   };
 
+  error = () => {
+    message.error("Add Fail");
+  };
+
   showModal = () => {
     this.setState({ visible: true });
   };
@@ -52,7 +56,7 @@ class CreateMeter extends Component {
       })
       .catch(error => {
         console.log(error);
-        alert(error.response.data);
+        this.error();
       });
   };
 

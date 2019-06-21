@@ -18,34 +18,41 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
           <Form layout="vertical">
             <Form.Item label="Meter Name">
               {getFieldDecorator("meterName", {
-                rules: [{ required: true, message: "Please input meter name!" }]
+                rules: [
+                  { required: true, message: "Please input meter name!" },
+                  { max: 10, message: "Please input correct meter name!" }
+                ]
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Descriptions">
               {getFieldDecorator("meterDesc", {
                 rules: [
-                  { required: true, message: "Please input descriptions!" }
+                  { required: true, message: "Please input descriptions!" },
+                  { max: 15, message: "Max 20 digits!" }
                 ]
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Name">
               {getFieldDecorator("memberName", {
                 rules: [
-                  { required: true, message: "Please input member name!" }
+                  { required: true, message: "Please input member name!" },
+                  { max: 15, message: "Incorrect format!" }
                 ]
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Room Number">
               {getFieldDecorator("room", {
                 rules: [
-                  { required: true, message: "Please input room number!" }
+                  { required: true, message: "Please input room number!" },
+                  { max: 5, message: "Invild room number!" }
                 ]
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Contact">
               {getFieldDecorator("memberContact", {
                 rules: [
-                  { required: true, message: "Please input member contact!" }
+                  { required: true, message: "Please input member contact!" },
+                  { max: 10, message: "Invalid number format!" }
                 ]
               })(<Input />)}
             </Form.Item>

@@ -5,7 +5,6 @@ import axios from "axios";
 import CollectionUpdateForm from "./UpdateMemberForm";
 import { Link } from "react-router-dom";
 import CreateMeter from "./CreateMeter";
-import q from "querystring";
 
 const confirm = Modal.confirm;
 const token = localStorage.getItem("id_token");
@@ -16,6 +15,10 @@ const headers = {
 class Meter extends Component {
   state = {
     memberList: []
+  };
+
+  error = () => {
+    message.error("Opreating Fail");
   };
 
   showBill = () => {
@@ -88,7 +91,7 @@ class Meter extends Component {
       })
       .catch(error => {
         console.log(error);
-        alert(error);
+        this.error();
       });
   };
 
@@ -116,6 +119,7 @@ class Meter extends Component {
       })
       .catch(error => {
         console.log(error);
+        this.error();
       });
   };
 

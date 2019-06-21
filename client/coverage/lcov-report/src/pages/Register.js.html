@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/pages/Register.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> Register.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/27</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React,{ Component } from "react";</span>
+<span class="cstat-no" title="statement not covered" >import { Form, Input, Button} from 'antd';</span>
+<span class="cstat-no" title="statement not covered" >import './Register.css'</span>
+<span class="cstat-no" title="statement not covered" >import { Link } from 'react-router-dom';</span>
+<span class="cstat-no" title="statement not covered" >import AuthService from './auth/AuthService';</span>
+<span class="cstat-no" title="statement not covered" >import axios from 'axios';</span>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+class RegisterForm extends Component <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >{</span></span>
+    Auth = new AuthService();
+    state = {
+        password: ""
+      };
+    
+      handleSubmit = (<span class="fstat-no" title="function not covered" >e) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >        axios.post("http://localhost:4000/users/register",{</span>
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          username: this.state.username,
+          password: this.state.password
+        }).then((<span class="fstat-no" title="function not covered" >data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          console.log(data);</span>
+<span class="cstat-no" title="statement not covered" >          this.props.history.replace('/login')</span>
+        }).catch((<span class="fstat-no" title="function not covered" >error) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          console.log(error.response.data);</span>
+<span class="cstat-no" title="statement not covered" >          alert(error.response.data);</span>
+        })
+<span class="cstat-no" title="statement not covered" >        this.props.form.validateFieldsAndScroll(<span class="fstat-no" title="function not covered" >(e</span>rr, values) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          if (!err) {</span>
+<span class="cstat-no" title="statement not covered" >            console.log('Received values of form: ', values);</span>
+          }
+        });
+      }
+&nbsp;
+     
+<span class="fstat-no" title="function not covered" >      componentDidMount</span>() {
+<span class="cstat-no" title="statement not covered" >        console.log(this.Auth.loggedIn());</span>
+<span class="cstat-no" title="statement not covered" >        console.log(this.props.location);</span>
+<span class="cstat-no" title="statement not covered" >        if(this.Auth.loggedIn()){</span>
+<span class="cstat-no" title="statement not covered" >            this.props.history.push('/login')</span>
+            
+        }
+    }
+&nbsp;
+    
+    onChangePassword = (<span class="fstat-no" title="function not covered" >e) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      this.setState({</span>
+        password: e.target.value
+      });
+    }
+&nbsp;
+    
+    
+<span class="fstat-no" title="function not covered" >      render</span>() { 
+        const isAdmin  = <span class="cstat-no" title="statement not covered" >this.props.location.search.includes('admin');</span>
+        const { getFieldDecorator } = <span class="cstat-no" title="statement not covered" >this.props.form;</span>
+    
+        const formItemLayout = <span class="cstat-no" title="statement not covered" >{</span>
+          labelCol: {
+            xs: { span: 24 },
+            sm: { span: 8 },
+          },
+          wrapperCol: {
+            xs: { span: 24 },
+            sm: { span: 16 },
+          },
+        };
+&nbsp;
+        const tailFormItemLayout = <span class="cstat-no" title="statement not covered" >{</span>
+            wrapperCol: {
+              xs: {
+                span: 24,
+                offset: 0,
+              },
+              sm: {
+                span: 16,
+                offset: 8,
+              },
+            },
+          };
+    
+<span class="cstat-no" title="statement not covered" >        return (</span>
+            &lt;div className="center"&gt;
+            &lt;div className="register-card"&gt;
+            &lt;h1&gt;{isAdmin ? 'Change' : 'Set'} Password&lt;/h1&gt;
+          &lt;Form {...formItemLayout} onSubmit={this.handleSubmit}&gt;
+            &lt;Form.Item label="Password"&gt;
+              {getFieldDecorator('password', {
+                rules: [{
+                  required: true, message: 'Please input your password!',
+                }]
+              })(
+                &lt;Input type="password" onChange={this.onChangePassword}/&gt;
+              )}
+            &lt;/Form.Item&gt;
+           
+            &lt;Form.Item {...tailFormItemLayout}&gt;
+          &lt;Button type="primary" htmlType="submit"&gt;{isAdmin ? 'Change' : 'Set'}&lt;/Button&gt;
+          &lt;Link to="/login" style={{padding:15}}&gt;Cancel&lt;/Link&gt;
+        &lt;/Form.Item&gt;
+          &lt;/Form&gt;
+          &lt;/div&gt;
+          &lt;/div&gt;
+        );
+          
+      }
+    }
+    const WrappedRegistrationForm = <span class="cstat-no" title="statement not covered" >Form.create({ name: 'register' })(RegisterForm);</span>
+&nbsp;
+export default WrappedRegistrationForm;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jun 20 2019 11:58:04 GMT+0700 (Indochina Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

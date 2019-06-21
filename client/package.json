@@ -5,12 +5,15 @@
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "antd": "^3.19.1",
+    "apexcharts": "^3.8.0",
     "axios": "^0.18.0",
     "bizcharts": "^3.5.2",
     "fetch-jsonp": "^1.1.3",
+    "history": "^4.9.0",
     "jwt-decode": "^2.2.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "^15.6.2",
+    "react-apexcharts": "^1.3.3",
+    "react-dom": "^15.6.2",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "rxjs": "^6.5.2"
@@ -29,5 +32,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "canvas": "^2.5.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-15": "^1.4.0",
+    "jest-canvas-mock": "^2.1.0",
+    "react-test-renderer": "^15.6.2",
+    "react-unit": "^3.0.3"
+  }
 }

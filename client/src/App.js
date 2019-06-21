@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { Layout, Menu, Dropdown, Icon } from "antd";
 import "./App.css";
-import AuthService from "./pages/AuthService";
+import AuthService from "./pages/auth/AuthService";
 import { Radio } from "antd";
 import ChangePw from "./pages/adminpage/ChangePW";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import Meter from "./pages/adminpage/Meter";
 import Report from "./pages/adminpage/Report";
-import WaterBill from "./pages/WaterBill";
+import WaterBill from "./pages/common/WaterBill";
 import Member from "./pages/memberpage/Member";
-import NormalLoginForm from "./pages/Login";
-import RealTime from "./pages/RealTime";
-
-export const AdminContext = React.createContext();
+import NormalLoginForm from "./pages/auth/Login";
+import RealTime from "./pages/common/RealTime";
 
 const menu = (
   <Menu>
     <Menu.Item>
-      Change password
-      <Link to="/changepw" />
+      <a target="_self" href="/changepw">
+        Change password
+      </a>
     </Menu.Item>
   </Menu>
 );
@@ -51,18 +50,18 @@ class App extends Component {
 
   _handleLogout = () => {
     Auth.logout();
-    this.props.history.replace("/login");
+    this.props.history.push("/login");
   };
 
   componentWillMount() {
     if (!Auth.loggedIn()) {
-      this.props.history.replace("/login");
+      this.props.history.push("/login");
     }
   }
 
   render() {
-    const isAdmin = (localStorage.getItem("currentUser") || "") === "admin";
     console.log("Rendering Appjs!");
+    const isAdmin = (localStorage.getItem("currentUser") || "") === "admin";
     return (
       <div>
         <Layout className="layout">
@@ -77,14 +76,14 @@ class App extends Component {
                   <Link to="/login" />
                 </Radio.Button>
               </div>
-              <div className="userlogin">
+              <div className="welcome">
                 <span>
                   <h5>
                     Welcome!
                     {isAdmin ? (
                       <Dropdown overlay={menu}>
                         <a className="ant-dropdown-link" href="/changepw">
-                          {localStorage.getItem("currentUser")}{" "}
+                          {localStorage.getItem("currentUser")}
                           <Icon type="down" />
                         </a>
                       </Dropdown>
@@ -94,24 +93,24 @@ class App extends Component {
                   </h5>
                 </span>
               </div>
+
               <MenuItem />
             </Header>
           )}
 
-          <AdminContext.Provider value={this.state.isAdmin}>
-            <Content style={{ padding: "50px 50px" }}>
-              <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
-                <Switch>
-                  <Route path="/changepw" component={ChangePw} />
-                  <Route path="/admin" component={Meter} />
-                  <Route path="/report" component={Report} />
-                  <Route path="/waterbill" component={WaterBill} />
-                  <Route path="/member" component={Member} />
-                  <Route path="/realtime" component={RealTime} />
-                </Switch>
-              </div>
-            </Content>
-          </AdminContext.Provider>
+          <Content style={{ padding: "50px 50px" }}>
+            <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
+              <Switch>
+                <Route path="/changepw" component={ChangePw} />
+                <Route path="/admin" component={Meter} />
+                <Route path="/report" component={Report} />
+                <Route path="/waterbill" component={WaterBill} />
+                <Route path="/member" component={Member} />
+                <Route path="/realtime" component={RealTime} />
+              </Switch>
+            </div>
+          </Content>
+
           <Footer style={{ textAlign: "center" }}>
             IoT Smart Water Meter ©2019 Created by ZiyuChen&&ZengyuLi
           </Footer>
@@ -122,4 +121,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

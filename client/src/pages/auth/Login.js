@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
-import { Form, Icon, Input, Button, Radio } from "antd";
+import { Form, Icon, Input, Button, Radio, message } from "antd";
 import AuthService from "./AuthService";
 const RadioGroup = Radio.Group;
 
@@ -10,6 +10,14 @@ class NormalLoginForm extends Component {
   state = {
     userName: "",
     password: ""
+  };
+
+  error = () => {
+    message.error("Invalid Account");
+  };
+
+  success = () => {
+    message.success("Login Suceess!");
   };
 
   onChangeRadio = e => {
@@ -29,14 +37,16 @@ class NormalLoginForm extends Component {
     e.preventDefault();
     this.Auth.login(this.state.userName, this.state.password)
       .then(res => {
-        if (res > 200) {
-          return alert("Invalid Account");
+        if (res.code !== 200) {
+          return alert(res.msg);
         }
         console.log(res);
         this.props.history.push("/" + this.state.userName);
+        this.success();
       })
       .catch(error => {
-        alert("Invalid Account");
+        console.log(error);
+        this.error();
       });
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -81,11 +91,7 @@ class NormalLoginForm extends Component {
               )}
             </Form.Item>
             <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-              >
+              <Button type="primary" htmlType="submit" className="login-button">
                 Log in
               </Button>
             </Form.Item>
