@@ -3,11 +3,15 @@ import NormalLoginForm from "../pages/auth/Login";
 import React from "react";
 import ReactDOM from "react-dom";
 import TestUtils from "react-dom/test-utils";
-import { mount, shallow } from "enzyme";
+import { mount, shallow, render } from "enzyme";
 import setTest from "../setupTests";
 import { Input, Form } from "antd";
 
 describe("Test case for login", () => {
+  it("renders without crashing", () => {
+    const component = render(<NormalLoginForm />);
+    expect(component).toMatchSnapshot();
+  });
   it("gets the form state from onSubmit function", () => {
     const handleSubmit = jest.fn();
     const wrapper = mount(<Form onSubmit={handleSubmit} />);
@@ -32,5 +36,13 @@ describe("Test case for login", () => {
     TestUtils.Simulate.change(input, { target: { value: "1231" } });
     TestUtils.Simulate.submit(form);
     expect(onSubmitFn).toHaveBeenCalledTimes(1);
+  });
+  it("logout", () => {
+    const logoutAction = jest.fn();
+    const props = {
+      logoutAction
+    };
+    const logout = mount(<NormalLoginForm {...props} />);
+    expect(logout.props().logoutAction).not.toBeCalled();
   });
 });

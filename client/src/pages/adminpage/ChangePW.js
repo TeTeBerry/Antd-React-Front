@@ -28,7 +28,7 @@ class ChangePasswordForm extends React.Component {
     message.success("Update success!");
   };
 
-  onChange = value => {
+  onChangeUserName = value => {
     console.log(`selected ${value}`);
     this.setState({
       userName: value
@@ -93,7 +93,7 @@ class ChangePasswordForm extends React.Component {
                 style={{ width: 200 }}
                 placeholder="Select a person"
                 optionFilterProp="children"
-                onChange={this.onChange}
+                onChange={this.onChangeUserName}
                 filterOption={(input, option) =>
                   option.props.children
                     .toLowerCase()

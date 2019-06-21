@@ -12,8 +12,16 @@ describe("Test case for CreateMeter", () => {
     showModal,
     handleCancel,
     handleCreate,
-    saveFormRef
+    saveFormRef,
+    data: {
+      meterName: "sensor1",
+      meterDesc: "made in 2019",
+      memberName: "tete00111",
+      room: "129",
+      memberContact: "12323131"
+    }
   };
+
   const wrapper = mount(<CreateMeter {...props} />);
   it("renders without crashing ", () => {
     const wrapper = shallow(<CreateMeter />);
@@ -27,6 +35,13 @@ describe("Test case for CreateMeter", () => {
     expect(wrapper.props().handleCancel).not.toBeCalled();
   });
   it("handleCreate", () => {
+    expect(wrapper.props().data).toEqual({
+      meterName: "sensor1",
+      meterDesc: "made in 2019",
+      memberName: "tete00111",
+      room: "129",
+      memberContact: "12323131"
+    });
     expect(wrapper.props().handleCreate).not.toBeCalled();
   });
   it("saveFormRef", () => {

@@ -4,18 +4,21 @@ import { shallow, render, mount } from "enzyme";
 import ChangePW from "../pages/adminpage/ChangePW";
 
 describe("Test case for change password", () => {
-  const onChangeUserName = jest.fn();
+  const onChangeUserName = jest.fn().mockReturnValue("admin");
   const handleSubmit = jest.fn();
   const onChangeOldPwd = jest.fn();
   const onChangeNewPwd = jest.fn();
   const props = {
     onChangeOldPwd,
-    oldPwd: "123456",
+
     onChangeUserName,
     onChangeNewPwd,
-    newPwd: "1111",
-    handleSubmit,
-    userName: "admin"
+    data: {
+      newPwd: "1111",
+      oldPwd: "123456",
+      userName: "admin"
+    },
+    handleSubmit
   };
 
   const wrapper = mount(<ChangePW {...props} />);
@@ -24,18 +27,23 @@ describe("Test case for change password", () => {
     expect(component).toMatchSnapshot();
   });
   it("Input check the right oldPwd", () => {
-    expect(wrapper.props().oldPwd).toEqual("123456");
+    expect(wrapper.props().data.oldPwd).toEqual("123456");
     expect(wrapper.props().onChangeOldPwd).not.toBeCalled();
   });
   it("Input check the right newPwd", () => {
     expect(wrapper.props().onChangeNewPwd).not.toBeCalled();
-    expect(wrapper.props().newPwd).toEqual("1111");
+    expect(wrapper.props().data.newPwd).toEqual("1111");
   });
   it("Input check the right userName", () => {
     expect(wrapper.props().onChangeUserName).not.toBeCalled();
-    expect(wrapper.props().userName).toEqual("admin");
+    expect(wrapper.props().data.userName).toEqual("admin");
   });
   it("Input check the right data", () => {
+    expect(wrapper.props().data).toEqual({
+      newPwd: "1111",
+      oldPwd: "123456",
+      userName: "admin"
+    });
     expect(wrapper.props().handleSubmit).not.toBeCalled();
   });
 });
