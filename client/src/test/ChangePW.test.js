@@ -3,7 +3,7 @@ import setTest from "../setupTests";
 import { shallow, render, mount } from "enzyme";
 import ChangePW from "../pages/adminpage/ChangePW";
 
-describe("Test case for meter", () => {
+describe("Test case for change password", () => {
   const onChangeUserName = jest.fn();
   const handleSubmit = jest.fn();
   const onChangeOldPwd = jest.fn();
