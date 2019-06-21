@@ -1,0 +1,272 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test case for member get member list dataSource of table 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Member
+    user={
+      Object {
+        "memberList": Array [],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <SetupVolume />,
+        <Table
+          bordered={false}
+          childrenColumnName="children"
+          className=""
+          columns={
+            Array [
+              Object {
+                "dataIndex": "meterName",
+                "title": "Meter Name",
+              },
+              Object {
+                "dataIndex": "meterDesc",
+                "title": "Descriptions",
+              },
+              Object {
+                "dataIndex": "memberName",
+                "title": "Member Name",
+              },
+              Object {
+                "dataIndex": "room",
+                "title": "Room",
+              },
+              Object {
+                "key": "action",
+                "render": [Function],
+                "title": "Action",
+              },
+            ]
+          }
+          dataSource={Array []}
+          indentSize={20}
+          loading={false}
+          locale={Object {}}
+          rowKey={[Function]}
+          showHeader={true}
+          size="default"
+          sortDirections={
+            Array [
+              "ascend",
+              "descend",
+            ]
+          }
+          useFixedHeader={false}
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "bordered": false,
+          "childrenColumnName": "children",
+          "className": "",
+          "columns": Array [
+            Object {
+              "dataIndex": "meterName",
+              "title": "Meter Name",
+            },
+            Object {
+              "dataIndex": "meterDesc",
+              "title": "Descriptions",
+            },
+            Object {
+              "dataIndex": "memberName",
+              "title": "Member Name",
+            },
+            Object {
+              "dataIndex": "room",
+              "title": "Room",
+            },
+            Object {
+              "key": "action",
+              "render": [Function],
+              "title": "Action",
+            },
+          ],
+          "dataSource": Array [],
+          "indentSize": 20,
+          "loading": false,
+          "locale": Object {},
+          "rowKey": [Function],
+          "showHeader": true,
+          "size": "default",
+          "sortDirections": Array [
+            "ascend",
+            "descend",
+          ],
+          "useFixedHeader": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <SetupVolume />,
+          <Table
+            bordered={false}
+            childrenColumnName="children"
+            className=""
+            columns={
+              Array [
+                Object {
+                  "dataIndex": "meterName",
+                  "title": "Meter Name",
+                },
+                Object {
+                  "dataIndex": "meterDesc",
+                  "title": "Descriptions",
+                },
+                Object {
+                  "dataIndex": "memberName",
+                  "title": "Member Name",
+                },
+                Object {
+                  "dataIndex": "room",
+                  "title": "Room",
+                },
+                Object {
+                  "key": "action",
+                  "render": [Function],
+                  "title": "Action",
+                },
+              ]
+            }
+            dataSource={Array []}
+            indentSize={20}
+            loading={false}
+            locale={Object {}}
+            rowKey={[Function]}
+            showHeader={true}
+            size="default"
+            sortDirections={
+              Array [
+                "ascend",
+                "descend",
+              ]
+            }
+            useFixedHeader={false}
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bordered": false,
+            "childrenColumnName": "children",
+            "className": "",
+            "columns": Array [
+              Object {
+                "dataIndex": "meterName",
+                "title": "Meter Name",
+              },
+              Object {
+                "dataIndex": "meterDesc",
+                "title": "Descriptions",
+              },
+              Object {
+                "dataIndex": "memberName",
+                "title": "Member Name",
+              },
+              Object {
+                "dataIndex": "room",
+                "title": "Room",
+              },
+              Object {
+                "key": "action",
+                "render": [Function],
+                "title": "Action",
+              },
+            ],
+            "dataSource": Array [],
+            "indentSize": 20,
+            "loading": false,
+            "locale": Object {},
+            "rowKey": [Function],
+            "showHeader": true,
+            "size": "default",
+            "sortDirections": Array [
+              "ascend",
+              "descend",
+            ],
+            "useFixedHeader": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
+          },
+        },
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

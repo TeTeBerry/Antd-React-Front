@@ -1,8 +1,10 @@
 export default class AuthService {
   //Initializing important variables
+
   constructor(domain) {
     this.domain = domain || "http://localhost:8080/iot"; //API service domain
   }
+
   login = (userName, password) => {
     return this.fetch(`${this.domain}/admin/login`, {
       method: "POST",

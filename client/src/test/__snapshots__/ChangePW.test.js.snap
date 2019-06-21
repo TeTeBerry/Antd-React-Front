@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test case for meter Input check the right data 1`] = `"123456"`;
+
 exports[`Test case for meter Input render correctly 1`] = `
 initialize {
   "0": Object {

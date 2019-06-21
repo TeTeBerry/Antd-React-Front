@@ -6,6 +6,7 @@ import Member from "../pages/memberpage/Member";
 describe("Test case for member", () => {
   it("get member list dataSource of table", () => {
     const wrapper = shallow(<Member user={{ memberList: [] }} />);
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper.find("Table").props().dataSource).toEqual([]);
   });
   it("get member list", () => {
