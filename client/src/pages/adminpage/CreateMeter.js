@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { Button, message } from "antd";
 import axios from "axios";
 import CollectionCreateForm from "./CreateMeterForm";
-const token = localStorage.getItem("id_token");
-const headers = {
-  auth: token
-};
+import AuthService from "../auth/AuthService";
+
 class CreateMeter extends Component {
+  Auth = new AuthService();
   state = {
     visible: false
   };
@@ -30,7 +29,13 @@ class CreateMeter extends Component {
   handleCreate = () => {
     const { form } = this.formRef.props;
     const formFields = form.getFieldsValue();
-    console.log(formFields.meterDesc);
+    const member = {
+      meterDesc: formFields.meterDesc,
+      meterName: formFields.meterName,
+      memberName: formFields.memberName,
+      room: formFields.room,
+      memberContact: formFields.memberContact
+    };
     form.validateFields((err, values) => {
       if (err) {
         return;
@@ -39,18 +44,13 @@ class CreateMeter extends Component {
       form.resetFields();
       this.setState({ visible: false });
     });
-    const member = {
-      meterDesc: formFields.meterDesc,
-      meterName: formFields.meterName,
-      memberName: formFields.memberName,
-      room: formFields.room,
-      memberContact: formFields.memberContact
-    };
+
     axios
-      .post("http://localhost:8080/iot/admin/addMeter", member, {
-        headers
-      })
+      .post("http://localhost:8080/iot/admin/addMeter", member)
       .then(member => {
+        if (member.data.code !== 200) {
+          return this.error();
+        }
         this.props.coolName(member);
         this.createSuccess();
       })

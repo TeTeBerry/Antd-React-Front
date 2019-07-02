@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Modal, Form, Input } from "antd";
 
 const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
-  class UpdateMember extends Component {
+  class UpdateMeter extends Component {
     state = {
       disabled: true,
       visible: false
@@ -62,7 +62,10 @@ const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
               {getFieldDecorator("memberContact", {
                 rules: [
                   { required: true, message: "Please input member contact!" },
-                  { max: 10, message: "Invalid number format!" }
+                  {
+                    type: "email",
+                    message: "The input is not valid E-mail!"
+                  }
                 ]
               })(<Input />)}
             </Form.Item>

@@ -2,17 +2,19 @@ import React, { Component } from "react";
 
 import { Table, message, Modal, Button, Divider } from "antd";
 import axios from "axios";
-import CollectionUpdateForm from "./UpdateMemberForm";
+import CollectionUpdateForm from "./UpdateMeterForm";
 import { Link } from "react-router-dom";
 import CreateMeter from "./CreateMeter";
+import AuthService from "../auth/AuthService";
 
 const confirm = Modal.confirm;
-const token = localStorage.getItem("id_token");
+
 const headers = {
   "Content-Type": "application/x-www-form-urlencoded"
 };
 
 class Meter extends Component {
+  Auth = new AuthService();
   state = {
     memberList: []
   };
@@ -26,7 +28,7 @@ class Meter extends Component {
   };
 
   showRealTime = () => {
-    this.props.history.push("/realtime");
+    this.props.history.push("/SensorData");
   };
 
   showEditMoal = record => {
@@ -85,6 +87,10 @@ class Meter extends Component {
     axios
       .post("http://localhost:8080/iot/meter/update", formData)
       .then(data => {
+        console.log(data.data.code);
+        if (data.data.code !== 200) {
+          return this.error();
+        }
         this.fetchMemberList();
         this.updateSuccess();
         console.log(data);
@@ -144,10 +150,13 @@ class Meter extends Component {
     axios
       .get("http://localhost:8080/iot/meter/getMeters")
       .then(res => {
+        console.log(res.data.data);
         this.setState({
           memberList: res.data.data
         });
+        console.log(this.Auth.getToken());
       })
+
       .catch(error => {
         console.log(error);
       });

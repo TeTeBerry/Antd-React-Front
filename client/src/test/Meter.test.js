@@ -12,7 +12,7 @@ describe("Test case for meter", () => {
     showBill,
     showRealTime,
     showEditMoal,
-    handleUpdate: {
+    data: {
       mid: 1,
       meterName: "sensor4",
       meterDesc: "made in 2019",
@@ -35,10 +35,17 @@ describe("Test case for meter", () => {
     expect(wrapper.props().showRealTime).not.toBeCalled();
   });
   it("show edit moal", () => {
-    expect(wrapper.props().showEditMoal).not.toBeCalled();
+    expect(wrapper.props().data).toEqual({
+      mid: 1,
+      meterName: "sensor4",
+      meterDesc: "made in 2019",
+      memberName: "tete00111",
+      room: "201",
+      memberContact: "12323131"
+    });
   });
   it("handleUpdate", () => {
-    expect(wrapper.props().handleUpdate).toEqual({
+    expect(wrapper.props().data).toEqual({
       mid: 1,
       meterName: "sensor4",
       meterDesc: "made in 2019",

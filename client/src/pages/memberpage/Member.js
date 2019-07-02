@@ -13,7 +13,7 @@ class Member extends React.Component {
   };
 
   showRealTime = () => {
-    this.props.history.push("/realtime");
+    this.props.history.push("/sensorData");
   };
 
   fetchMemberList = () => {

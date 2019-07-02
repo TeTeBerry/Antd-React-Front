@@ -1,4 +1,4 @@
-import NormalLoginForm from "../pages/auth/Login";
+import Login from "../pages/auth/Login";
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -9,15 +9,8 @@ import { Input, Form } from "antd";
 
 describe("Test case for login", () => {
   it("renders without crashing", () => {
-    const component = render(<NormalLoginForm />);
+    const component = shallow(<Login />);
     expect(component).toMatchSnapshot();
-  });
-  it("gets the form state from onSubmit function", () => {
-    const handleSubmit = jest.fn();
-    const wrapper = mount(<Form onSubmit={handleSubmit} />);
-    const form = wrapper.find("form");
-    form.simulate("submit");
-    expect(handleSubmit).toHaveBeenCalledTimes(1);
   });
   it("login check with right data ", () => {
     const wrapper = document.createElement("div");
@@ -42,7 +35,7 @@ describe("Test case for login", () => {
     const props = {
       logoutAction
     };
-    const logout = mount(<NormalLoginForm {...props} />);
+    const logout = mount(<Login {...props} />);
     expect(logout.props().logoutAction).not.toBeCalled();
   });
 });

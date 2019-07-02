@@ -4,7 +4,7 @@ import { Form, Icon, Input, Button, Radio, message } from "antd";
 import AuthService from "./AuthService";
 const RadioGroup = Radio.Group;
 
-class NormalLoginForm extends Component {
+class Login extends Component {
   Auth = new AuthService();
 
   state = {
@@ -28,25 +28,26 @@ class NormalLoginForm extends Component {
   };
 
   onChangePassword = e => {
+    console.log(e.target.value);
     this.setState({
       password: e.target.value
     });
   };
 
-  handleSubmit = e => {
+  handleLogin = e => {
     e.preventDefault();
     this.Auth.login(this.state.userName, this.state.password)
       .then(res => {
         if (res.code !== 200) {
           return alert(res.msg);
         }
-        console.log(res);
+        console.log(res.msg);
         this.props.history.push("/" + this.state.userName);
         this.success();
       })
       .catch(error => {
-        console.log(error);
         this.error();
+        console.log(error);
       });
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -66,7 +67,7 @@ class NormalLoginForm extends Component {
         <div className="login-card">
           <h1>Login</h1>
 
-          <Form onSubmit={this.handleSubmit} className="login-form">
+          <Form onSubmit={this.handleLogin} className="login-form">
             <RadioGroup
               onChange={this.onChangeRadio}
               userName={this.state.value}
@@ -102,8 +103,6 @@ class NormalLoginForm extends Component {
   }
 }
 
-const WrappedNormalLoginForm = Form.create({ name: "normal_login" })(
-  NormalLoginForm
-);
+const WrappedNormalLoginForm = Form.create({ name: "normal_login" })(Login);
 
 export default WrappedNormalLoginForm;

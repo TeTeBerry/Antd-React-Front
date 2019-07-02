@@ -126,6 +126,9 @@ class RealTime extends React.Component {
       ]);
     }, 1000);
   }
+  componentWillUnmount() {
+    clearInterval(this.intervals);
+  }
   render() {
     return (
       <div>

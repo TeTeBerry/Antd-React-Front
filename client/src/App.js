@@ -11,7 +11,8 @@ import WaterBill from "./pages/common/WaterBill";
 import Member from "./pages/memberpage/Member";
 import NormalLoginForm from "./pages/auth/Login";
 import RealTime from "./pages/common/RealTime";
-
+import SensorData from "./pages/common/SensorData";
+const token = localStorage.getItem("id_token");
 const menu = (
   <Menu>
     <Menu.Item>
@@ -51,6 +52,7 @@ class App extends Component {
   _handleLogout = () => {
     Auth.logout();
     this.props.history.push("/login");
+    console.log(token);
   };
 
   componentWillMount() {
@@ -107,6 +109,7 @@ class App extends Component {
                 <Route path="/waterbill" component={WaterBill} />
                 <Route path="/member" component={Member} />
                 <Route path="/realtime" component={RealTime} />
+                <Route path="/SensorData" component={SensorData} />
               </Switch>
             </div>
           </Content>

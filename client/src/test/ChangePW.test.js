@@ -23,7 +23,7 @@ describe("Test case for change password", () => {
 
   const wrapper = mount(<ChangePW {...props} />);
   it("Input render correctly", () => {
-    const component = render(<ChangePW />);
+    const component = shallow(<ChangePW />);
     expect(component).toMatchSnapshot();
   });
   it("Input check the right oldPwd", () => {

@@ -43,11 +43,12 @@ export default class AuthService {
   getToken = () => {
     // Retrieves the user token from localStorage
     return localStorage.getItem("id_token");
+    // return localStorage.clear();
   };
 
   logout = () => {
     // Clear user token and profile data from localStorage
-    localStorage.removeItem("id_token");
+    return localStorage.removeItem("id_token");
   };
 
   getConfirm = () => {

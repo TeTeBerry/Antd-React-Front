@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Modal, Form, Input } from "antd";
 
 const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
-  class CreateMember extends Component {
+  class CreateMeterForm extends Component {
     render() {
       const { visible, onCancel, handleSubmit, form } = this.props;
       const { getFieldDecorator } = form;
@@ -28,7 +28,7 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
               {getFieldDecorator("meterDesc", {
                 rules: [
                   { required: true, message: "Please input descriptions!" },
-                  { max: 15, message: "Max 20 digits!" }
+                  { max: 15, message: "Max 15 digits!" }
                 ]
               })(<Input />)}
             </Form.Item>
@@ -48,11 +48,14 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
                 ]
               })(<Input />)}
             </Form.Item>
-            <Form.Item label="Member Contact">
+            <Form.Item label="Member Contact(Email)">
               {getFieldDecorator("memberContact", {
                 rules: [
                   { required: true, message: "Please input member contact!" },
-                  { max: 10, message: "Invalid number format!" }
+                  {
+                    type: "email",
+                    message: "The input is not valid E-mail!"
+                  }
                 ]
               })(<Input />)}
             </Form.Item>

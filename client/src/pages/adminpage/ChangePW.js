@@ -1,27 +1,18 @@
 import React from "react";
 import { Select, Form, Icon, Input, Button, message } from "antd";
 import "./ChangePW.css";
-
+import AuthService from "../auth/AuthService";
 import axios from "axios";
 import q from "querystring";
-
-const token = localStorage.getItem("id_token");
-const headers = {
-  auth: token,
-  "Content-Type": "application/x-www-form-urlencoded"
-};
 
 const Option = Select.Option;
 
 class ChangePasswordForm extends React.Component {
+  Auth = new AuthService();
   state = {
     userName: "",
     oldPwd: "",
     newPwd: ""
-  };
-
-  error = () => {
-    message.error("Update fail!");
   };
 
   success = () => {
@@ -47,7 +38,7 @@ class ChangePasswordForm extends React.Component {
     });
   };
 
-  handleSubmit = e => {
+  handleChangePw = e => {
     e.preventDefault();
     const user = q.stringify({
       userName: this.state.userName,
@@ -55,13 +46,12 @@ class ChangePasswordForm extends React.Component {
       newPwd: this.state.newPwd
     });
     console.log(user);
+
     axios
-      .post("http://localhost:8080/iot/admin/updatePassword", user, {
-        headers
-      })
+      .post("http://localhost:8080/iot/admin/updatePassword", user)
       .then(res => {
         if (res.data.code !== 200) {
-          return this.error();
+          return alert(res.data.msg);
         }
         console.log(res.data.code);
         this.props.history.push("/" + this.state.userName);
@@ -83,7 +73,7 @@ class ChangePasswordForm extends React.Component {
 
     return (
       <div className="ant-form">
-        <Form onSubmit={this.handleSubmit} className="login-form">
+        <Form onSubmit={this.handleChangePw} className="login-form">
           <Form.Item>
             {getFieldDecorator("userName", {
               rules: [{ required: true, message: "Please select person!" }]
