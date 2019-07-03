@@ -1,5 +1,7 @@
 import React from "react";
-import { Button, Modal, Form, Input } from "antd";
+import { Button, Modal, Form, Input, message } from "antd";
+import axios from "axios";
+import q from "querystring";
 
 const VolumeCreateForm = Form.create({ name: "form_in_modal" })(
   class extends React.Component {
@@ -15,8 +17,8 @@ const VolumeCreateForm = Form.create({ name: "form_in_modal" })(
           onOk={onCreate}
         >
           <Form layout="vertical">
-            <Form.Item label="Meter Name">
-              {getFieldDecorator("meterName", {
+            <Form.Item label="Member Name">
+              {getFieldDecorator("memberName", {
                 rules: [
                   {
                     required: true,
@@ -47,6 +49,9 @@ class SetupVolume extends React.Component {
   state = {
     visible: false
   };
+  error = () => {
+    message.error("Set up volume fail!");
+  };
 
   showModal = () => {
     this.setState({ visible: true });
@@ -55,18 +60,36 @@ class SetupVolume extends React.Component {
   handleCancel = () => {
     this.setState({ visible: false });
   };
+  createSuccess = () => {
+    message.success("Create success!");
+  };
 
   handleCreate = () => {
-    const form = this.formRef.props.form;
+    const { form } = this.formRef.props;
+    const formFields = form.getFieldsValue();
+    const formData = q.stringify({
+      memberName: formFields.memberName,
+      volume: formFields.volume
+    });
+    console.log(formData);
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-
       console.log("Received values of form: ", values);
       form.resetFields();
       this.setState({ visible: false });
     });
+
+    axios
+      .post("http://localhost:8080/iot/meter/setMemberVolume", formData)
+      .then(res => {
+        console.log(res.data);
+        if (res.data.code !== 200) {
+          return this.error();
+        }
+        this.createSuccess();
+      });
   };
 
   saveFormRef = formRef => {
