@@ -2,7 +2,6 @@ import React from "react";
 import setTest from "../setupTests";
 import { shallow, render, mount } from "enzyme";
 import Meter from "../pages/adminpage/Meter";
-import toJson from "enzyme-to-json";
 
 describe("Test case for meter", () => {
   const showBill = jest.fn();
@@ -29,11 +28,16 @@ describe("Test case for meter", () => {
     const component = render(<Meter />);
     expect(component).toMatchSnapshot();
   });
+  it("get member array dataSource of table", () => {
+    const wrapper = shallow(<Meter user={{ memberList: [] }} />);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find("Table").props().dataSource).toEqual([]);
+  });
   it("show bill", () => {
-    expect(wrapper.props().showBill).not.toBeCalled();
+    expect(wrapper.props().showBill).toHaveBeenCalledTimes(0);
   });
   it("show realtime", () => {
-    expect(wrapper.props().showRealTime).not.toBeCalled();
+    expect(wrapper.props().showRealTime).toHaveBeenCalledTimes(0);
   });
   it("show edit moal", () => {
     expect(wrapper.props().data).toEqual({
@@ -59,11 +63,17 @@ describe("Test case for meter", () => {
     expect(wrapper.props().deleteMember.mid).toEqual(4);
   });
   it("showDeleteConfirm", () => {
-    expect(wrapper.props().showDeleteConfirm).not.toBeCalled();
+    expect(wrapper.props().showDeleteConfirm).toHaveBeenCalledTimes(0);
   });
-});
-it("matches snapshot", () => {
-  const memberList = [];
-  const wrapper = shallow(<Meter memberList={memberList} />);
-  expect(toJson(wrapper)).toMatchSnapshot();
+  it("message", () => {
+    const props = {
+      update: "Update success",
+      delete: "Delete success",
+      fail: "Opreating Fail"
+    };
+    const wrapper = mount(<Meter {...props} />);
+    expect(wrapper.props().update).toEqual("Update success");
+    expect(wrapper.props().delete).toEqual("Delete success");
+    expect(wrapper.props().fail).toEqual("Opreating Fail");
+  });
 });

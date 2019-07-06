@@ -47,11 +47,11 @@ describe("Test case for setup volume", () => {
       flowMilliLitres: "100.50",
       totalMilliLitres: "23421"
     });
-    expect(wrapper.props().getDataFor).not.toBeCalled();
+    expect(wrapper.props().getDataFor).toHaveBeenCalledTimes(0);
   });
   it("startUpdatingData", () => {
     const startUpdatingData = jest.fn();
     const wrapper = mount(<SensorData startUpdatingData={startUpdatingData} />);
-    expect(wrapper.props().startUpdatingData).not.toBeCalled();
+    expect(wrapper.props().startUpdatingData).toHaveBeenCalledTimes(0);
   });
 });

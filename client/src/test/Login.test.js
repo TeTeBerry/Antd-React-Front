@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import TestUtils from "react-dom/test-utils";
 import { mount, shallow, render } from "enzyme";
 import setTest from "../setupTests";
-import { Input, Form } from "antd";
+import { Input, Form, message } from "antd";
 
 describe("Test case for login", () => {
   it("renders without crashing", () => {
@@ -36,6 +36,13 @@ describe("Test case for login", () => {
       logoutAction
     };
     const logout = mount(<Login {...props} />);
-    expect(logout.props().logoutAction).not.toBeCalled();
+    expect(logout.props().logoutAction).toHaveBeenCalledTimes(0);
+  });
+  it("message", () => {
+    const props = {
+      message: "login success"
+    };
+    const wrapper = mount(<Login {...props} />);
+    expect(wrapper.props().message).toEqual("login success");
   });
 });

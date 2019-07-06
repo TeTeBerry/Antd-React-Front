@@ -29,10 +29,10 @@ describe("Test case for CreateMeter", () => {
     wrapper.unmount();
   });
   it("showModal", () => {
-    expect(wrapper.props().showModal).not.toBeCalled();
+    expect(wrapper.props().showModal).toHaveBeenCalledTimes(0);
   });
   it("handleCancel", () => {
-    expect(wrapper.props().handleCancel).not.toBeCalled();
+    expect(wrapper.props().handleCancel).toHaveBeenCalledTimes(0);
   });
   it("handleCreate", () => {
     expect(wrapper.props().data).toEqual({
@@ -42,9 +42,18 @@ describe("Test case for CreateMeter", () => {
       room: "129",
       memberContact: "12323131"
     });
-    expect(wrapper.props().handleCreate).not.toBeCalled();
+    expect(wrapper.props().handleCreate).toHaveBeenCalledTimes(0);
   });
   it("saveFormRef", () => {
-    expect(wrapper.props().saveFormRef).not.toBeCalled();
+    expect(wrapper.props().saveFormRef).toHaveBeenCalledTimes(0);
+  });
+  it("message", () => {
+    const props = {
+      createMessage: "create success",
+      fail: "Add Fail"
+    };
+    const wrapper = mount(<CreateMeter {...props} />);
+    expect(wrapper.props().createMessage).toEqual("create success");
+    expect(wrapper.props().fail).toEqual("Add Fail");
   });
 });
