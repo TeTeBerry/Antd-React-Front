@@ -1,0 +1,498 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test case for setup volume should match its empty snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SensorData />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="col-12 mb-3"
+        >
+          <div
+            className="card-deck custom-card-deck"
+          >
+            <SensorCard
+              alt="fireSpot"
+              header="Sensor Name"
+              label="(Meter Name)"
+              value=""
+            />
+            <SensorCard
+              alt="fireSpot"
+              header="Flow Rate"
+              label="(L/min)"
+              value=""
+            />
+            <SensorCard
+              alt="fireSpot"
+              header="Current Liquid Flowing"
+              label="(mL/Sec)"
+              value=""
+            />
+            <SensorCard
+              alt="fireSpot"
+              header="Output Liquid Quantity"
+              label="(mL)"
+              value=""
+            />
+          </div>
+        </div>,
+        <div
+          className="col-12"
+        >
+          <div
+            className="card custom-card mb-5 mb-xs-4"
+          >
+            <div
+              className="card-body"
+            />
+          </div>
+        </div>,
+      ],
+      "className": "row mt-5 mt-xs-4",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="card-deck custom-card-deck"
+          >
+            <SensorCard
+              alt="fireSpot"
+              header="Sensor Name"
+              label="(Meter Name)"
+              value=""
+            />
+            <SensorCard
+              alt="fireSpot"
+              header="Flow Rate"
+              label="(L/min)"
+              value=""
+            />
+            <SensorCard
+              alt="fireSpot"
+              header="Current Liquid Flowing"
+              label="(mL/Sec)"
+              value=""
+            />
+            <SensorCard
+              alt="fireSpot"
+              header="Output Liquid Quantity"
+              label="(mL)"
+              value=""
+            />
+          </div>,
+          "className": "col-12 mb-3",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SensorCard
+                alt="fireSpot"
+                header="Sensor Name"
+                label="(Meter Name)"
+                value=""
+              />,
+              <SensorCard
+                alt="fireSpot"
+                header="Flow Rate"
+                label="(L/min)"
+                value=""
+              />,
+              <SensorCard
+                alt="fireSpot"
+                header="Current Liquid Flowing"
+                label="(mL/Sec)"
+                value=""
+              />,
+              <SensorCard
+                alt="fireSpot"
+                header="Output Liquid Quantity"
+                label="(mL)"
+                value=""
+              />,
+            ],
+            "className": "card-deck custom-card-deck",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "alt": "fireSpot",
+                "header": "Sensor Name",
+                "label": "(Meter Name)",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "alt": "fireSpot",
+                "header": "Flow Rate",
+                "label": "(L/min)",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "alt": "fireSpot",
+                "header": "Current Liquid Flowing",
+                "label": "(mL/Sec)",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "alt": "fireSpot",
+                "header": "Output Liquid Quantity",
+                "label": "(mL)",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="card custom-card mb-5 mb-xs-4"
+          >
+            <div
+              className="card-body"
+            />
+          </div>,
+          "className": "col-12",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="card-body"
+            />,
+            "className": "card custom-card mb-5 mb-xs-4",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": null,
+              "className": "card-body",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+          "type": "div",
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="col-12 mb-3"
+          >
+            <div
+              className="card-deck custom-card-deck"
+            >
+              <SensorCard
+                alt="fireSpot"
+                header="Sensor Name"
+                label="(Meter Name)"
+                value=""
+              />
+              <SensorCard
+                alt="fireSpot"
+                header="Flow Rate"
+                label="(L/min)"
+                value=""
+              />
+              <SensorCard
+                alt="fireSpot"
+                header="Current Liquid Flowing"
+                label="(mL/Sec)"
+                value=""
+              />
+              <SensorCard
+                alt="fireSpot"
+                header="Output Liquid Quantity"
+                label="(mL)"
+                value=""
+              />
+            </div>
+          </div>,
+          <div
+            className="col-12"
+          >
+            <div
+              className="card custom-card mb-5 mb-xs-4"
+            >
+              <div
+                className="card-body"
+              />
+            </div>
+          </div>,
+        ],
+        "className": "row mt-5 mt-xs-4",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="card-deck custom-card-deck"
+            >
+              <SensorCard
+                alt="fireSpot"
+                header="Sensor Name"
+                label="(Meter Name)"
+                value=""
+              />
+              <SensorCard
+                alt="fireSpot"
+                header="Flow Rate"
+                label="(L/min)"
+                value=""
+              />
+              <SensorCard
+                alt="fireSpot"
+                header="Current Liquid Flowing"
+                label="(mL/Sec)"
+                value=""
+              />
+              <SensorCard
+                alt="fireSpot"
+                header="Output Liquid Quantity"
+                label="(mL)"
+                value=""
+              />
+            </div>,
+            "className": "col-12 mb-3",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <SensorCard
+                  alt="fireSpot"
+                  header="Sensor Name"
+                  label="(Meter Name)"
+                  value=""
+                />,
+                <SensorCard
+                  alt="fireSpot"
+                  header="Flow Rate"
+                  label="(L/min)"
+                  value=""
+                />,
+                <SensorCard
+                  alt="fireSpot"
+                  header="Current Liquid Flowing"
+                  label="(mL/Sec)"
+                  value=""
+                />,
+                <SensorCard
+                  alt="fireSpot"
+                  header="Output Liquid Quantity"
+                  label="(mL)"
+                  value=""
+                />,
+              ],
+              "className": "card-deck custom-card-deck",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "alt": "fireSpot",
+                  "header": "Sensor Name",
+                  "label": "(Meter Name)",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "alt": "fireSpot",
+                  "header": "Flow Rate",
+                  "label": "(L/min)",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "alt": "fireSpot",
+                  "header": "Current Liquid Flowing",
+                  "label": "(mL/Sec)",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "alt": "fireSpot",
+                  "header": "Output Liquid Quantity",
+                  "label": "(mL)",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="card custom-card mb-5 mb-xs-4"
+            >
+              <div
+                className="card-body"
+              />
+            </div>,
+            "className": "col-12",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <div
+                className="card-body"
+              />,
+              "className": "card custom-card mb-5 mb-xs-4",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": null,
+                "className": "card-body",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+            "type": "div",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
+          },
+        },
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

@@ -10,7 +10,6 @@ import Report from "./pages/adminpage/Report";
 import WaterBill from "./pages/common/WaterBill";
 import Member from "./pages/memberpage/Member";
 import NormalLoginForm from "./pages/auth/Login";
-import RealTime from "./pages/common/RealTime";
 import SensorData from "./pages/common/SensorData";
 const token = localStorage.getItem("id_token");
 const menu = (
@@ -108,7 +107,6 @@ class App extends Component {
                 <Route path="/report" component={Report} />
                 <Route path="/waterbill" component={WaterBill} />
                 <Route path="/member" component={Member} />
-                <Route path="/realtime" component={RealTime} />
                 <Route path="/SensorData" component={SensorData} />
               </Switch>
             </div>

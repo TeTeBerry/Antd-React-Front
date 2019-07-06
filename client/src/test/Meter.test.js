@@ -2,6 +2,7 @@ import React from "react";
 import setTest from "../setupTests";
 import { shallow, render, mount } from "enzyme";
 import Meter from "../pages/adminpage/Meter";
+import toJson from "enzyme-to-json";
 
 describe("Test case for meter", () => {
   const showBill = jest.fn();
@@ -60,4 +61,9 @@ describe("Test case for meter", () => {
   it("showDeleteConfirm", () => {
     expect(wrapper.props().showDeleteConfirm).not.toBeCalled();
   });
+});
+it("matches snapshot", () => {
+  const memberList = [];
+  const wrapper = shallow(<Meter memberList={memberList} />);
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
