@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Divider, Button } from "antd";
 import SetupVolume from "./SetupVolume";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Member extends React.Component {
   state = {
@@ -62,6 +63,8 @@ class Member extends React.Component {
             <Button type="primary" size={"small"} onClick={this.showBill}>
               Water Bill
             </Button>
+            <Divider type="vertical" />
+            <Link to={"/report/" + record.mid}>View Report</Link>
           </span>
         )
       }

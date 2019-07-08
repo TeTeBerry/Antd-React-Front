@@ -7,7 +7,7 @@ import q from "querystring";
 
 const Option = Select.Option;
 
-class ChangePasswordForm extends React.Component {
+class ChangePW extends React.Component {
   Auth = new AuthService();
   state = {
     userName: "",
@@ -145,6 +145,6 @@ class ChangePasswordForm extends React.Component {
   }
 }
 
-const ChangePw = Form.create({ name: "normal_login" })(ChangePasswordForm);
+const ChangePw = Form.create({ name: "normal_login" })(ChangePW);
 
 export default ChangePw;

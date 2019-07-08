@@ -55,7 +55,7 @@ class App extends Component {
   };
 
   componentWillMount() {
-    if (!Auth.loggedIn()) {
+    if (!Auth.isLoggedIn()) {
       this.props.history.push("/login");
     }
   }

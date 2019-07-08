@@ -21,7 +21,7 @@ export default class AuthService {
     });
   };
 
-  loggedIn = () => {
+  isLoggedIn = () => {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken(); // Getting token from localstorage
     return !!token; // handwaiving here
@@ -66,7 +66,7 @@ export default class AuthService {
     };
     //Setting Authorization header
     //Authorization Bear xxxxxxxx.xxxxxxx
-    if (this.loggedIn()) {
+    if (this.isLoggedIn()) {
       headers["Authorization"] = +this.getToken();
     }
 

@@ -8,22 +8,22 @@ describe("Test case for setup volume", () => {
     const wrapper = shallow(<SensorData />);
     expect(wrapper).toMatchSnapshot();
   });
-  it("addLeadingZero", () => {
-    const addLeadingZero = jest.fn();
-    const wrapper = shallow(<SensorData handleAdd={addLeadingZero} />);
-    expect(wrapper.addLeadingZero).toBeUndefined();
-  });
   it("clientDateTime", () => {
     const clientDateTime = jest.fn();
-    const method = shallow(
-      <SensorData handleClientDataTime={clientDateTime} />
-    );
-    expect(method.clientDateTime).toBeUndefined();
-  });
-  it("getChartRef", () => {
-    const getChartRef = jest.fn();
-    const method = shallow(<SensorData getChartRef={getChartRef} />);
-    expect(method.getChartRef).toBeUndefined();
+    const date_time = new Date();
+    const curr_hour = date_time.getHours();
+    const curr_min = date_time.getMinutes();
+    const curr_sec = date_time.getSeconds();
+    const curr_time = curr_hour + ":" + curr_min + ":" + curr_sec;
+
+    const props = {
+      clientDateTime,
+      curr_time
+    };
+
+    const method = mount(<SensorData {...props} />);
+    expect(method.props().clientDateTime).toHaveBeenCalledTimes(0);
+    expect(curr_time).toEqual(curr_time);
   });
   it("getDataFor data", () => {
     const getDataFor = jest.fn();

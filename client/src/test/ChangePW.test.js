@@ -2,9 +2,6 @@ import React from "react";
 import setTest from "../setupTests";
 import { shallow, render, mount } from "enzyme";
 import ChangePW from "../pages/adminpage/ChangePW";
-import TestUtils from "react-dom/test-utils";
-import Item from "antd/lib/list/Item";
-import { Input, Form } from "antd";
 
 describe("Test case for change password", () => {
   const onChangeUserName = jest.fn().mockReturnValue("admin");
