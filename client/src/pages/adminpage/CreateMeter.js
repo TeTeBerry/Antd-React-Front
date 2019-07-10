@@ -41,12 +41,12 @@ class CreateMeter extends Component {
         return;
       }
       console.log("Received values of form: ", values);
-      form.resetFields();
       this.setState({ visible: false });
+      form.resetFields();
     });
 
     axios
-      .post("http://localhost:8080/iot/admin/addMeter", member)
+      .post("http://localhost:8080/iot/meter/addMeter", member)
       .then(member => {
         if (member.data.code !== 200) {
           return this.error();
@@ -67,7 +67,11 @@ class CreateMeter extends Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>
+        <Button
+          type="primary"
+          onClick={this.showModal}
+          style={{ marginTop: 6 }}
+        >
           Create Meter
         </Button>
         <CollectionCreateForm

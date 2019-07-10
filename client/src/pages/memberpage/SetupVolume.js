@@ -28,7 +28,7 @@ const VolumeCreateForm = Form.create({ name: "form_in_modal" })(
               })(<Input />)}
             </Form.Item>
 
-            <Form.Item label="Volume">
+            <Form.Item label="Volume (mL)">
               {getFieldDecorator("volume", {
                 rules: [
                   {

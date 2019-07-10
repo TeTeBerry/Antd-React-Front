@@ -211,7 +211,7 @@ class Meter extends Component {
               View Data
             </Button>
             <Divider type="vertical" />
-            <Link to={"/report/" + record.mid}>View Report</Link>
+            <Link to={"/report/" + record.meterName}>View Report</Link>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showBill}>
               Water Bill
@@ -225,6 +225,7 @@ class Meter extends Component {
     return (
       <div>
         <CreateMeter coolName={this.fetchMemberList} />
+        <br />
         <Table
           rowKey={record => record.mid}
           columns={columns}

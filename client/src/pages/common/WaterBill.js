@@ -64,7 +64,6 @@ class WaterBill extends React.Component {
       },
       {
         title: "Amount Fee(Bath)",
-        className: "column-money",
         dataIndex: "fee"
       }
     ];

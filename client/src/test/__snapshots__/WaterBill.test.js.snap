@@ -37,7 +37,6 @@ ShallowWrapper {
           "title": "Amount volume (totalMilliters /mL)",
         },
         Object {
-          "className": "column-money",
           "dataIndex": "fee",
           "title": "Amount Fee(Bath)",
         },
@@ -88,7 +87,6 @@ ShallowWrapper {
             "title": "Amount volume (totalMilliters /mL)",
           },
           Object {
-            "className": "column-money",
             "dataIndex": "fee",
             "title": "Amount Fee(Bath)",
           },

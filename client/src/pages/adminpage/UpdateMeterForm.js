@@ -38,7 +38,7 @@ const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
               {getFieldDecorator("meterDesc", {
                 rules: [
                   { required: true, message: "Please input descriptions!" },
-                  { max: 20, message: "Max 20 digits!" }
+                  { max: 30, message: "Max 30 digits!" }
                 ]
               })(<Input />)}
             </Form.Item>
