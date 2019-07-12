@@ -150,11 +150,10 @@ class Meter extends Component {
     axios
       .get("/meter/getMeters")
       .then(res => {
-        console.log(res.data.data);
         this.setState({
           memberList: res.data.data
         });
-        console.log(this.Auth.getToken());
+        console.log(res.data.data);
       })
 
       .catch(error => {

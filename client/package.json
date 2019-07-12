@@ -26,14 +26,13 @@
     "serve": "^11.1.0"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
   },
-  "proxy": "https://iotwatersystem.herokuapp.com/iot/",
+  "proxy": "https://iotwatersystemserver.herokuapp.com",
+  "secure": false,
   "eslintConfig": {
     "extends": "react-app"
   },
