@@ -27,6 +27,7 @@ const { Header, Content, Footer } = Layout;
 const Auth = new AuthService();
 
 const MenuItem = withRouter(({ history }) => {
+  const isAdmin = (localStorage.getItem("currentUser") || "") === "admin";
   return (
     <Menu
       theme="dark"
@@ -35,10 +36,19 @@ const MenuItem = withRouter(({ history }) => {
       selectedKeys={[history.location.pathname]}
       style={{ lineHeight: "64px" }}
     >
-      <Menu.Item key="1">
-        {localStorage.getItem("currentUser").toUpperCase()}
-        <Link to={`/${localStorage.getItem("currentUser")}`} />
-      </Menu.Item>
+      {isAdmin ? (
+        <Menu.Item key="1">
+          <Icon type="user" />
+          <span>Admin</span>
+          <Link to="/admin" />
+        </Menu.Item>
+      ) : (
+        <Menu.Item key="2">
+          <Icon type="user" />
+          <span>Member</span>
+          <Link to="/member" />
+        </Menu.Item>
+      )}
     </Menu>
   );
 });
