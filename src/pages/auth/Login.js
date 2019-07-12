@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Login.css";
 import { Form, Icon, Input, Button, Radio, message } from "antd";
 import AuthService from "./AuthService";
+import axios from "axios";
 const RadioGroup = Radio.Group;
 
 class Login extends Component {
@@ -35,12 +36,18 @@ class Login extends Component {
 
   handleLogin = e => {
     e.preventDefault();
-    this.Auth.login(this.state.userName, this.state.password)
+    const user = {
+      userName: this.state.userName,
+      password: this.state.password
+    };
+    axios
+      .post("/iot/admin/login", user)
       .then(res => {
-        if (res.code !== 200) {
-          return alert(res.msg);
+        if (res.data.code !== 200) {
+          return alert(res.data.msg);
         }
-        console.log(res.msg);
+        this.Auth.setUserName(res.data.userName);
+        this.Auth.setToken(res.data.msg);
         this.props.history.push("/" + this.state.userName);
         this.success();
       })

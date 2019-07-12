@@ -5,21 +5,21 @@ export default class AuthService {
   //   this.domain = domain || "https://iotwatersystemserver.herokuapp.com/iot"; //API service domain
   // }
 
-  login = (userName, password) => {
-    return this.fetch(`/iot/admin/login`, {
-      method: "POST",
-      body: JSON.stringify({
-        userName,
-        password
-      })
-    }).then(res => {
-      this.setToken(res.msg); //Setting the token in localStorage
-      this.setUserName(res.data.userName);
-      console.log(this.getToken());
-      console.log(this.getUserName());
-      return Promise.resolve(res);
-    });
-  };
+  // login = (userName, password) => {
+  //   return this.fetch(`/iot/admin/login`, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       userName,
+  //       password
+  //     })
+  //   }).then(res => {
+  //     this.setToken(res.msg); //Setting the token in localStorage
+  //     this.setUserName(res.data.userName);
+  //     console.log(this.getToken());
+  //     console.log(this.getUserName());
+  //     return Promise.resolve(res);
+  //   });
+  // };
 
   isLoggedIn = () => {
     // Checks if there is a saved token and it's still valid
@@ -51,32 +51,32 @@ export default class AuthService {
     return localStorage.removeItem("id_token");
   };
 
-  getConfirm = () => {
-    // Using jwt-decode npm package to decode the token
-    let answer = this.getToken();
-    console.log("Recieved answer!");
-    return answer;
-  };
+  // getConfirm = () => {
+  //   // Using jwt-decode npm package to decode the token
+  //   let answer = this.getToken();
+  //   console.log("Recieved answer!");
+  //   return answer;
+  // };
 
-  fetch = (url, options) => {
-    //performs api calls sending the required authentication headers
-    const headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    };
-    //Setting Authorization header
-    //Authorization Bear xxxxxxxx.xxxxxxx
-    if (this.isLoggedIn()) {
-      headers["Authorization"] = +this.getToken();
-    }
+  // fetch = (url, options) => {
+  //   //performs api calls sending the required authentication headers
+  //   const headers = {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json"
+  //   };
+  //   //Setting Authorization header
+  //   //Authorization Bear xxxxxxxx.xxxxxxx
+  //   if (this.isLoggedIn()) {
+  //     headers["Authorization"] = +this.getToken();
+  //   }
 
-    return fetch(url, {
-      headers,
-      ...options
-    })
-      .then(this._checkStatus)
-      .then(response => response.json());
-  };
+  //   return fetch(url, {
+  //     headers,
+  //     ...options
+  //   })
+  //     .then(this._checkStatus)
+  //     .then(response => response.json());
+  // };
 
   _checkStatus = response => {
     //raises an error in case response status is not a success
