@@ -1,0 +1,1338 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test case for report render the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Report />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Card
+        title="Water report"
+      >
+        <p
+          style={
+            Object {
+              "color": "rgba(0, 0, 0, 0.85)",
+              "fontSize": 14,
+              "fontWeight": 500,
+              "marginBottom": 16,
+            }
+          }
+        />
+        <Card
+          title="Daliy report"
+          type="inner"
+        >
+          <BChart
+            data={Array []}
+            forceFit={true}
+            height={400}
+            scale={
+              Object {
+                "totalMilliters": Object {
+                  "tickInterval": 1500,
+                },
+              }
+            }
+          >
+            <TypedComponent
+              name="hour"
+            />
+            <TypedComponent
+              name="totalMilliters"
+            />
+            <TypedComponent
+              crosshairs={
+                Object {
+                  "type": "y",
+                }
+              }
+            />
+            <TypedComponent
+              position="hour*totalMilliters"
+              type="interval"
+            />
+          </BChart>
+        </Card>
+        <Card
+          title="Weekly report"
+          type="inner"
+        >
+          <BChart
+            data={Array []}
+            forceFit={true}
+            height={500}
+            scale={
+              Object {
+                "totalMilliters": Object {
+                  "tickInterval": 2000,
+                },
+              }
+            }
+          >
+            <TypedComponent
+              name="week"
+            />
+            <TypedComponent
+              name="totalMilliters"
+            />
+            <TypedComponent
+              crosshairs={
+                Object {
+                  "type": "y",
+                }
+              }
+            />
+            <TypedComponent
+              position="week*totalMilliters"
+              type="interval"
+            />
+          </BChart>
+        </Card>
+        <Card
+          title="Monthly report"
+          type="inner"
+        >
+          <BChart
+            data={Array []}
+            forceFit={true}
+            height={500}
+            scale={
+              Object {
+                "totalMilliters": Object {
+                  "tickInterval": 3000,
+                },
+              }
+            }
+          >
+            <TypedComponent
+              name="day"
+            />
+            <TypedComponent
+              name="totalMilliters"
+            />
+            <TypedComponent
+              crosshairs={
+                Object {
+                  "type": "y",
+                }
+              }
+            />
+            <TypedComponent
+              position="day*totalMilliters"
+              type="interval"
+            />
+          </BChart>
+        </Card>
+      </Card>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <p
+            style={
+              Object {
+                "color": "rgba(0, 0, 0, 0.85)",
+                "fontSize": 14,
+                "fontWeight": 500,
+                "marginBottom": 16,
+              }
+            }
+          />,
+          <Card
+            title="Daliy report"
+            type="inner"
+          >
+            <BChart
+              data={Array []}
+              forceFit={true}
+              height={400}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 1500,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="hour"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="hour*totalMilliters"
+                type="interval"
+              />
+            </BChart>
+          </Card>,
+          <Card
+            title="Weekly report"
+            type="inner"
+          >
+            <BChart
+              data={Array []}
+              forceFit={true}
+              height={500}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 2000,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="week"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="week*totalMilliters"
+                type="interval"
+              />
+            </BChart>
+          </Card>,
+          <Card
+            title="Monthly report"
+            type="inner"
+          >
+            <BChart
+              data={Array []}
+              forceFit={true}
+              height={500}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 3000,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="day"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="day*totalMilliters"
+                type="interval"
+              />
+            </BChart>
+          </Card>,
+        ],
+        "title": "Water report",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "style": Object {
+              "color": "rgba(0, 0, 0, 0.85)",
+              "fontSize": 14,
+              "fontWeight": 500,
+              "marginBottom": 16,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <BChart
+              data={Array []}
+              forceFit={true}
+              height={400}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 1500,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="hour"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="hour*totalMilliters"
+                type="interval"
+              />
+            </BChart>,
+            "title": "Daliy report",
+            "type": "inner",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <TypedComponent
+                  name="hour"
+                />,
+                <TypedComponent
+                  name="totalMilliters"
+                />,
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />,
+                <TypedComponent
+                  position="hour*totalMilliters"
+                  type="interval"
+                />,
+              ],
+              "data": Array [],
+              "forceFit": true,
+              "height": 400,
+              "scale": Object {
+                "totalMilliters": Object {
+                  "tickInterval": 1500,
+                },
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "hour",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "totalMilliters",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "crosshairs": Object {
+                    "type": "y",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "position": "hour*totalMilliters",
+                  "type": "interval",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <BChart
+              data={Array []}
+              forceFit={true}
+              height={500}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 2000,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="week"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="week*totalMilliters"
+                type="interval"
+              />
+            </BChart>,
+            "title": "Weekly report",
+            "type": "inner",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <TypedComponent
+                  name="week"
+                />,
+                <TypedComponent
+                  name="totalMilliters"
+                />,
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />,
+                <TypedComponent
+                  position="week*totalMilliters"
+                  type="interval"
+                />,
+              ],
+              "data": Array [],
+              "forceFit": true,
+              "height": 500,
+              "scale": Object {
+                "totalMilliters": Object {
+                  "tickInterval": 2000,
+                },
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "week",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "totalMilliters",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "crosshairs": Object {
+                    "type": "y",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "position": "week*totalMilliters",
+                  "type": "interval",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <BChart
+              data={Array []}
+              forceFit={true}
+              height={500}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 3000,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="day"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="day*totalMilliters"
+                type="interval"
+              />
+            </BChart>,
+            "title": "Monthly report",
+            "type": "inner",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <TypedComponent
+                  name="day"
+                />,
+                <TypedComponent
+                  name="totalMilliters"
+                />,
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />,
+                <TypedComponent
+                  position="day*totalMilliters"
+                  type="interval"
+                />,
+              ],
+              "data": Array [],
+              "forceFit": true,
+              "height": 500,
+              "scale": Object {
+                "totalMilliters": Object {
+                  "tickInterval": 3000,
+                },
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "day",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "totalMilliters",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "crosshairs": Object {
+                    "type": "y",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "position": "day*totalMilliters",
+                  "type": "interval",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Card
+          title="Water report"
+        >
+          <p
+            style={
+              Object {
+                "color": "rgba(0, 0, 0, 0.85)",
+                "fontSize": 14,
+                "fontWeight": 500,
+                "marginBottom": 16,
+              }
+            }
+          />
+          <Card
+            title="Daliy report"
+            type="inner"
+          >
+            <BChart
+              data={Array []}
+              forceFit={true}
+              height={400}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 1500,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="hour"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="hour*totalMilliters"
+                type="interval"
+              />
+            </BChart>
+          </Card>
+          <Card
+            title="Weekly report"
+            type="inner"
+          >
+            <BChart
+              data={Array []}
+              forceFit={true}
+              height={500}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 2000,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="week"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="week*totalMilliters"
+                type="interval"
+              />
+            </BChart>
+          </Card>
+          <Card
+            title="Monthly report"
+            type="inner"
+          >
+            <BChart
+              data={Array []}
+              forceFit={true}
+              height={500}
+              scale={
+                Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 3000,
+                  },
+                }
+              }
+            >
+              <TypedComponent
+                name="day"
+              />
+              <TypedComponent
+                name="totalMilliters"
+              />
+              <TypedComponent
+                crosshairs={
+                  Object {
+                    "type": "y",
+                  }
+                }
+              />
+              <TypedComponent
+                position="day*totalMilliters"
+                type="interval"
+              />
+            </BChart>
+          </Card>
+        </Card>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <p
+              style={
+                Object {
+                  "color": "rgba(0, 0, 0, 0.85)",
+                  "fontSize": 14,
+                  "fontWeight": 500,
+                  "marginBottom": 16,
+                }
+              }
+            />,
+            <Card
+              title="Daliy report"
+              type="inner"
+            >
+              <BChart
+                data={Array []}
+                forceFit={true}
+                height={400}
+                scale={
+                  Object {
+                    "totalMilliters": Object {
+                      "tickInterval": 1500,
+                    },
+                  }
+                }
+              >
+                <TypedComponent
+                  name="hour"
+                />
+                <TypedComponent
+                  name="totalMilliters"
+                />
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />
+                <TypedComponent
+                  position="hour*totalMilliters"
+                  type="interval"
+                />
+              </BChart>
+            </Card>,
+            <Card
+              title="Weekly report"
+              type="inner"
+            >
+              <BChart
+                data={Array []}
+                forceFit={true}
+                height={500}
+                scale={
+                  Object {
+                    "totalMilliters": Object {
+                      "tickInterval": 2000,
+                    },
+                  }
+                }
+              >
+                <TypedComponent
+                  name="week"
+                />
+                <TypedComponent
+                  name="totalMilliters"
+                />
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />
+                <TypedComponent
+                  position="week*totalMilliters"
+                  type="interval"
+                />
+              </BChart>
+            </Card>,
+            <Card
+              title="Monthly report"
+              type="inner"
+            >
+              <BChart
+                data={Array []}
+                forceFit={true}
+                height={500}
+                scale={
+                  Object {
+                    "totalMilliters": Object {
+                      "tickInterval": 3000,
+                    },
+                  }
+                }
+              >
+                <TypedComponent
+                  name="day"
+                />
+                <TypedComponent
+                  name="totalMilliters"
+                />
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />
+                <TypedComponent
+                  position="day*totalMilliters"
+                  type="interval"
+                />
+              </BChart>
+            </Card>,
+          ],
+          "title": "Water report",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "style": Object {
+                "color": "rgba(0, 0, 0, 0.85)",
+                "fontSize": 14,
+                "fontWeight": 500,
+                "marginBottom": 16,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <BChart
+                data={Array []}
+                forceFit={true}
+                height={400}
+                scale={
+                  Object {
+                    "totalMilliters": Object {
+                      "tickInterval": 1500,
+                    },
+                  }
+                }
+              >
+                <TypedComponent
+                  name="hour"
+                />
+                <TypedComponent
+                  name="totalMilliters"
+                />
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />
+                <TypedComponent
+                  position="hour*totalMilliters"
+                  type="interval"
+                />
+              </BChart>,
+              "title": "Daliy report",
+              "type": "inner",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <TypedComponent
+                    name="hour"
+                  />,
+                  <TypedComponent
+                    name="totalMilliters"
+                  />,
+                  <TypedComponent
+                    crosshairs={
+                      Object {
+                        "type": "y",
+                      }
+                    }
+                  />,
+                  <TypedComponent
+                    position="hour*totalMilliters"
+                    type="interval"
+                  />,
+                ],
+                "data": Array [],
+                "forceFit": true,
+                "height": 400,
+                "scale": Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 1500,
+                  },
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "name": "hour",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "name": "totalMilliters",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "crosshairs": Object {
+                      "type": "y",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "position": "hour*totalMilliters",
+                    "type": "interval",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <BChart
+                data={Array []}
+                forceFit={true}
+                height={500}
+                scale={
+                  Object {
+                    "totalMilliters": Object {
+                      "tickInterval": 2000,
+                    },
+                  }
+                }
+              >
+                <TypedComponent
+                  name="week"
+                />
+                <TypedComponent
+                  name="totalMilliters"
+                />
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />
+                <TypedComponent
+                  position="week*totalMilliters"
+                  type="interval"
+                />
+              </BChart>,
+              "title": "Weekly report",
+              "type": "inner",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <TypedComponent
+                    name="week"
+                  />,
+                  <TypedComponent
+                    name="totalMilliters"
+                  />,
+                  <TypedComponent
+                    crosshairs={
+                      Object {
+                        "type": "y",
+                      }
+                    }
+                  />,
+                  <TypedComponent
+                    position="week*totalMilliters"
+                    type="interval"
+                  />,
+                ],
+                "data": Array [],
+                "forceFit": true,
+                "height": 500,
+                "scale": Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 2000,
+                  },
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "name": "week",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "name": "totalMilliters",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "crosshairs": Object {
+                      "type": "y",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "position": "week*totalMilliters",
+                    "type": "interval",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <BChart
+                data={Array []}
+                forceFit={true}
+                height={500}
+                scale={
+                  Object {
+                    "totalMilliters": Object {
+                      "tickInterval": 3000,
+                    },
+                  }
+                }
+              >
+                <TypedComponent
+                  name="day"
+                />
+                <TypedComponent
+                  name="totalMilliters"
+                />
+                <TypedComponent
+                  crosshairs={
+                    Object {
+                      "type": "y",
+                    }
+                  }
+                />
+                <TypedComponent
+                  position="day*totalMilliters"
+                  type="interval"
+                />
+              </BChart>,
+              "title": "Monthly report",
+              "type": "inner",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <TypedComponent
+                    name="day"
+                  />,
+                  <TypedComponent
+                    name="totalMilliters"
+                  />,
+                  <TypedComponent
+                    crosshairs={
+                      Object {
+                        "type": "y",
+                      }
+                    }
+                  />,
+                  <TypedComponent
+                    position="day*totalMilliters"
+                    type="interval"
+                  />,
+                ],
+                "data": Array [],
+                "forceFit": true,
+                "height": 500,
+                "scale": Object {
+                  "totalMilliters": Object {
+                    "tickInterval": 3000,
+                  },
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "name": "day",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "name": "totalMilliters",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "crosshairs": Object {
+                      "type": "y",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "position": "day*totalMilliters",
+                    "type": "interval",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "prevContext": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": true,
+          },
+        },
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

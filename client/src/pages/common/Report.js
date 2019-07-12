@@ -25,7 +25,7 @@ class Report extends Component {
   getDailyReport() {
     axios
       .get(
-        `http://localhost:8080/iot/data/getDailyData?meterName=Sensor-1&date=${dateString}`
+        `http://localhost:8080/iot/data/getDailyData?meterName=Sensor-1&date=2019-7-3`
       )
       .then(res => {
         if (res.data.code === 200) {
@@ -43,7 +43,7 @@ class Report extends Component {
   getWeeklyReport() {
     axios
       .get(
-        `http://localhost:8080/iot/data/getWeeklyData?meterName=Sensor-1&date=${dateString}`
+        `http://localhost:8080/iot/data/getWeeklyData?meterName=Sensor-1&date=2019-7-3`
       )
       .then(res => {
         if (res.data.code === 200) {
@@ -104,9 +104,7 @@ class Report extends Component {
               marginBottom: 16,
               fontWeight: 500
             }}
-          >
-            Water report
-          </p>
+          />
 
           <Card type="inner" title="Daliy report">
             <Chart height={400} data={dayData} scale={daycols} forceFit>
@@ -121,17 +119,18 @@ class Report extends Component {
             </Chart>
           </Card>
 
-          <Card type="inner" title="Weekly report" />
-          <Chart height={500} data={weekData} scale={weekcols} forceFit>
-            <Axis name="week" />
-            <Axis name="totalMilliters" />
-            <Tooltip
-              crosshairs={{
-                type: "y"
-              }}
-            />
-            <Geom type="interval" position="week*totalMilliters" />
-          </Chart>
+          <Card type="inner" title="Weekly report">
+            <Chart height={500} data={weekData} scale={weekcols} forceFit>
+              <Axis name="week" />
+              <Axis name="totalMilliters" />
+              <Tooltip
+                crosshairs={{
+                  type: "y"
+                }}
+              />
+              <Geom type="interval" position="week*totalMilliters" />
+            </Chart>
+          </Card>
 
           <Card type="inner" title="Monthly report">
             <Chart height={500} data={monthData} scale={monthcols} forceFit>

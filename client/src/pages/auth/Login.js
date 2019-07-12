@@ -17,7 +17,7 @@ class Login extends Component {
   };
 
   success = () => {
-    message.success("Login Suceess!");
+    message.success("Login Success!");
   };
 
   onChangeRadio = e => {
@@ -28,7 +28,6 @@ class Login extends Component {
   };
 
   onChangePassword = e => {
-    console.log(e.target.value);
     this.setState({
       password: e.target.value
     });

@@ -46,7 +46,7 @@ class CreateMeter extends Component {
     });
 
     axios
-      .post("http://localhost:8080/iot/meter/addMeter", member)
+      .post("/meter/addMeter", member)
       .then(member => {
         if (member.data.code !== 200) {
           return this.error();

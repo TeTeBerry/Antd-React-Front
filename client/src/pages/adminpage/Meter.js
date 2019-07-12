@@ -85,7 +85,7 @@ class Meter extends Component {
       this.setState({ visible: false });
     });
     axios
-      .post("http://localhost:8080/iot/meter/update", formData)
+      .post("/meter/update", formData)
       .then(data => {
         console.log(data.data.code);
         if (data.data.code !== 200) {
@@ -110,7 +110,7 @@ class Meter extends Component {
     console.log(params);
     axios
       .delete(
-        "http://localhost:8080/iot/meter/delete",
+        "/meter/delete",
         { params: params },
         {
           headers
@@ -148,7 +148,7 @@ class Meter extends Component {
 
   fetchMemberList = () => {
     axios
-      .get("http://localhost:8080/iot/meter/getMeters")
+      .get("/meter/getMeters")
       .then(res => {
         console.log(res.data.data);
         this.setState({

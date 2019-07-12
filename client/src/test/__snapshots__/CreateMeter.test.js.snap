@@ -23,6 +23,11 @@ ShallowWrapper {
           htmlType="button"
           loading={false}
           onClick={[Function]}
+          style={
+            Object {
+              "marginTop": 6,
+            }
+          }
           type="primary"
         >
           Create Meter
@@ -48,6 +53,9 @@ ShallowWrapper {
           "htmlType": "button",
           "loading": false,
           "onClick": [Function],
+          "style": Object {
+            "marginTop": 6,
+          },
           "type": "primary",
         },
         "ref": null,
@@ -84,6 +92,11 @@ ShallowWrapper {
             htmlType="button"
             loading={false}
             onClick={[Function]}
+            style={
+              Object {
+                "marginTop": 6,
+              }
+            }
             type="primary"
           >
             Create Meter
@@ -109,6 +122,9 @@ ShallowWrapper {
             "htmlType": "button",
             "loading": false,
             "onClick": [Function],
+            "style": Object {
+              "marginTop": 6,
+            },
             "type": "primary",
           },
           "ref": null,
