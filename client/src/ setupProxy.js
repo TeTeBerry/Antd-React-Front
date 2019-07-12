@@ -3,7 +3,7 @@ module.exports = function(app) {
   app.use(
     ("/iot",
     proxy({
-      target: "https://iotwatersystem.herokuapp.com",
+      target: "https://iotwatersystemserver.herokuapp.com",
       //   target: "http://localhost:8080",
       changeOrigin: true
     }))
