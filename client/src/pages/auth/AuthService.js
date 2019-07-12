@@ -6,7 +6,7 @@ export default class AuthService {
   // }
 
   login = (userName, password) => {
-    return this.fetch(`/admin/login`, {
+    return this.fetch(`/iot/admin/login`, {
       method: "POST",
       body: JSON.stringify({
         userName,

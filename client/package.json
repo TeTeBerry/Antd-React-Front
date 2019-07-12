@@ -2,6 +2,10 @@
   "name": "antd-demo",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.15.1",
+    "npm": "6.10.1"
+  },
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "antd": "^3.19.1",
@@ -32,7 +36,6 @@
     "eject": "react-scripts eject"
   },
   "proxy": "https://iotwatersystemserver.herokuapp.com",
-  "secure": false,
   "eslintConfig": {
     "extends": "react-app"
   },
