@@ -1,10 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/client/node_modules
-/client/.history
-/client/coverage
-/server/node_modules
+.node_modules
+.coverage
+
 .history
 /.pnp
 .pnp.js
