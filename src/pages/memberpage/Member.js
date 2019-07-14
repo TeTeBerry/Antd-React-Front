@@ -19,7 +19,7 @@ class Member extends React.Component {
 
   fetchMemberList = () => {
     axios
-      .get("/iot/meter/getMeters")
+      .get("http://localhost:8080/iot/meter/getMeters")
       .then(res => {
         this.setState({
           memberList: res.data.data

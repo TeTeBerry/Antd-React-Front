@@ -46,8 +46,9 @@ class Login extends Component {
         if (res.data.code !== 200) {
           return alert(res.data.msg);
         }
-        this.Auth.setUserName(res.data.userName);
+        this.Auth.setUserName(res.data.data.userName);
         this.Auth.setToken(res.data.msg);
+        console.log(res.data.data.userName);
         this.props.history.push("/" + this.state.userName);
         this.success();
       })

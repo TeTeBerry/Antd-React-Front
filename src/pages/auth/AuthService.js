@@ -1,26 +1,4 @@
 export default class AuthService {
-  //Initializing important variables
-
-  // constructor(domain) {
-  //   this.domain = domain || "https://iotwatersystemserver.herokuapp.com/iot"; //API service domain
-  // }
-
-  // login = (userName, password) => {
-  //   return this.fetch(`/iot/admin/login`, {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       userName,
-  //       password
-  //     })
-  //   }).then(res => {
-  //     this.setToken(res.msg); //Setting the token in localStorage
-  //     this.setUserName(res.data.userName);
-  //     console.log(this.getToken());
-  //     console.log(this.getUserName());
-  //     return Promise.resolve(res);
-  //   });
-  // };
-
   isLoggedIn = () => {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken(); // Getting token from localstorage
@@ -49,44 +27,5 @@ export default class AuthService {
   logout = () => {
     // Clear user token and profile data from localStorage
     return localStorage.removeItem("id_token");
-  };
-
-  // getConfirm = () => {
-  //   // Using jwt-decode npm package to decode the token
-  //   let answer = this.getToken();
-  //   console.log("Recieved answer!");
-  //   return answer;
-  // };
-
-  // fetch = (url, options) => {
-  //   //performs api calls sending the required authentication headers
-  //   const headers = {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json"
-  //   };
-  //   //Setting Authorization header
-  //   //Authorization Bear xxxxxxxx.xxxxxxx
-  //   if (this.isLoggedIn()) {
-  //     headers["Authorization"] = +this.getToken();
-  //   }
-
-  //   return fetch(url, {
-  //     headers,
-  //     ...options
-  //   })
-  //     .then(this._checkStatus)
-  //     .then(response => response.json());
-  // };
-
-  _checkStatus = response => {
-    //raises an error in case response status is not a success
-    if (response.status >= 200 && response.status < 300) {
-      //Success status lies between 200 to 300
-      return response;
-    } else {
-      var error = new Error(response.statusText);
-      error.response = response;
-      throw error;
-    }
   };
 }
