@@ -48,7 +48,6 @@ class Login extends Component {
         }
         this.Auth.setUserName(res.data.data.userName);
         this.Auth.setToken(res.data.msg);
-        console.log(res.data.data.userName);
         this.props.history.push("/" + this.state.userName);
         this.success();
       })
