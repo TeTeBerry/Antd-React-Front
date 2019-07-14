@@ -48,7 +48,7 @@ class ChangePW extends React.Component {
     console.log(user);
 
     axios
-      .post("http://localhost:8080/iot/admin/updatePassword", user)
+      .post("/iot/admin/updatePassword", user)
       .then(res => {
         if (res.data.code !== 200) {
           return alert(res.data.msg);
