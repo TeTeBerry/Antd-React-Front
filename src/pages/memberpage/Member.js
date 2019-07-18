@@ -64,7 +64,7 @@ class Member extends React.Component {
               Water Bill
             </Button>
             <Divider type="vertical" />
-            <Link to={"/report/" + record.mid}>View Report</Link>
+            <Link to={"/report/" + record.meterName}>View Report</Link>
           </span>
         )
       }

@@ -71,7 +71,7 @@ class WaterBill extends React.Component {
 
     return (
       <Table
-        rowKey={record => record.memberName}
+        rowKey={record => record.meterName}
         columns={columns}
         dataSource={waterBill}
         bordered

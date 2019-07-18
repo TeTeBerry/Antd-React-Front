@@ -210,7 +210,14 @@ class Meter extends Component {
               View Data
             </Button>
             <Divider type="vertical" />
-            <Link to={"/report/" + record.meterName}>View Report</Link>
+            <Link
+              to={{
+                pathname: "/report/",
+                query: { meterName: record.meterName }
+              }}
+            >
+              View Report
+            </Link>
             <Divider type="vertical" />
             <Button type="primary" size={"small"} onClick={this.showBill}>
               Water Bill

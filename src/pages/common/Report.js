@@ -10,11 +10,16 @@ var year = currentDate.getFullYear();
 var dateString = year + "-" + (month + 1) + "-" + date;
 
 class Report extends Component {
-  state = {
-    dayData: [],
-    weekData: [],
-    monthData: []
-  };
+  constructor(props) {
+    super(props);
+    console.dir(props);
+    this.state = {
+      dayData: [],
+      weekData: [],
+      monthData: [],
+      meterName: props.match.params.meterName
+    };
+  }
 
   componentDidMount() {
     this.getDailyReport();
@@ -25,7 +30,9 @@ class Report extends Component {
   getDailyReport() {
     axios
       .get(
-        `http://localhost:8080/iot/data/getDailyData?meterName=Sensor-1&date=2019-7-3`
+        `http://localhost:8080/iot/data/getDailyData?meterName=${
+          this.state.meterName
+        }&date=${dateString}`
       )
       .then(res => {
         if (res.data.code === 200) {
@@ -43,7 +50,9 @@ class Report extends Component {
   getWeeklyReport() {
     axios
       .get(
-        `http://localhost:8080/iot/data/getWeeklyData?meterName=Sensor-1&date=2019-7-3`
+        `http://localhost:8080/iot/data/getWeeklyData?meterName=${
+          this.state.meterName
+        }&date=${dateString}`
       )
       .then(res => {
         if (res.data.code === 200) {
@@ -60,7 +69,9 @@ class Report extends Component {
   getMonthlyReport() {
     axios
       .get(
-        `http://localhost:8080/iot/data/getMonthlyData?meterName=Sensor-1&date=${dateString}`
+        `http://localhost:8080/iot/data/getMonthlyData?meterName=${
+          this.state.meterName
+        }&date=${dateString}`
       )
       .then(res => {
         if (res.data.code === 200) {
@@ -75,6 +86,7 @@ class Report extends Component {
   }
 
   render() {
+    const { match } = this.props;
     const { dayData } = this.state;
     const daycols = {
       totalMilliters: {
@@ -105,6 +117,7 @@ class Report extends Component {
               fontWeight: 500
             }}
           />
+          <p>meterName:{match.params.meterName}</p>
 
           <Card type="inner" title="Daliy report">
             <Chart height={400} data={dayData} scale={daycols} forceFit>

@@ -15,9 +15,7 @@ import SensorData from "./pages/common/SensorData";
 const menu = (
   <Menu>
     <Menu.Item>
-      <a target="_self" href="/changepw">
-        Change password
-      </a>
+      <Link to="/changepw">Change password</Link>
     </Menu.Item>
   </Menu>
 );
@@ -118,7 +116,7 @@ class App extends Component {
               <Switch>
                 <Route path="/changepw" component={ChangePw} />
                 <Route path="/admin" component={Meter} />
-                <Route path="/report" component={Report} />
+                <Route path="/report/:meterName" component={Report} />
                 <Route path="/waterbill" component={WaterBill} />
                 <Route path="/member" component={Member} />
                 <Route path="/SensorData" component={SensorData} />
