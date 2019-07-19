@@ -117,7 +117,7 @@ class App extends Component {
                 <Route path="/changepw" component={ChangePw} />
                 <Route path="/admin" component={Meter} />
                 <Route path="/report/:meterName" component={Report} />
-                <Route path="/waterbill" component={WaterBill} />
+                <Route path="/waterbill/:meterName" component={WaterBill} />
                 <Route path="/member" component={Member} />
                 <Route path="/SensorData" component={SensorData} />
               </Switch>

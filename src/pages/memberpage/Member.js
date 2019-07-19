@@ -60,11 +60,26 @@ class Member extends React.Component {
               View Data
             </Button>
             <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showBill}>
+            <Link
+              to={{
+                pathname: `/waterbill/${record.meterName}`,
+                query: {
+                  meterName: record.meterName,
+                  memberName: record.memberName
+                }
+              }}
+            >
               Water Bill
-            </Button>
+            </Link>
             <Divider type="vertical" />
-            <Link to={"/report/" + record.meterName}>View Report</Link>
+            <Link
+              to={{
+                pathname: `/report/${record.meterName}`,
+                query: { meterName: record.meterName }
+              }}
+            >
+              View Report
+            </Link>
           </span>
         )
       }

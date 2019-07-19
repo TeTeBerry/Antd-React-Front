@@ -1,11 +1,20 @@
 import React from "react";
-import { Table } from "antd";
+import { Descriptions } from "antd";
 import axios from "axios";
 
 class WaterBill extends React.Component {
-  state = {
-    waterBill: []
-  };
+  constructor(props) {
+    super(props);
+    console.dir(props);
+    this.state = {
+      waterBill: [],
+      meterName: props.match.params.meterName,
+      memberName: "",
+      fee: "",
+      totalMilliters: "",
+      month: ""
+    };
+  }
 
   componentDidMount() {
     this.getWaterBill();
@@ -13,9 +22,14 @@ class WaterBill extends React.Component {
 
   getWaterBill() {
     axios
-      .get("http://localhost:8080/iot/meter/getWaterBill")
+      .get(
+        `http://localhost:8080/iot/meter/getWaterBill?meterName=${
+          this.state.meterName
+        }`
+      )
       .then(res => {
-        const mm = res.data.data[0].month;
+        console.log(res);
+        const mm = res.data.data.month;
         var months = [
           "January",
           "February",
@@ -33,9 +47,15 @@ class WaterBill extends React.Component {
         const month = months[mm - 1] || "";
         console.log(month);
         if (res.data.code === 200) {
-          this.setState({
-            waterBill: res.data.data
-          });
+          if (res.data.data.meterName === this.state.meterName) {
+            this.setState({
+              meterName: res.data.data.meterName,
+              memberName: res.data.data.memberName,
+              fee: res.data.data.fee,
+              totalMilliters: res.data.data.totalMilliters,
+              month: month
+            });
+          }
         }
       })
 
@@ -45,39 +65,20 @@ class WaterBill extends React.Component {
   }
 
   render() {
-    const columns = [
-      {
-        title: "Meter Name",
-        dataIndex: "meterName"
-      },
-      {
-        title: "Member Name",
-        dataIndex: "memberName"
-      },
-      {
-        title: "Month",
-        dataIndex: "month"
-      },
-      {
-        title: "Amount volume (totalMilliters /mL)",
-        dataIndex: "totalMilliters"
-      },
-      {
-        title: "Amount Fee(Bath)",
-        dataIndex: "fee"
-      }
-    ];
-    const { waterBill } = this.state;
-
     return (
-      <Table
-        rowKey={record => record.meterName}
-        columns={columns}
-        dataSource={waterBill}
-        bordered
-        title={() => "Water Bill"}
-        footer={() => "25Bath per unit,one unit is 1000mL"}
-      />
+      <Descriptions bordered title="Water Bill" border size={this.state.size}>
+        <Descriptions.Item label="Meter Name">
+          {this.state.meterName}
+        </Descriptions.Item>
+        <Descriptions.Item label="Member Name">
+          {this.state.memberName}
+        </Descriptions.Item>
+        <Descriptions.Item label="Month">{this.state.month}</Descriptions.Item>
+        <Descriptions.Item label="Fee">{this.state.fee}</Descriptions.Item>
+        <Descriptions.Item label="TotalMilliters">
+          {this.state.totalMilliters}
+        </Descriptions.Item>
+      </Descriptions>
     );
   }
 }

@@ -1,3 +1,4 @@
+import decode from "jwt-decode";
 export default class AuthService {
   isLoggedIn = () => {
     // Checks if there is a saved token and it's still valid
@@ -28,4 +29,15 @@ export default class AuthService {
     // Clear user token and profile data from localStorage
     return localStorage.removeItem("id_token");
   };
+  isTokenExpired(token) {
+    try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        // Checking if token is expired. N
+        return true;
+      } else return false;
+    } catch (err) {
+      return false;
+    }
+  }
 }

@@ -23,10 +23,6 @@ class Meter extends Component {
     message.error("Opreating Fail");
   };
 
-  showBill = () => {
-    this.props.history.push("/waterbill");
-  };
-
   showRealTime = () => {
     this.props.history.push("/SensorData");
   };
@@ -212,16 +208,21 @@ class Meter extends Component {
             <Divider type="vertical" />
             <Link
               to={{
-                pathname: "/report/",
+                pathname: `/report/${record.meterName}`,
                 query: { meterName: record.meterName }
               }}
             >
               View Report
             </Link>
             <Divider type="vertical" />
-            <Button type="primary" size={"small"} onClick={this.showBill}>
+            <Link
+              to={{
+                pathname: `/waterbill/${record.meterName}`,
+                query: { meterName: record.meterName }
+              }}
+            >
               Water Bill
-            </Button>
+            </Link>
           </span>
         )
       }
