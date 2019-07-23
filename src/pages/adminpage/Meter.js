@@ -31,12 +31,13 @@ class Meter extends Component {
     const formFields = form.memberList;
     console.log(formFields);
     const formData = {
-      id: record.id,
+      meter_id: record.meter.id,
+      member_id: record.meter.member_id,
       meterName: record.meter.meterName,
       meterDesc: record.meter.meterDesc,
-      memberName: record.name,
+      name: record.name,
       room: record.room,
-      memberContact: record.contact
+      contact: record.contact
     };
     form.setFieldsValue(formData);
     this.setState({
@@ -59,14 +60,15 @@ class Meter extends Component {
   handleUpdate = () => {
     const { form } = this.formRef.props;
     const formFields = form.getFieldsValue();
-    console.log(formFields.id);
+    console.log(formFields.meter_id);
     const formData = {
-      id: formFields.id,
+      meter_id: formFields.meter_id,
+      member_id: formFields.member_id,
       meterName: formFields.meterName,
       meterDesc: formFields.meterDesc,
       room: formFields.room,
-      memberContact: formFields.memberContact,
-      memberName: formFields.memberName
+      contact: formFields.contact,
+      name: formFields.name
     };
     console.log(formData);
     form.validateFields((err, values) => {
@@ -77,8 +79,9 @@ class Meter extends Component {
       form.resetFields();
       this.setState({ visible: false });
     });
+    const token = this.Auth.getToken();
     axios
-      .post("/iot/meter/update", formData)
+      .post("/iot/meter/update", formData, { headers: { token: token } })
       .then(data => {
         console.log(data.data.code);
         if (data.data.code !== 200) {

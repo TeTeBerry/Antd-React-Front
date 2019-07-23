@@ -21,9 +21,14 @@ const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
           onOk={handleSubmit}
         >
           <Form layout="vertical">
-            <Form.Item label="ID">
-              {getFieldDecorator("id", {
+            <Form.Item label="Meter ID">
+              {getFieldDecorator("meter_id", {
                 rules: [{ required: true, message: "Please input meter id!" }]
+              })(<Input disabled={this.state.disabled} />)}
+            </Form.Item>
+            <Form.Item label="Member ID">
+              {getFieldDecorator("member_id", {
+                rules: [{ required: true, message: "Please input member id!" }]
               })(<Input disabled={this.state.disabled} />)}
             </Form.Item>
             <Form.Item label="Meter Name">
@@ -43,7 +48,7 @@ const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Name">
-              {getFieldDecorator("memberName", {
+              {getFieldDecorator("name", {
                 rules: [
                   { required: true, message: "Please input member name!" },
                   { max: 15, message: "Incorrect format!" }
@@ -59,7 +64,7 @@ const CollectionUpdateForm = Form.create({ name: "form_in_modal" })(
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Contact">
-              {getFieldDecorator("memberContact", {
+              {getFieldDecorator("contact", {
                 rules: [
                   { required: true, message: "Please input member contact!" },
                   {
