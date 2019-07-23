@@ -33,7 +33,7 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Name">
-              {getFieldDecorator("memberName", {
+              {getFieldDecorator("name", {
                 rules: [
                   { required: true, message: "Please input member name!" },
                   { max: 15, message: "Incorrect format!" }
@@ -49,7 +49,7 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
               })(<Input />)}
             </Form.Item>
             <Form.Item label="Member Contact(Email)">
-              {getFieldDecorator("memberContact", {
+              {getFieldDecorator("contact", {
                 rules: [
                   { required: true, message: "Please input member contact!" },
                   {

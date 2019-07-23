@@ -14,6 +14,14 @@ export default class AuthService {
     return localStorage.getItem("currentUser");
   };
 
+  setUserId = user_id => {
+    localStorage.setItem("user_id", user_id);
+  };
+
+  getUserId = () => {
+    return localStorage.getItem("user_id");
+  };
+
   setToken = idToken => {
     //Saves user token to localStorage
     localStorage.setItem("id_token", idToken);

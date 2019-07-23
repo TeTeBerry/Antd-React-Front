@@ -9,7 +9,7 @@ class Login extends Component {
   Auth = new AuthService();
 
   state = {
-    userName: "",
+    username: "",
     password: ""
   };
 
@@ -28,7 +28,7 @@ class Login extends Component {
   onChangeRadio = e => {
     console.log("radio checked", e.target.value);
     this.setState({
-      userName: e.target.value
+      username: e.target.value
     });
   };
 
@@ -41,7 +41,7 @@ class Login extends Component {
   handleLogin = e => {
     e.preventDefault();
     const user = {
-      userName: this.state.userName,
+      username: this.state.username,
       password: this.state.password
     };
     axios
@@ -50,10 +50,12 @@ class Login extends Component {
         if (res.data.code === 1004) {
           this.passwordError();
         } else if (res.data.code === 200) {
-          this.Auth.setUserName(res.data.data.userName);
+          this.Auth.setUserName(res.data.data.username);
           this.Auth.setToken(res.data.msg);
-          this.props.history.push("/" + this.state.userName);
+          this.Auth.setUserId(res.data.data.id);
+          this.props.history.push("/" + this.state.username);
           this.success();
+          console.log(this.Auth.getUserId());
         }
       })
       .catch(error => {
@@ -81,7 +83,7 @@ class Login extends Component {
           <Form onSubmit={this.handleLogin} className="login-form">
             <RadioGroup
               onChange={this.onChangeRadio}
-              userName={this.state.value}
+              username={this.state.value}
             >
               <Radio value={"admin"}>Admin</Radio>
               <Radio value={"member"}>Member</Radio>

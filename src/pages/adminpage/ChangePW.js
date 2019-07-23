@@ -10,7 +10,7 @@ const Option = Select.Option;
 class ChangePW extends React.Component {
   Auth = new AuthService();
   state = {
-    userName: "",
+    username: "",
     oldPwd: "",
     newPwd: ""
   };
@@ -22,7 +22,7 @@ class ChangePW extends React.Component {
   onChangeUserName = value => {
     console.log(`selected ${value}`);
     this.setState({
-      userName: value
+      username: value
     });
   };
 
@@ -41,20 +41,21 @@ class ChangePW extends React.Component {
   handleChangePw = e => {
     e.preventDefault();
     const user = q.stringify({
-      userName: this.state.userName,
+      username: this.state.username,
       oldPwd: this.state.oldPwd,
       newPwd: this.state.newPwd
     });
     console.log(user);
+    const token = this.Auth.getToken();
 
     axios
-      .post("/iot/admin/updatePassword", user)
+      .post("/iot/admin/updatePassword", user, { headers: { token: token } })
       .then(res => {
         if (res.data.code !== 200) {
           return alert(res.data.msg);
         }
         console.log(res.data.code);
-        this.props.history.push("/" + this.state.userName);
+        this.props.history.push("/" + this.state.username);
         this.success();
       })
       .catch(error => {

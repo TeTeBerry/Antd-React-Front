@@ -123,7 +123,8 @@ class SetupVolume extends React.Component {
     const formFields = form.getFieldsValue();
     const formData = q.stringify({
       memberName: formFields.memberName,
-      volume: formFields.volume
+      volume: formFields.volume,
+      member_id: this.props.memberId
     });
     console.log(formData);
     form.validateFields((err, values) => {
@@ -135,15 +136,13 @@ class SetupVolume extends React.Component {
       this.setState({ visible: false });
     });
 
-    axios
-      .post("http://localhost:8080/iot/meter/setMemberVolume", formData)
-      .then(res => {
-        console.log(res.data);
-        if (res.data.code !== 200) {
-          return alert(res.data.msg);
-        }
-        this.createSuccess();
-      });
+    axios.post("/iot/meter/setMemberVolume", formData).then(res => {
+      console.log(res.data);
+      if (res.data.code !== 200) {
+        return alert(res.data.msg);
+      }
+      this.createSuccess();
+    });
   };
 
   saveFormRef = formRef => {

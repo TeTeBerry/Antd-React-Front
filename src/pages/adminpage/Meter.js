@@ -6,12 +6,9 @@ import CollectionUpdateForm from "./UpdateMeterForm";
 import { Link } from "react-router-dom";
 import CreateMeter from "./CreateMeter";
 import AuthService from "../auth/AuthService";
+import q from "querystring";
 
 const confirm = Modal.confirm;
-
-const headers = {
-  "Content-Type": "application/x-www-form-urlencoded"
-};
 
 class Meter extends Component {
   Auth = new AuthService();
@@ -30,16 +27,16 @@ class Meter extends Component {
   showEditMoal = record => {
     const { form } = this.formRef.props;
     form.memberList = record;
-    console.log(record.mid);
+    console.log(record.id);
     const formFields = form.memberList;
     console.log(formFields);
     const formData = {
-      mid: record.mid,
-      meterName: record.meterName,
-      meterDesc: record.meterDesc,
-      memberName: record.memberName,
+      id: record.id,
+      meterName: record.meter.meterName,
+      meterDesc: record.meter.meterDesc,
+      memberName: record.name,
       room: record.room,
-      memberContact: record.memberContact
+      memberContact: record.contact
     };
     form.setFieldsValue(formData);
     this.setState({
@@ -62,9 +59,9 @@ class Meter extends Component {
   handleUpdate = () => {
     const { form } = this.formRef.props;
     const formFields = form.getFieldsValue();
-    console.log(formFields.mid);
+    console.log(formFields.id);
     const formData = {
-      mid: formFields.mid,
+      id: formFields.id,
       meterName: formFields.meterName,
       meterDesc: formFields.meterDesc,
       room: formFields.room,
@@ -102,38 +99,49 @@ class Meter extends Component {
   };
 
   deleteMember = mid => {
-    const params = { mid: mid };
-    console.log(params);
+    // const params = { mid: mid };
+    // console.log(params);
+    const deletemid = q.stringify({
+      mid: mid
+    });
+    const token = this.Auth.getToken();
     axios
       .delete(
-        "/iot/meter/delete",
-        { params: params },
+        `/iot/meter/delete/?${deletemid}`,
+        // { params: params },
         {
-          headers
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            token: token
+          }
         }
       )
       .then(data => {
         this.setState({
           memberList: this.state.memberList.filter(item => item.mid !== mid)
         });
-        this.deleteSuccess();
-        console.log(data);
+        if (data.data.code === 200) {
+          this.deleteSuccess();
+          this.fetchMemberList();
+          console.log(data);
+        }
       })
       .catch(error => {
         console.log(error);
         this.error();
+        console.log(token);
       });
   };
 
-  showDeleteConfirm(mid, meterName) {
-    console.log(mid);
+  showDeleteConfirm(id, meterName) {
+    console.log(id);
     confirm({
       title: `Are you sure delete ${meterName}?`,
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
       onOk: () => {
-        this.deleteMember(mid);
+        this.deleteMember(id);
         console.log("OK");
       },
       onCancel() {
@@ -144,7 +152,7 @@ class Meter extends Component {
 
   fetchMemberList = () => {
     axios
-      .get("/iot/meter/getMeters")
+      .get("/iot/meter/getMeterAndMember")
       .then(res => {
         this.setState({
           memberList: res.data.data
@@ -165,15 +173,15 @@ class Meter extends Component {
     const columns = [
       {
         title: "Meter Name",
-        dataIndex: "meterName"
+        dataIndex: "meter.meterName"
       },
       {
         title: "Descriptions",
-        dataIndex: "meterDesc"
+        dataIndex: "meter.meterDesc"
       },
       {
         title: "Member Name",
-        dataIndex: "memberName"
+        dataIndex: "name"
       },
       {
         title: "Room",
@@ -181,7 +189,7 @@ class Meter extends Component {
       },
       {
         title: "Member Contact",
-        dataIndex: "memberContact"
+        dataIndex: "contact"
       },
       {
         title: "Action",
@@ -195,7 +203,7 @@ class Meter extends Component {
             <Button
               size={"small"}
               onClick={() =>
-                this.showDeleteConfirm(record.mid, record.meterName)
+                this.showDeleteConfirm(record.id, record.meter.meterName)
               }
               type="danger"
             >
@@ -208,7 +216,7 @@ class Meter extends Component {
             <Divider type="vertical" />
             <Link
               to={{
-                pathname: `/report/${record.meterName}`,
+                pathname: `/report/${record.meter.meterName}`,
                 query: { meterName: record.meterName }
               }}
             >
@@ -217,7 +225,7 @@ class Meter extends Component {
             <Divider type="vertical" />
             <Link
               to={{
-                pathname: `/waterbill/${record.meterName}`,
+                pathname: `/waterbill/${record.meter.meterName}`,
                 query: { meterName: record.meterName }
               }}
             >
@@ -234,7 +242,7 @@ class Meter extends Component {
         <CreateMeter coolName={this.fetchMemberList} />
         <br />
         <Table
-          rowKey={record => record.mid}
+          rowKey={record => record.id}
           columns={columns}
           dataSource={memberList}
         />

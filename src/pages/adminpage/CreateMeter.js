@@ -3,6 +3,7 @@ import { Button, message } from "antd";
 import axios from "axios";
 import CollectionCreateForm from "./CreateMeterForm";
 import AuthService from "../auth/AuthService";
+import q from "querystring";
 
 class CreateMeter extends Component {
   Auth = new AuthService();
@@ -32,10 +33,13 @@ class CreateMeter extends Component {
     const member = {
       meterDesc: formFields.meterDesc,
       meterName: formFields.meterName,
-      memberName: formFields.memberName,
+      name: formFields.name,
       room: formFields.room,
-      memberContact: formFields.memberContact
+      contact: formFields.contact
     };
+    const user_id = q.stringify({
+      user_id: this.Auth.getUserId()
+    });
     form.validateFields((err, values) => {
       if (err) {
         return;
@@ -45,18 +49,26 @@ class CreateMeter extends Component {
       form.resetFields();
     });
 
+    const token = this.Auth.getToken();
+
     axios
-      .post("/iot/meter/addMeter", member)
+      .post(`/iot/meter/addMeter/?${user_id}`, member, {
+        headers: {
+          token: token
+        }
+      })
       .then(member => {
         if (member.data.code !== 200) {
           return this.error();
         }
+
         this.props.coolName(member);
         this.createSuccess();
       })
       .catch(error => {
         console.log(error);
         this.error();
+        console.log(token);
       });
   };
 

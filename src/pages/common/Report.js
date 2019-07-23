@@ -90,19 +90,19 @@ class Report extends Component {
     const { dayData } = this.state;
     const daycols = {
       totalMilliters: {
-        tickInterval: 1500
+        tickInterval: 15000
       }
     };
     const { weekData } = this.state;
     const weekcols = {
       totalMilliters: {
-        tickInterval: 2000
+        tickInterval: 15000
       }
     };
     const { monthData } = this.state;
     const monthcols = {
       totalMilliters: {
-        tickInterval: 3000
+        tickInterval: 15000
       }
     };
 
