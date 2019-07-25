@@ -35,7 +35,8 @@ class CreateMeter extends Component {
       meterName: formFields.meterName,
       name: formFields.name,
       room: formFields.room,
-      contact: formFields.contact
+      contact: formFields.contact,
+      password: formFields.password
     };
     const user_id = q.stringify({
       user_id: this.Auth.getUserId()

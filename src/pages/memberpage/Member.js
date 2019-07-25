@@ -11,15 +11,101 @@ import {
   Modal
 } from "antd";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import q from "querystring";
 import AuthService from "../auth/AuthService";
+
+const ReportPwdForm = Form.create({ name: "form_in_modal" })(
+  // eslint-disable-next-line
+  class extends React.Component {
+    state = {
+      disabled: true
+    };
+    render() {
+      const { rvisible, onCancelR, onCreateR, form } = this.props;
+      const { getFieldDecorator } = form;
+      return (
+        <Modal
+          visible={rvisible}
+          title="Authority "
+          okText="view report"
+          onCancel={onCancelR}
+          onOk={onCreateR}
+        >
+          <Form layout="vertical">
+            <Form.Item label="Meter Name">
+              {getFieldDecorator("meterName", {
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              })(<Input disabled={this.state.disabled} />)}
+            </Form.Item>
+            <Form.Item label="Password">
+              {getFieldDecorator("password", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Please input the member password!"
+                  }
+                ]
+              })(<Input.Password />)}
+            </Form.Item>
+          </Form>
+        </Modal>
+      );
+    }
+  }
+);
+
+const WaterBillPwdForm = Form.create({ name: "form_in_modal" })(
+  // eslint-disable-next-line
+  class extends React.Component {
+    state = {
+      disabled: true
+    };
+    render() {
+      const { pvisible, onCancelPwd, onCreatePwd, form } = this.props;
+      const { getFieldDecorator } = form;
+      return (
+        <Modal
+          visible={pvisible}
+          title="Authority "
+          okText="view water bill"
+          onCancel={onCancelPwd}
+          onOk={onCreatePwd}
+        >
+          <Form layout="vertical">
+            <Form.Item label="Meter Name">
+              {getFieldDecorator("meterName", {
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              })(<Input disabled={this.state.disabled} />)}
+            </Form.Item>
+            <Form.Item label="Password">
+              {getFieldDecorator("password", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Please input the member password!"
+                  }
+                ]
+              })(<Input.Password />)}
+            </Form.Item>
+          </Form>
+        </Modal>
+      );
+    }
+  }
+);
 
 const VolumeCreateForm = Form.create({ name: "form_in_modal" })(
   class extends React.Component {
     state = {
-      disabled: true,
-      visible: false
+      disabled: true
     };
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
@@ -52,6 +138,16 @@ const VolumeCreateForm = Form.create({ name: "form_in_modal" })(
                   }
                 ]
               })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Password">
+              {getFieldDecorator("password", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Please input password"
+                  }
+                ]
+              })(<Input.Password />)}
             </Form.Item>
           </Form>
 
@@ -118,7 +214,9 @@ class Member extends React.Component {
   Auth = new AuthService();
   state = {
     memberList: [],
-    visible: false
+    visible: false,
+    pvisible: false,
+    rvisible: false
   };
   error = () => {
     message.error("Set up volume fail!");
@@ -142,6 +240,14 @@ class Member extends React.Component {
   handleCancel = () => {
     this.setState({ visible: false });
   };
+
+  handleCancelPwd = () => {
+    this.setState({ pvisible: false });
+  };
+
+  handleCancelRe = () => {
+    this.setState({ rvisible: false });
+  };
   createSuccess = () => {
     message.success("Set up volume success!");
   };
@@ -152,8 +258,10 @@ class Member extends React.Component {
     const formData = q.stringify({
       volume: formFields.volume,
       meter_id: formFields.meter_id,
-      member_id: formFields.member_id
+      member_id: formFields.member_id,
+      password: formFields.password
     });
+
     console.log(formData);
     form.validateFields((err, values) => {
       if (err) {
@@ -166,7 +274,9 @@ class Member extends React.Component {
 
     const token = this.Auth.getToken();
     axios
-      .post("/iot/meter/setVolume", formData, { headers: { token: token } })
+      .post("/iot/meter/setVolume/", formData, {
+        headers: { token: token }
+      })
       .then(res => {
         console.log(res.data);
         if (res.data.code !== 200) {
@@ -178,10 +288,6 @@ class Member extends React.Component {
 
   saveFormRef = formRef => {
     this.formRef = formRef;
-  };
-
-  showBill = () => {
-    this.props.history.push("/waterbill");
   };
 
   showRealTime = () => {
@@ -204,6 +310,107 @@ class Member extends React.Component {
   componentDidMount() {
     this.fetchMemberList();
   }
+
+  showBillPwdModal = record => {
+    const { form } = this.formRefPwd.props;
+    form.memberList = record;
+    console.log(record.id);
+    const formFields = form.memberList;
+    console.log(formFields);
+    const formData = {
+      meterName: record.meter.meterName
+    };
+    console.log(formData);
+    form.setFieldsValue(formData);
+    this.setState({ pvisible: true });
+  };
+
+  saveFormRefPwd = formRef => {
+    this.formRefPwd = formRef;
+  };
+
+  handleCreatePwd = () => {
+    const { form } = this.formRefPwd.props;
+    const formFields = form.getFieldsValue();
+    const formData = q.stringify({
+      meterName: formFields.meterName,
+      password: formFields.password
+    });
+
+    console.log(formData);
+    form.validateFields((err, values) => {
+      if (err) {
+        return;
+      }
+      console.log("Received values of form: ", values);
+      form.resetFields();
+      this.setState({ visible: false });
+    });
+
+    axios.post(`/iot/auth/getWaterBillAuthorize/?${formData}`).then(res => {
+      console.log(res.data);
+      if (res.data.code !== 200) {
+        return alert(res.data.msg);
+      }
+      this.props.history.push({
+        pathname: `/waterbill/${formFields.meterName}`,
+        query: {
+          meterName: formFields.meterName
+        }
+      });
+    });
+  };
+
+  showReportPwdModal = record => {
+    const { form } = this.formRefRe.props;
+    form.memberList = record;
+    console.log(record.id);
+    const formFields = form.memberList;
+    console.log(formFields);
+    const formData = {
+      meterName: record.meter.meterName
+    };
+    console.log(formData);
+    form.setFieldsValue(formData);
+    this.setState({ rvisible: true });
+  };
+
+  saveFormRefRe = formRef => {
+    this.formRefRe = formRef;
+  };
+
+  handleCreateRe = () => {
+    const { form } = this.formRefRe.props;
+    const formFields = form.getFieldsValue();
+    const formData = q.stringify({
+      meterName: formFields.meterName,
+      password: formFields.password
+    });
+
+    console.log(formData);
+    form.validateFields((err, values) => {
+      if (err) {
+        return;
+      }
+      console.log("Received values of form: ", values);
+      form.resetFields();
+      this.setState({ rvisible: false });
+    });
+
+    axios.post(`/iot/auth/getReportAuthorize/?${formData}`).then(res => {
+      console.log(res.data);
+      if (res.data.code !== 200) {
+        return alert(res.data.msg);
+      }
+      this.props.history.push({
+        pathname: `/report/${formFields.meterName}`,
+        query: {
+          meterName: formFields.meterName
+        }
+      });
+    });
+  };
+
   render() {
     const columns = [
       {
@@ -239,26 +446,22 @@ class Member extends React.Component {
               View Data
             </Button>
             <Divider type="vertical" />
-            <Link
-              to={{
-                pathname: `/waterbill/${record.meter.meterName}`,
-                query: {
-                  meterName: record.meter.meterName,
-                  memberName: record.name
-                }
-              }}
+            <Button
+              type="primary"
+              size={"small"}
+              onClick={() => this.showBillPwdModal(record)}
             >
               Water Bill
-            </Link>
+            </Button>
+
             <Divider type="vertical" />
-            <Link
-              to={{
-                pathname: `/report/${record.meter.meterName}`,
-                query: { meterName: record.meter.meterName }
-              }}
+            <Button
+              type="primary"
+              size={"small"}
+              onClick={() => this.showReportPwdModal(record)}
             >
               View Report
-            </Link>
+            </Button>
           </span>
         )
       }
@@ -277,6 +480,20 @@ class Member extends React.Component {
           visible={this.state.visible}
           onCancel={this.handleCancel}
           onCreate={this.handleCreate}
+        />
+
+        <WaterBillPwdForm
+          wrappedComponentRef={this.saveFormRefPwd}
+          pvisible={this.state.pvisible}
+          onCancelPwd={this.handleCancelPwd}
+          onCreatePwd={this.handleCreatePwd}
+        />
+
+        <ReportPwdForm
+          wrappedComponentRef={this.saveFormRefRe}
+          rvisible={this.state.rvisible}
+          onCancelR={this.handleCancelRe}
+          onCreateR={this.handleCreateRe}
         />
       </div>
     );

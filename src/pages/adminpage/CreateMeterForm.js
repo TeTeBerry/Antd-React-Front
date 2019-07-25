@@ -59,6 +59,15 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
                 ]
               })(<Input />)}
             </Form.Item>
+
+            <Form.Item label="Member Password">
+              {getFieldDecorator("password", {
+                rules: [
+                  { required: true, message: "Please input member password!" },
+                  { min: 4, message: "At least 4 digits!" }
+                ]
+              })(<Input.Password />)}
+            </Form.Item>
           </Form>
         </Modal>
       );

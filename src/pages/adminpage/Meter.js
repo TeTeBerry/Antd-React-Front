@@ -101,11 +101,12 @@ class Meter extends Component {
     this.formRef = formRef;
   };
 
-  deleteMember = mid => {
+  deleteMember(mid, member_id) {
     // const params = { mid: mid };
     // console.log(params);
     const deletemid = q.stringify({
-      mid: mid
+      mid: mid,
+      bid: member_id
     });
     const token = this.Auth.getToken();
     axios
@@ -134,17 +135,18 @@ class Meter extends Component {
         this.error();
         console.log(token);
       });
-  };
+  }
 
-  showDeleteConfirm(id, meterName) {
-    console.log(id);
+  showDeleteConfirm(id, meterName, member_id) {
+    console.log(member_id);
     confirm({
       title: `Are you sure delete ${meterName}?`,
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
       onOk: () => {
-        this.deleteMember(id);
+        this.deleteMember(id, member_id);
+        console.log(member_id);
         console.log("OK");
       },
       onCancel() {
@@ -206,7 +208,11 @@ class Meter extends Component {
             <Button
               size={"small"}
               onClick={() =>
-                this.showDeleteConfirm(record.id, record.meter.meterName)
+                this.showDeleteConfirm(
+                  record.id,
+                  record.meter.meterName,
+                  record.meter.member_id
+                )
               }
               type="danger"
             >

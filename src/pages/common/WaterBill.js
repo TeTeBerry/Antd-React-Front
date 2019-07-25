@@ -23,8 +23,8 @@ class WaterBill extends React.Component {
   getWaterBill() {
     axios
       .get(
-        `http://localhost:8080/iot/meter/getWaterBill?meterName=${
-          this.state.meterName
+        `/iot/meter/getWaterBill/?meterName=${this.state.meterName}&password=${
+          this.state.password
         }`
       )
       .then(res => {

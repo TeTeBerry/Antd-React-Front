@@ -124,9 +124,7 @@ class App extends Component {
             </div>
           </Content>
 
-          <Footer style={{ textAlign: "center" }}>
-            IoT Water System©2019 Created by ZiyuChen&&ZengyuLi
-          </Footer>
+          <Footer style={{ textAlign: "center" }}>IoT Water System©2019</Footer>
           <Route path="/login" component={NormalLoginForm} />
         </Layout>
       </div>
